@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.fengjing.framework.hibernate.model">
+	<class name="Employee" table="t_employee" catalog="maven">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="empname"></property>
+		<property name="sex"></property>
+		<property name="location"></property>
+		<many-to-one name="department" cascade="all" class="Department">
+			<column name="deptid"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

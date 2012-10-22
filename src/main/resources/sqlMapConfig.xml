@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	
+	<settings
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		errorTracingEnabled="true"
+		maxRequests="32"
+		maxSessions="10"
+		maxTransactions="5"
+		useStatementNamespaces="true"
+	/>
+	<!--  
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+			<property name="JDBC.ConnectionURL" value="jdbc:mysql://localhost/sample"/>
+			<property name="JDBC.Username" value="user"/>
+			<property name="JDBC.Password" value="mypass"/>
+			<property name="Pool.MaximumActiveConnections" value="10"/>
+			<property name="Pool.MaximumIdleConnections" value="5"/>
+			<property name="Pool.MaximumCheckoutTime" value="120000"/>
+			<property name="Pool.TimeToWait" value="500"/>
+			<property name="Pool.PingQuery" value="select 1 from ACCOUNT"/>
+			<property name="Pool.PingEnabled" value="false"/>
+			<property name="Pool.PingConnectionsOlderThan" value="1"/>
+			<property name="Pool.PingConnectionsNotUsedFor" value="1"/>
+		</dataSource>
+	</transactionManager>
+	-->
+
+	<sqlMap resource="com/fengjing/framework/ibatis/model/Category.xml"/>
+	<sqlMap resource="com/fengjing/framework/ibatis/model/Product.xml"/>
+</sqlMapConfig>

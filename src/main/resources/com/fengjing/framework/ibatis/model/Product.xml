@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.fengjing.framework.ibatis.model.Product">
+
+	<typeAlias alias="product" type="com.fengjing.framework.ibatis.model.Product"/>
+	
+	<resultMap class="product" id="ProductMap">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="description" column="description"/>
+		<result property="categoryid" column="categoryid"/>
+		<!-- 关联查询 查询com.fengjing.framework.ibatis.model.Category.selectById 将categoryid传递进去-->
+		<result property="category" column="categoryid" select="com.fengjing.framework.ibatis.model.Category.selectById"/>
+	</resultMap>
+	
+	<select id="selectAll" resultMap="ProductMap">
+		select * from product
+	</select>
+	
+	
+	
+	<select id="selectProductLikeName" resultMap="ProductMap" parameterClass="java.lang.String">
+		select * from product where name like concat('%',#name#,'%')
+	</select>
+	
+	
+	
+	
+	<select id="selectById" resultMap="ProductMap" parameterClass="int">
+		select * from product where id=#id#
+	</select>
+	
+	<insert id="save" parameterClass="product">
+		insert into product (name,price,description,categoryid) values (#name#,#price#,#description#,#categoryid#)
+	</insert>
+	
+	<update id="update" parameterClass="product">
+		<![CDATA[
+			update product set name=#name#,price=#price#,description=#description# where id=#id#
+		]]>
+	</update>
+	
+</sqlMap>

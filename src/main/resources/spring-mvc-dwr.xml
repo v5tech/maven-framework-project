@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.directwebremoting.org/schema/spring-dwr
+    http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+	
+	<!-- spring mvc dwr整合 -->
+	<dwr:configuration>
+		<dwr:convert type="bean" class="com.fengjing.framework.springmvc.dwr.model.User"></dwr:convert>
+	</dwr:configuration>
+	
+	<dwr:url-mapping/>
+    
+    <dwr:controller id="dwrController" debug="true"/>
+    
+    <mvc:annotation-driven></mvc:annotation-driven>
+    
+	<bean class="com.fengjing.framework.springmvc.dwr.dao.impl.UserDaoImpl" id="userDaoImpl">
+	</bean>
+	
+	<bean class="com.fengjing.framework.springmvc.dwr.service.impl.UserServiceImpl" id="userServiceImpl">
+		<property name="userDao" ref="userDaoImpl"></property>
+		<dwr:remote javascript="dwrUserService">
+			<dwr:include method="checkUsernameIsExists"/>
+			<dwr:include method="getUsername"/>
+			<dwr:include method="findUserById"/>
+			<dwr:include method="listAll"/>
+		</dwr:remote>
+	</bean>
+	
+	<!-- 用于将dwr的请求交给dwrController来处理 -->
+	<bean id="dwrHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="alwaysUseFullPath" value="true"></property>
+		<property name="mappings">
+			<props>
+				<prop key="/dwr/*">dwrController</prop>
+				<prop key="/interface/**">dwrController</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.fengjing.framework.hibernate.model">
+	<class name="Department" table="t_department" catalog="maven">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="deptname"></property>
+		<set name="sets" cascade="all" inverse="true">
+			<key>
+				<column name="deptid"></column>
+			</key>
+			<one-to-many class="Employee"/>
+		</set>
+	</class>
+</hibernate-mapping>

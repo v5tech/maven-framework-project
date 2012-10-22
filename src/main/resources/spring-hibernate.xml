@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.fengjing.framework.hibernate"></context:component-scan>
+	<tx:annotation-driven transaction-manager="hibernate4TransactionManager"/>
+	<aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
+
+	<bean id="hibernateDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/hibernate4?useUnicode=true&amp;characterEncoding=utf8"></property>
+	</bean>
+
+
+	<bean id="hibernate4sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="hibernateDataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+			</props>
+		</property>
+		
+		<property name="annotatedClasses">
+			<list>
+				<value>com.fengjing.framework.hibernate.model.Department</value>
+				<value>com.fengjing.framework.hibernate.model.Employee</value>
+			</list>
+		</property>
+		
+		<!-- 
+			<property name="mappingResources">
+				<list>
+					<value>com/fengjing/framework/hibernate/model/Department.hbm.xml</value>
+					<value>com/fengjing/framework/hibernate/model/Employee.hbm.xml</value>
+				</list>
+			</property>
+		-->
+		
+	</bean>
+
+	<bean id="hibernate4TransactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernate4sessionFactory"></property>
+	</bean>
+
+
+	<!--
+	
+	<bean id="employeeDao" class="com.fengjing.framework.hibernate.dao.impl.EmployeeDao">
+		<property name="sessionFactory" ref="hibernate4sessionFactory"></property>
+	</bean>
+
+
+	<bean id="departmentDao" class="com.fengjing.framework.hibernate.dao.impl.DepartmentDao">
+		<property name="sessionFactory" ref="hibernate4sessionFactory"></property>
+	</bean>
+	
+	<bean id="employeeServiceImpl" class="com.fengjing.framework.hibernate.service.impl.EmployeeServiceImpl">
+		<property name="dao" ref="employeeDao"></property>
+	</bean>
+
+	<bean id="departmentServiceImpl" class="com.fengjing.framework.hibernate.service.impl.DepartmentServiceImpl">
+		<property name="dao" ref="departmentDao"></property>
+	</bean>
+	
+	
+	<bean id="employeeServiceImplProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target" ref="employeeServiceImpl"></property>
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="query*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="departmentServiceImplProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target" ref="departmentServiceImpl"></property>
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="query*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="query*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="del*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config expose-proxy="true">
+		<aop:pointcut expression="execution(* com.fengjing.framework.hibernate.service..*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+	-->
+		
+	
+		
+</beans>
