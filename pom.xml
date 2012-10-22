@@ -299,7 +299,10 @@
 				</configuration>
 			</plugin>
 			
-			<!-- maven tomcat plugin -->
+			<!-- maven tomcat plugin 
+				usage
+				mvn tomcat:run
+			-->
 			<plugin>
 	          <groupId>org.apache.tomcat.maven</groupId>
 	          <artifactId>tomcat6-maven-plugin</artifactId>
@@ -312,7 +315,11 @@
 	        </plugin>
 			
 			
-			<!-- maven jetty plugin -->
+			<!-- 
+				maven jetty plugin 
+					usage
+				mvn jetty:run
+			-->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
@@ -321,7 +328,12 @@
 			
 			
 			
-			<!-- maven jboss plugin -->
+			<!-- maven jboss plugin 
+					usage
+				第一步:mvn clean package jboss:start 清楚资源、打包、启动jboss 
+				第二步:mvn jboss:hard-deploy 部署war包
+			-->
+			
 			<plugin>
 		        <groupId>org.codehaus.mojo</groupId>
 		        <artifactId>jboss-maven-plugin</artifactId>
@@ -330,8 +342,8 @@
 		          <hostName>localhost</hostName>
           		  <port>8080</port>
 		          <jbossHome>D:/jboss-4.2.3.GA</jbossHome>
-		          <serverName>all</serverName>
 		          <fileName>target/maven-framework.war</fileName>
+		          <serverName>all</serverName>
 		        </configuration>
 		      </plugin>
 			
