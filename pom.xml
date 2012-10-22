@@ -299,8 +299,9 @@
 				</configuration>
 			</plugin>
 			
-			<!-- maven tomcat plugin 
-				usage
+			<!-- 
+				maven tomcat plugin 
+					usage
 				mvn tomcat:run
 			-->
 			<plugin>
@@ -328,7 +329,8 @@
 			
 			
 			
-			<!-- maven jboss plugin 
+			<!-- 
+				maven jboss plugin 
 					usage
 				第一步:mvn clean package jboss:start 清楚资源、打包、启动jboss 
 				第二步:mvn jboss:hard-deploy 部署war包
