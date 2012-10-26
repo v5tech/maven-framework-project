@@ -25,16 +25,16 @@ public class ResponseJsonController {
 	@Resource
 	ContactService contactService;
 	
-	@RequestMapping(value="/xml/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Contact getContactInXML(@PathVariable(value="id")int id){
+	@RequestMapping(value="/json/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Contact getContactInJson(@PathVariable(value="id")int id){
 		Contact contact = contactService.findById(id);
 		return contact;
 	}
 	
 	
 	
-	@RequestMapping(value="/xml",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Contacts getContactsInXML(){
+	@RequestMapping(value="/json",produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Contacts getContactsInJson(){
 		List<Contact> contact = contactService.listAll();
 		Contacts contacts=new Contacts();
 		contacts.setContacts(contact);
