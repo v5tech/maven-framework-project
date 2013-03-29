@@ -5,7 +5,7 @@
 	<groupId>com.fengjing.framework</groupId>
 	<artifactId>maven-framework</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>maven-framework</name>
 	<url>http://maven.apache.org</url>
@@ -63,10 +63,25 @@
 	
 	<properties>
 		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<hibernate.version>4.2.0.Final</hibernate.version>
+		<struts2.version>2.3.8</struts2.version>
+		<struts.version>1.3.10</struts.version>
+		<mysql.version>5.1.24</mysql.version>
+		<spring.data.jpa.version>1.3.0.RELEASE</spring.data.jpa.version>
+		<junit.version>4.10</junit.version>
 	</properties>
 	
 	<dependencies>
-
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- jsp servlet jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -79,6 +94,7 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -86,22 +102,23 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>${spring.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>commons-lang</artifactId>
@@ -113,25 +130,65 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework.webflow</groupId>
+		  <artifactId>spring-webflow</artifactId>
+		  <version>2.3.1.RELEASE</version>
 		</dependency>
 
-
+		<!-- spring data jpa -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.1.0.RELEASE</version>
+			<version>${spring.data.jpa.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-
+		
+		<!-- hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.1.6.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.0.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
+		
+		<!-- struts2 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>
-			<version>2.3.4.1</version>
+			<version>${struts2.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.sun</groupId>
@@ -139,76 +196,64 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-json-plugin</artifactId>
-			<version>2.3.4.1</version>
+			<version>${struts2.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-jfreechart-plugin</artifactId>
-			<version>2.3.4.1</version>
+			<version>${struts2.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-dwr-plugin</artifactId>
-			<version>2.3.4.1</version>
+			<version>${struts2.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-convention-plugin</artifactId>
-			<version>2.3.4.1</version>
+			<version>${struts2.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>log4jdbc</groupId>
 			<artifactId>log4jdbc4</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.1.4.Final</version>
-		</dependency>
+		
+		
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.6</version>
 		</dependency>
+		
+		<!-- Spring MVC 要用到 -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.1</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.7.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>3.1.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.2.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.21</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>velocity</groupId>
 			<artifactId>velocity-dep</artifactId>
@@ -220,11 +265,12 @@
 			<version>1.4</version>
 		</dependency>
 
-		<!-- json -->
+		<!-- Jackson JSON Mapper -->
+		<!-- SpringMVC的@ResponseBody需要使用 -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.7.1</version>
+			<version>1.9.7</version>
 		</dependency>
 
 		<!-- rss -->
@@ -248,38 +294,36 @@
 			<version>1.1.1</version>
 		</dependency>
 
+		<!-- dwr -->
 		<dependency>
 			<groupId>org.directwebremoting</groupId>
 			<artifactId>dwr</artifactId>
 			<version>3.0.M1</version>
 		</dependency>
-
+	
 		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>spring-webflow</artifactId>
-			<version>2.3.1.RELEASE</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
 		</dependency>
-
-		<!-- 
-		Struts 1.3.10
+	
 		<dependency> 
 			<groupId>org.apache.struts</groupId> 
 			<artifactId>struts-core</artifactId> 
-			<version>1.3.10</version> 
+			<version>${struts.version}</version> 
 		</dependency> 
 		
 		<dependency> 
 			<groupId>org.apache.struts</groupId> 
 			<artifactId>struts-taglib</artifactId> 
-			<version>1.3.10</version> 
+			<version>${struts.version}</version> 
 		</dependency> 
 		
 		<dependency> 
 			<groupId>org.apache.struts</groupId> 
 			<artifactId>struts-extras</artifactId> 
-			<version>1.3.10</version> 
+			<version>${struts.version}</version> 
 		</dependency> 
-		-->
 
 		<!-- ibatis -->
 		<dependency>
@@ -287,7 +331,14 @@
 			<artifactId>ibatis</artifactId>
 			<version>2.3.4.726</version>
 		</dependency>
-
+		
+		<!-- poi excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.6</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -308,11 +359,13 @@
 					usage
 				mvn tomcat:run
 			-->
+			
 			<plugin>
 	          <groupId>org.apache.tomcat.maven</groupId>
 	          <artifactId>tomcat6-maven-plugin</artifactId>
 	          <version>2.0</version>
 	        </plugin>
+	        
 	        <plugin>
 	          <groupId>org.apache.tomcat.maven</groupId>
 	          <artifactId>tomcat7-maven-plugin</artifactId>
@@ -328,7 +381,7 @@
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.14</version>
+                <version>7.6.5.v20120716</version>
 			</plugin>
 			
 			
@@ -336,7 +389,7 @@
 			<!-- 
 				maven jboss plugin 
 					usage
-				第一步:mvn clean package jboss:start 清楚资源、打包、启动jboss 
+				第一步:mvn clean package jboss:start 清除资源、打包、启动jboss 
 				第二步:mvn jboss:hard-deploy 部署war包
 			-->
 			
@@ -351,9 +404,25 @@
 		          <fileName>target/maven-framework.war</fileName>
 		          <serverName>all</serverName>
 		        </configuration>
-		      </plugin>
+		     </plugin>
+		     
+		     
+		    <!-- 
+				jboss-as-maven-plugin
+				
+				mvn jboss-as:deploy
+				
+				mvn jboss-as:run
+			-->
+		   <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.4.Final</version>
+           </plugin>
+		     
+		     
 			
-			<plugin>
+		   <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>2.2</version>
@@ -413,6 +482,9 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-report-plugin</artifactId>
 							<version>2.9</version>
+							<configuration>
+					          <skipTests>true</skipTests>
+					        </configuration>
 						</plugin>
 					     	
 						<!-- 项目源代码分析报告 -->

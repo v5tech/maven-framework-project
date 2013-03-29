@@ -17,7 +17,7 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 	http://www.springframework.org/schema/data/jpa 
-	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+	http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd">
 	
 	<context:component-scan base-package="com.fengjing.framework.spring.data.jpa">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

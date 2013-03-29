@@ -9,6 +9,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <jsp:forward page="listAll/150/0/5.do"></jsp:forward>
+        <!-- 查询年龄小于100岁 从0开始 每页150条 -->
+        <jsp:forward page="listAll/100/0/150.do"></jsp:forward>
     </body>
 </html>

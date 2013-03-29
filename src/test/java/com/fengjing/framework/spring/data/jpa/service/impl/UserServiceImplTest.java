@@ -1,11 +1,25 @@
 package com.fengjing.framework.spring.data.jpa.service.impl;
 
+import java.util.List;
 
-//@ContextConfiguration(locations={"classpath:beans.xml"})
-//@RunWith(value=SpringJUnit4ClassRunner.class)
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
+
+import com.fengjing.framework.spring.data.jpa.service.UserService;
+import com.fengjing.framework.springmvc.model.Dept;
+import com.fengjing.framework.springmvc.model.User;
+
+
+@ContextConfiguration(locations={"classpath:spring-data-jpa.xml"})
+@RunWith(value=SpringJUnit4ClassRunner.class)
 public class UserServiceImplTest {
 	
-	/*@Resource(name="userServiceImpl")
+	@Resource(name="userServiceImpl")
 	private UserService userService;
 	
 	@Test
@@ -76,11 +90,11 @@ public class UserServiceImplTest {
 		}
 	}
 	
-	*//**
+	/**
 	 * 根据username查询 并按id降序排列
 	 * @param username
 	 * @return
-	 *//*
+	 */
 	@Test
 	public void findByUsernameLikeOrderByIdDesc(){
 		List<User> lists = userService.findByUsernameLikeOrderByIdDesc("小");
@@ -108,6 +122,6 @@ public class UserServiceImplTest {
 			System.out.println(user);
 			System.out.println("-----------------------");
 		}
-	}*/
+	}
 	
 }

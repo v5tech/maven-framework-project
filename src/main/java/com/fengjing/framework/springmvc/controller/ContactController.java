@@ -46,7 +46,7 @@ public class ContactController {
 			//System.out.println("First Name:" + contact.getFirstname() + "Last Name:" + contact.getLastname());
 			//HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 			contactService.save(contact);
-			return "redirect:/listAll.do";
+			return "redirect:/listAll/0/100.do";
 		}
 	}
 	
@@ -129,7 +129,7 @@ public class ContactController {
 	@RequestMapping(value="/del/{id}")
 	public String del(@PathVariable(value="id")int id){
 		contactService.delete(id);
-		return "redirect:/listAll.do";
+		return "redirect:/listAll/0/100.do";
 	}
 	
 	
