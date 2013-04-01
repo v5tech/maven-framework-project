@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.form.handling.model.controller;
+package com.fengjing.framework.springmvc.form.handling.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class SpringMVCformCustomerController extends SimpleFormController {
 	
 	public SpringMVCformCustomerController(){
 		setCommandClass(Customer.class);
-		setCommandName("customerForm");
+		setCommandName("customer");
 	}
  
 	@Override

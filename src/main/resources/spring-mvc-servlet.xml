@@ -108,7 +108,7 @@
 	<!-- 
 		Spring MVC Form Handling 
 	-->
-	<bean class="com.fengjing.framework.springmvc.form.handling.model.controller.SpringMVCformCustomerController">
+	<bean class="com.fengjing.framework.springmvc.form.handling.controller.SpringMVCformCustomerController">
 		<property name="formView" value="CustomerForm" />
 		<property name="successView" value="CustomerSuccess" />
 		<property name="validator">
