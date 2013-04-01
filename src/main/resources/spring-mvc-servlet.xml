@@ -32,7 +32,12 @@
 	
 	<!-- bind your messages.properties -->
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
-		<property name="basename" value="messages" />
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>customer</value>
+			</list>
+		</property>
 	</bean>
  
 
@@ -83,8 +88,7 @@
 	<!-- 按bean的名字去解析  查看rssViewer视图 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	
-	
-	<!-- SpringMVC错误异常输出 -->
+	<!-- SpringMVC错误异常输出  -->
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
@@ -95,5 +99,21 @@
 			</props>
 		</property>
 	</bean>
+    
+    <!--
+		SpringMVCHandlerMapping 取Controller的name部分为请求地址
+	-->  
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />	
 	
+	<!-- 
+		Spring MVC Form Handling 
+	-->
+	<bean class="com.fengjing.framework.springmvc.form.handling.model.controller.SpringMVCformCustomerController">
+		<property name="formView" value="CustomerForm" />
+		<property name="successView" value="CustomerSuccess" />
+		<property name="validator">
+			<bean class="com.fengjing.framework.springmvc.form.handling.validator.CustomerValidator" />
+		</property>
+    </bean>
+    
 </beans>
