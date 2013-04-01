@@ -75,10 +75,7 @@
 		<property name="exposeSpringMacroHelpers" value="true" />
 	</bean>
 	
-	
-	
 	<!-- 按bean的名字去解析  查看rssViewer视图 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-	
 	
 </beans>
