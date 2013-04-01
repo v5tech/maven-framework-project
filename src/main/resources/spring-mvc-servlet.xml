@@ -83,4 +83,17 @@
 	<!-- 按bean的名字去解析  查看rssViewer视图 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	
+	
+	<!-- SpringMVC错误异常输出 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.fengjing.framework.springmvc.exception.handling.GenericException">
+					GenericExceptionPage
+				</prop>
+				<prop key="java.lang.Exception">error</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
