@@ -177,6 +177,7 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 		
+		<!-- Spring MVC JSR303 Bean Validation -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>

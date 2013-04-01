@@ -29,7 +29,12 @@
 	<bean id="resourceBundleViewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views"></property>
 	</bean>
-
+	
+	<!-- bind your messages.properties -->
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+		<property name="basename" value="messages" />
+	</bean>
+ 
 
 	<!-- 处理jsp视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
