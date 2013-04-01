@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping(value="/hello",method={RequestMethod.GET})
-public class HelloController {
+public class HelloSpringMvcController {
 
 	/**
 	 * 请求转发到jsp页面  welcome.jsp

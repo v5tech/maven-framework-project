@@ -20,6 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fengjing.framework.spring.data.jpa.service.ContactService;
 import com.fengjing.framework.springmvc.model.Contact;
 
+/**
+ * 一个完整的SpringMVC CRUD
+ * @author scott
+ *
+ */
 @Controller(value="contactController")
 @SessionAttributes
 public class ContactController {
