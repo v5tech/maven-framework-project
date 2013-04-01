@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.excel.viewer;
+package com.fengjing.framework.springmvc.viewer.excel;
 
 import java.util.Map;
 

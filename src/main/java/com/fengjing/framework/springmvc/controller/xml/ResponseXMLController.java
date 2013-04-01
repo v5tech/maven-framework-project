@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.controller;
+package com.fengjing.framework.springmvc.controller.xml;
 
 import java.util.List;
 

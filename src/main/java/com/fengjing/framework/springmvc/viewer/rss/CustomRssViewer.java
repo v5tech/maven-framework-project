@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.rss.viewer;
+package com.fengjing.framework.springmvc.viewer.rss;
 
 import java.util.ArrayList;
 import java.util.List;

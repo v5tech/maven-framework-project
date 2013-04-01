@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.controller;
+package com.fengjing.framework.springmvc.controller.rss;
 
 import java.util.ArrayList;
 import java.util.Date;

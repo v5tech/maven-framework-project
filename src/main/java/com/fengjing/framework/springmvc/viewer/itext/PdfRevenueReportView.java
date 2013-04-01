@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.itext.viewer;
+package com.fengjing.framework.springmvc.viewer.itext;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class PdfRevenueReportView extends AbstractPdfView {
 
 	@Override
-	protected void buildPdfDocument(Map model, Document document,
+	protected void buildPdfDocument(@SuppressWarnings("rawtypes") Map model, Document document,
 		PdfWriter writer, HttpServletRequest request,
 		HttpServletResponse response) throws Exception {
  

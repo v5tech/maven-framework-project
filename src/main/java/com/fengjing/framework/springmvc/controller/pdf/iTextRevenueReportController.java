@@ -1,4 +1,4 @@
-package com.fengjing.framework.springmvc.controller;
+package com.fengjing.framework.springmvc.controller.pdf;
 
 import java.util.HashMap;
 import java.util.Map;
