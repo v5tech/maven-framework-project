@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.document.AbstractExcelView;
  *
  */
 @Service(value="PoiExcelRevenueSummary")//该名称与RevenueReportController中的名称保持一致
-public class ExcelRevenueReportView extends AbstractExcelView {
+public class PoiExcelRevenueReportView extends AbstractExcelView {
 
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model,
