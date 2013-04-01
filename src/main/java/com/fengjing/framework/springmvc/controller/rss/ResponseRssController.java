@@ -16,7 +16,7 @@ import com.fengjing.framework.springmvc.model.SampleContent;
  *
  */
 @Controller
-public class RssController {
+public class ResponseRssController {
 	
 	@RequestMapping(value="/rss")
 	public ModelAndView rss(){
