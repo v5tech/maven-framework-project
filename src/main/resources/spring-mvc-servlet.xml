@@ -10,6 +10,7 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
+	<!-- 扫描注入com.fengjing.framework.springmvc包下仅包含@Controller注解的bean -->
 	<context:component-scan base-package="com.fengjing.framework.springmvc">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
@@ -25,12 +26,13 @@
 			</list>
 		</property>
 	</bean>
-
+	
+	<!-- 定义视图资源文件名称 -->
 	<bean id="resourceBundleViewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views"></property>
 	</bean>
 	
-	<!-- bind your messages.properties -->
+	<!-- 表单校验国际化信息资源文件 -->
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
 		<property name="basenames">
 			<list>
@@ -48,7 +50,8 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- 明确指明某一个请求过来用那个controller来处理 -->
+	<!-- 使用SimpleUrlHandlerMapping来处理SpringMVC -->
+	<!-- 该配置的信息是当请求地址为/simpleUrl.do时去寻找为simpleUrlController的bean处理 -->
 	<bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="alwaysUseFullPath" value="true"></property>
 		<property name="mappings">
@@ -59,7 +62,6 @@
 	</bean>
 	
 	<!-- velocity视图解析 -->
-	
 	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 		<property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
 		<property name="configLocation" value="/WEB-INF/velocity.properties"></property>
@@ -73,7 +75,6 @@
 	</bean>
 
 	<!-- freeMarker视图解析 -->
-
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/freemarker/" />
 	</bean>
@@ -84,9 +85,6 @@
 		<property name="suffix" value=".ftl" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 	</bean>
-	
-	<!-- 按bean的名字去解析  查看rssViewer视图 -->
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	
 	<!-- SpringMVC错误异常输出  -->
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
@@ -100,14 +98,13 @@
 		</property>
 	</bean>
     
-    <!--
-		SpringMVCHandlerMapping 取Controller的name部分为请求地址
-	-->  
+    <!-- 按bean的名字去解析 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+    
+    <!--SpringMVCHandlerMapping 取Controller的name部分为请求地址-->  
 	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />	
 	
-	<!-- 
-		Spring MVC Form Handling 
-	-->
+	<!--Spring MVC Form Handling-->
 	<bean class="com.fengjing.framework.springmvc.form.handling.controller.SpringMVCformCustomerController">
 		<property name="formView" value="CustomerForm" />
 		<property name="successView" value="CustomerSuccess" />
