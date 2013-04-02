@@ -48,6 +48,8 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
+		<!-- 表示视图解析优先级最高 最先从jsp视图查找 -->
+		<property name="order" value="0" />
 	</bean>
 	
 	<!-- 使用SimpleUrlHandlerMapping来处理SpringMVC -->
@@ -111,6 +113,23 @@
 		<property name="validator">
 			<bean class="com.fengjing.framework.springmvc.form.handling.validator.CustomerValidator" />
 		</property>
+    </bean>
+    
+    
+    <!-- Spring MVC Handling Multipage Forms With AbstractWizardFormController -->
+    <bean class="com.fengjing.framework.springmvc.handling.multipage.forms.controller.WelcomeController" />  
+    <bean class="com.fengjing.framework.springmvc.handling.multipage.forms.controller.UserController" >
+    	<property name="pages">
+		   <list>
+			<!-- follow sequence -->
+			<value>Page1Form</value> <!-- page1 -->
+			<value>Page2Form</value> <!-- page2 -->
+			<value>Page3Form</value> <!-- page3 -->
+		   </list>
+	    </property>
+	   <property name="validator">
+		<bean class="com.fengjing.framework.springmvc.handling.multipage.forms.validator.UserValidator" />
+	   </property>
     </bean>
     
 </beans>
