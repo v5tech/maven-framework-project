@@ -38,6 +38,7 @@
 			<list>
 				<value>messages</value>
 				<value>customer</value>
+				<value>security-messages</value>
 			</list>
 		</property>
 	</bean>

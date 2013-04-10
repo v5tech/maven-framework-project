@@ -93,7 +93,25 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
-
+	
+	
+	<!-- struts1.3.10 -->
+	<servlet>
+	    <servlet-name>action</servlet-name>
+	    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		    <init-param>
+		        <param-name>config</param-name>
+		        <param-value>
+		         /WEB-INF/struts-config.xml
+		        </param-value>
+		    </init-param>
+	    <load-on-startup>1</load-on-startup>
+    </servlet>
+ 
+    <servlet-mapping>
+       <servlet-name>action</servlet-name>
+       <url-pattern>*.str</url-pattern>
+    </servlet-mapping>
 
 	<!-- SpringMVC SpringMVC DWR -->
 	<servlet>

@@ -1,21 +1,113 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
- 
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+ 	
+ 	<!-- 扫描注入com.fengjing.framework.spring.security包下仅包含@Controller注解的bean -->
+	<context:component-scan base-package="com.fengjing.framework.spring.security">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+ 	
+ 	<!-- 1、使用xml配置文件 -->
 	<http auto-config="true">
 		<intercept-url pattern="/hello*" access="ROLE_USER" />
+		<intercept-url pattern="/welcome*" access="ROLE_USER,ROLE_ADMIN" />
+		<intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+		<form-login login-page="/login.do" default-target-url="/welcome.do"
+			        authentication-failure-url="/loginfailed.do" />
+		<logout logout-success-url="/logout.do" />
 	</http>
  
 	<authentication-manager>
 	  <authentication-provider>
 	    <user-service>
 		<user name="admin" password="123456" authorities="ROLE_USER" />
+		<user name="sysadmin" password="123456" authorities="ROLE_ADMIN" />
 	    </user-service>
 	  </authentication-provider>
 	</authentication-manager>
+ 	
+ 	
+ 	<!-- 2、使用数据库 -->
+ 	<!-- 
+	CREATE TABLE `users` (
+	  `USER_ID` INT(10) UNSIGNED NOT NULL,
+	  `USERNAME` VARCHAR(45) NOT NULL,
+	  `PASSWORD` VARCHAR(45) NOT NULL,
+	  `ENABLED` tinyint(1) NOT NULL,
+	  PRIMARY KEY (`USER_ID`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	
+	CREATE TABLE `user_roles` (
+	  `USER_ROLE_ID` INT(10) UNSIGNED NOT NULL,
+	  `USER_ID` INT(10) UNSIGNED NOT NULL,
+	  `AUTHORITY` VARCHAR(45) NOT NULL,
+	  PRIMARY KEY (`USER_ROLE_ID`),
+	  KEY `FK_user_roles` (`USER_ID`),
+	  CONSTRAINT `FK_user_roles` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`USER_ID`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	
+	INSERT INTO spring_security.users (USER_ID, USERNAME,PASSWORD, ENABLED)
+	VALUES (100, 'admin', '123456', TRUE);
+	 
+	INSERT INTO spring_security.user_roles (USER_ROLE_ID, USER_ID,AUTHORITY)
+	VALUES (1, 100, 'ROLE_USER');
+ 	-->
+ 	
+ 	<!--
+ 	<beans:bean id="scdataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/spring_security" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="" />
+    </beans:bean>
+ 	
+ 	<http auto-config="true">
+		<intercept-url pattern="/hello*" access="ROLE_USER" />
+		<intercept-url pattern="/welcome*" access="ROLE_USER,ROLE_ADMIN" />
+		<intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+		<form-login login-page="/login.do" default-target-url="/welcome.do"
+			        authentication-failure-url="/loginfailed.do" />
+		<logout logout-success-url="/logout.do" />
+	</http>
  
+	<authentication-manager>
+	   <authentication-provider>
+		<jdbc-user-service data-source-ref="scdataSource"
+ 
+		   users-by-username-query="
+		      select username,password, enabled 
+		      from users where username=?" 
+ 
+		   authorities-by-username-query="
+		      select u.username, ur.authority from users u, user_roles ur 
+		      where u.user_id = ur.user_id and u.username =?  " 
+		/>
+	   </authentication-provider>
+	</authentication-manager>
+ 	-->
+ 	
+ 	
+ 	<!-- 3、使用HTTP Basic Authentication -->
+ 	<!-- 
+ 	<http>
+		<intercept-url pattern="/welcome*" access="ROLE_USER" />
+		<http-basic />
+    </http>
+ 	<authentication-manager>
+	   <authentication-provider>
+	       <user-service>
+		   <user name="admin" password="123456" authorities="ROLE_USER" />
+	       </user-service>
+	   </authentication-provider>
+	</authentication-manager>
+ 	-->
+ 	
+ 	
 </beans:beans>

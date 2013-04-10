@@ -1,15 +1,19 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE struts-config PUBLIC
-"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
-"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
 <struts-config>
-	<form-beans></form-beans>
-	<global-forwards>
-		
-	</global-forwards>
+
+	<form-beans>
+		<form-bean name="helloWorldForm" type="com.fengjing.framework.struts.form.HelloWorldForm" />
+	</form-beans>
+
 	<action-mappings>
-		<action path="" type="">
-			<forward name="" path=""></forward>
+		<action path="/helloWorld" type="com.fengjing.framework.struts.action.HelloWorldAction"
+			name="helloWorldForm">
+			<forward name="success" path="/HelloWorld.jsp" />
 		</action>
 	</action-mappings>
-</struts-config>          
+
+</struts-config>
