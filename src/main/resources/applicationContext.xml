@@ -12,7 +12,6 @@
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd
 	http://www.directwebremoting.org/schema/spring-dwr
     http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
-	
 	<context:annotation-config/>
 	<import resource="spring-data-jpa.xml"/>
 	<import resource="spring-mvc-servlet.xml"/>
@@ -20,5 +19,4 @@
 	<import resource="spring-mvc-dwr.xml"/>
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-ibatis.xml"/>
-	
 </beans>
