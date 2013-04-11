@@ -10,10 +10,28 @@
 	</form-beans>
 
 	<action-mappings>
-		<action path="/helloWorld" type="com.fengjing.framework.struts.action.HelloWorldAction"
-			name="helloWorldForm">
+		<!--  
+			方法一:DelegatingActionProxy
+			<action path="/helloWorld" type="org.springframework.web.struts.DelegatingActionProxy"
+				name="helloWorldForm">
+				<forward name="success" path="/HelloWorld.jsp" />
+			</action>
+			
+			<bean name="/helloWorld" class="com.fengjing.framework.struts.action.HelloWorldAction" scope="prototype" autowire="byName"/>
+		-->
+		
+		<!-- 
+			方法二:设置controller 覆盖processorClass为org.springframework.web.struts.DelegatingRequestProcessor
+		-->
+		<action path="/helloWorld" 
+				type="com.fengjing.framework.struts.action.HelloWorldAction"
+				name="helloWorldForm">
 			<forward name="success" path="/HelloWorld.jsp" />
 		</action>
+		
 	</action-mappings>
-
+	
+	<controller>  
+		<set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+	</controller>
 </struts-config>
