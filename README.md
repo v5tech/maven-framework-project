@@ -8,20 +8,19 @@
 
 * 该项目中使用到的技术均与Spring已集成。除了DWR与Spring集成使用xml文件中配置bean外 其他的bean均使用注解完善。每一个与数据库有关的都有事务处理。
 
-介绍下目前使用的各个框架的版本信息
-
 # 项目包结构图
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)
 
-# 框架版本信息
+# 项目中所使用框架版本信息
 * Struts1 1.3.10
 * Struts2 2.3.8
-* Spring 3.2.0.RELEASE
+* Spring 3.2.1.RELEASE
 * Hibernate 4.2.0.Final
 * ibatis 2.3.4.726
 * MyBatis 3.1.1
 * Spring Data JPA 1.3.0.RELEASE
 * DWR 3.0.M1
+* Spring Security 3.1.3.RELEASE
 
 # 项目托管
 * SVN地址：http://maven-framework-project.googlecode.com/svn/trunk/ (限于大陆google code 不稳定,导致经常无法访问,该地址已不在同步,建议使用github地址)
