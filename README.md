@@ -1,4 +1,4 @@
-###maven-framework-project
+# maven-framework-project
 
 该项目基于maven3.0构建的，项目中融合了Struts1、Struts2、Spring、SpringMVC、Hibernate、Ibatis、MyBatis、Spring Data JPA、Spring JDBC、Spring DWR。页面展现这里使用Struts1、Struts2、SpringMVC（jsp视图、velocity视图、freemarker视图、pdf视图、excel视图、xml视图、json视图等）。是一个综合性的项目。
 
@@ -6,16 +6,16 @@
 
 介绍下目前使用的各个框架的版本信息
 
-项目包结构图
+# 项目包结构图
 ![https://github.com/sxyx2008/maven-framework-project/blob/master/src/main/resources/package.jpg](https://github.com/sxyx2008/maven-framework-project/blob/master/src/main/resources/package.jpg)
-Struts1 1.3.10
-Struts2 2.3.8
-Spring 3.2.0.RELEASE
-Hibernate 4.2.0.Final
-ibatis 2.3.4.726
-MyBatis 3.1.1
-Spring Data JPA 1.3.0.RELEASE
-DWR 3.0.M1
+* Struts1 1.3.10
+* Struts2 2.3.8
+* Spring 3.2.0.RELEASE
+* Hibernate 4.2.0.Final
+* ibatis 2.3.4.726
+* MyBatis 3.1.1
+* Spring Data JPA 1.3.0.RELEASE
+* DWR 3.0.M1
 
 项目中的持久化框架sql语句的跟踪采用了log4jdbc4结合log4j，在控制台可以看到完整的sql语句。
 
