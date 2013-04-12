@@ -1,6 +1,10 @@
 package com.fengjing.framework.spring.security;
 
+import java.io.IOException;
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,6 +47,20 @@ public class SpringSecurityController {
 	}
 	
 	
+	/**
+	 * 采用basic方式登出 查阅一些资料需要向客户端返回HttpServletResponse.SC_UNAUTHORIZED或者关闭浏览器才能正常退出
+	 * 但采用此方式不成功,待解决
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="/basiclogout.do", method = RequestMethod.GET)
+	public void basiclogout(HttpServletRequest request,HttpServletResponse response) {
+		try {
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@RequestMapping(value = "/admin.do", method = RequestMethod.GET)
 	public String welcomeAdmin(ModelMap model) {
