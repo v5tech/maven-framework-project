@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
 <title>Login Page</title>
@@ -29,7 +30,7 @@
 		<table>
 			<tr>
 				<td align="right">User:</td>
-				<td><input type='text' name='j_username' value="${sessionScope['SPRING_SECURITY_LAST_USERNAME']}">
+				<td><input type='text' name='j_username' value="<sec:authentication property="name"/>">
 				</td>
 			</tr>
 			<tr>

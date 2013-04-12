@@ -25,16 +25,16 @@
 	
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="springDataJpatransactionManager"/>
 	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="springDataJpadataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="username" value="${username}"></property>
 		<property name="password" value="${password}"></property>
 		<property name="url" value="${url}"></property>
 		<property name="driverClassName" value="${driverClassName}"></property>
 	</bean>
 	
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="springDataJpaentityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"></property>
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -44,12 +44,12 @@
 		<property name="persistenceUnitName" value="spring.data.jpa.framework"></property>
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	<bean id="springDataJpatransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="springDataJpaentityManagerFactory"></property>
  	</bean>
 	
 	<jpa:repositories base-package="com.fengjing.framework.spring.data.jpa.repository"
-		transaction-manager-ref="transactionManager"
-		entity-manager-factory-ref="entityManagerFactory"
+		transaction-manager-ref="springDataJpatransactionManager"
+		entity-manager-factory-ref="springDataJpaentityManagerFactory"
 		></jpa:repositories>
 </beans>

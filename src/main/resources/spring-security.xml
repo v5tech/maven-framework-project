@@ -12,7 +12,21 @@
  	<!-- 扫描注入com.fengjing.framework.spring.security包下仅包含@Controller注解的bean -->
 	<context:component-scan base-package="com.fengjing.framework.spring.security">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
+	
+	<beans:bean id="securitydataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="username" value="root"></beans:property>
+		<beans:property name="password" value=""></beans:property>
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/spring_security?useUnicode=true&amp;characterEncoding=utf8"></beans:property>
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"></beans:property>
+	</beans:bean>
+ 	
+ 	
+ 	<beans:bean id="securityjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+ 		<beans:property name="dataSource" ref="securitydataSource"></beans:property>
+ 	</beans:bean>
  	
  	<!-- 
  		参见org.springframework.security.access.vote.AuthenticatedVoter
@@ -47,7 +61,26 @@
 	</authentication-manager>
  	-->
  	
- 	<!-- 2、使用数据库 -->
+ 	<!-- 2、使用user-service -->
+ 	<http auto-config="true" access-denied-page="/403.jsp">
+		<intercept-url pattern="/login.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/loginfailed.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/logout.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		
+		<intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED" />
+		
+		<form-login login-page="/login.do" authentication-failure-url="/loginfailed.do"/>
+		<logout logout-success-url="/logout.do" delete-cookies="JSESSIONID" invalidate-session="true"/>
+		<remember-me key="spring_security"/>
+	</http>
+ 
+	<authentication-manager>
+	  	<authentication-provider user-service-ref="myUserDetailsService"></authentication-provider>
+	</authentication-manager>
+ 	
+ 	
+ 	<!-- 3、使用数据库 -->
  	<!-- 
 	CREATE TABLE `users` (
 	  `USER_ID` INT(10) UNSIGNED NOT NULL,
@@ -72,7 +105,7 @@
 	INSERT INTO spring_security.user_roles (USER_ROLE_ID, USER_ID,AUTHORITY)
 	VALUES (1, 100, 'ROLE_USER');
  	-->
- 	
+ 	<!--  
  	<beans:bean id="scdataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url" value="jdbc:mysql://localhost:3306/spring_security" />
@@ -109,9 +142,11 @@
 		/>
 	   </authentication-provider>
 	</authentication-manager>
+ 	-->
+ 	
  	
  	<!-- 
- 		3、使用HTTP Basic Authentication 
+ 		4、使用HTTP Basic Authentication 
  		使用http-basic方式退出有问题 需要关闭浏览器才能正常退出或者返回HttpServletResponse.SC_UNAUTHORIZED
  	-->
  	<!--  
