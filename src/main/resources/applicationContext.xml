@@ -22,4 +22,5 @@
 	<import resource="spring-mybatis.xml"/>
 	<import resource="spring-struts.xml"/>
 	<import resource="spring-struts2-servlet.xml"/>
+	<import resource="spring-security.xml"/>
 </beans>

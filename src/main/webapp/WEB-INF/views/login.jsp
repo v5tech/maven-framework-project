@@ -13,7 +13,7 @@
 </style>
 </head>
 <body onload='document.f.j_username.focus();'>
-	<h3>Login with Username and Password (Custom Page)</h3>
+	<h3>Spring Security Login with Username and Password (Custom Page)</h3>
  
 	<c:if test="${not empty error}">
 		<div class="errorblock">
@@ -27,22 +27,22 @@
  
 		<table>
 			<tr>
-				<td>User:</td>
-				<td><input type='text' name='j_username' value=''>
+				<td align="right">User:</td>
+				<td><input type='text' name='j_username' value="${sessionScope['SPRING_SECURITY_LAST_USERNAME']}">
 				</td>
 			</tr>
 			<tr>
-				<td>Password:</td>
+				<td align="right">Password:</td>
 				<td><input type='password' name='j_password' />
 				</td>
 			</tr>
 			<tr>
-				<td colspan='2'><input name="submit" type="submit"
-					value="submit" />
+				<td>
+				&nbsp;
 				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="reset" type="reset" />
+				<td>
+					<input name="submit" type="submit" value="submit" />
+					<input name="reset" type="reset" value="reset"/>
 				</td>
 			</tr>
 		</table>
