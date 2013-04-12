@@ -14,10 +14,12 @@
     http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	<context:annotation-config/>
 	<import resource="spring-data-jpa.xml"/>
-	<import resource="spring-mvc-servlet.xml"/>
-	<import resource="spring-struts2-servlet.xml"/>
-	<import resource="spring-mvc-dwr.xml"/>
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-ibatis.xml"/>
+	<import resource="spring-jdbc.xml"/>
+	<import resource="spring-mvc-dwr.xml"/>
+	<import resource="spring-mvc-servlet.xml"/>
+	<import resource="spring-mybatis.xml"/>
 	<import resource="spring-struts.xml"/>
+	<import resource="spring-struts2-servlet.xml"/>
 </beans>
