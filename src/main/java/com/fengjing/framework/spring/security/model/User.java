@@ -1,7 +1,8 @@
 package com.fengjing.framework.spring.security.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +15,10 @@ public class User implements UserDetails{
 	private String username;
 	private String password;
 	private int enabled;
+	/**
+	 * ½ÇÉ«
+	 */
+	private List<String> authority;
 
 	public String getUserid() {
 		return userid;
@@ -46,11 +51,26 @@ public class User implements UserDetails{
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+	
+	public List<String> getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(List<String> authority) {
+		this.authority = authority;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		GrantedAuthority authority=new SimpleGrantedAuthority("ROLE_USER");
-		return Collections.singleton(authority);
+		List<GrantedAuthority> authoritys=new ArrayList<GrantedAuthority>();
+		GrantedAuthority authority;
+		if(this.getAuthority()!=null&&this.getAuthority().size()>0){
+			for (String auth : this.getAuthority()) {
+				authority=new SimpleGrantedAuthority(auth);
+				authoritys.add(authority);
+			}
+		}
+		return authoritys;
 	}
 
 	@Override

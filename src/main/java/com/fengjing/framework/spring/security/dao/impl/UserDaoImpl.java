@@ -2,6 +2,7 @@ package com.fengjing.framework.spring.security.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -24,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User findUserByUsername(String username) {
-		return jdbcTemplate.queryForObject("select * from users where username = ? ", new ParameterizedSingleColumnRowMapper<User>(){
+		return jdbcTemplate.queryForObject("SELECT * FROM users WHERE username = ? ", new ParameterizedSingleColumnRowMapper<User>(){
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user=new User();
@@ -32,9 +33,17 @@ public class UserDaoImpl implements UserDao {
 				user.setUsername(rs.getString(2));
 				user.setPassword(rs.getString(3));
 				user.setEnabled(rs.getInt(4));
+				
+				user.setAuthority(findAuthority(user.getUserid()));
+				
 				return user;
 			}
 		},username);
 	}
 
+	@Override
+	public List<String> findAuthority(String userid) {
+		return jdbcTemplate.queryForList("SELECT authority from user_roles where USER_ID = ? ", new Object[]{userid},String.class );
+	}
+	
 }
