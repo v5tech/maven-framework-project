@@ -171,6 +171,20 @@
 		  </exclusions>
 		</dependency>
 		
+		<!-- Spring Hessian 远程方法调用-->
+		<dependency>
+		  <groupId>com.caucho</groupId>
+		  <artifactId>hessian</artifactId>
+		  <version>3.1.5</version>
+		</dependency>
+		
+		<!-- Spring Burlap 远程方法调用-->
+		<dependency>
+		  <groupId>com.caucho</groupId>
+		  <artifactId>burlap</artifactId>
+		  <version>2.1.12</version>
+		</dependency>
+		
 		<!-- Spring-Struts整合  -->
 		<dependency>
 		  <groupId>org.springframework</groupId>

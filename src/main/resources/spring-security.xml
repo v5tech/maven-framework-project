@@ -63,6 +63,7 @@
  	
  	<!-- 2、使用user-service -->
  	<http auto-config="true" access-denied-page="/403.jsp">
+ 		<intercept-url pattern="/remote/service" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/login.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/loginfailed.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/logout.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
