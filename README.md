@@ -23,7 +23,7 @@
 * Spring Security 3.1.3.RELEASE
 
 # 项目托管
-* SVN地址：http://maven-framework-project.googlecode.com/svn/trunk/ (限于大陆google code 不稳定,导致经常无法访问,该地址已不在同步,建议使用github地址)
+* <del>SVN地址：http://maven-framework-project.googlecode.com/svn/trunk/</del> (限于大陆google code 不稳定,导致经常无法访问,该地址已不在同步,建议使用github地址)
 * GitHub地址：https://github.com/sxyx2008/maven-framework-project/
 
 最后希望有兴趣的朋友可以加入进来，大家一起完善他。把自己的技术分享出来。如有任何问题可以与我联系
