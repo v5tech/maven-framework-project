@@ -10,6 +10,8 @@
 
 * Spring  JAX-WS请参考[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)
 
+* Spring整合dwr时dwr版本很关键,否则包莫名其妙的错误,具体的整合方式参照[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)
+
 # 项目包结构图
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)
 
@@ -21,7 +23,7 @@
 * ibatis 2.3.4.726
 * MyBatis 3.1.1
 * Spring Data JPA 1.3.0.RELEASE
-* DWR 3.0.M1
+* DWR 3.0.M1(该版本jar包在跟Spring整合使用注解方式时会有问题,建议使用项目中的dwr.jar)
 * Spring Security 3.1.3.RELEASE
 
 # 项目托管

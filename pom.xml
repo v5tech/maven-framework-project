@@ -310,6 +310,12 @@
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-dwr-plugin</artifactId>
 			<version>${struts2.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>uk.ltd.getahead</groupId>
+            		<artifactId>dwr</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<dependency>
@@ -391,9 +397,9 @@
 
 		<!-- dwr -->
 		<dependency>
-			<groupId>org.directwebremoting</groupId>
-			<artifactId>dwr</artifactId>
-			<version>3.0.M1</version>
+		  <groupId>org.directwebremoting</groupId>
+		  <artifactId>dwr</artifactId>
+		  <version>3.0</version>
 		</dependency>
 	
 		<dependency>
