@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/direct")
 public class DWRController {
 
-	@RequestMapping(value="/page")
+	@RequestMapping("/dwr")
 	public ModelAndView dwr(HttpServletRequest servletRequest,
 			HttpServletResponse servletResponse) throws Exception {
 		return new ModelAndView("dwr");

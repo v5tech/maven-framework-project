@@ -4,11 +4,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script type='text/javascript' src='/maven-framework/dwr/interface/dwrFileUtil.js'></script>
+<script type='text/javascript' src='/maven-framework/dwr/engine.js'></script>
+<script type='text/javascript' src='/maven-framework/dwr/util.js'></script>
 <script type="text/javascript">
 function downloadPdfFile() {
   var pdftext = dwr.util.getValue('pdftext');
 
-  UploadDownload.downloadPdfFile(pdftext, function(data) {
+  dwrFileUtil.downloadPdfFile(pdftext, function(data) {
     dwr.engine.openInDownload(data);
   });
   
