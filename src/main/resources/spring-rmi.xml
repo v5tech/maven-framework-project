@@ -53,19 +53,19 @@
 	-->
 	
 	
-	<!-- 使用Spring HttpInvoker远程方法调用 
+	<!-- 使用Spring HttpInvoker远程方法调用 -->
 	<bean class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" 
 		  p:service-ref="HelloService"
 		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService">
 	</bean>
-	-->
-	<!-- 使用Spring HttpInvoker方式客户端调用  
+	
+	<!-- 使用Spring HttpInvoker方式客户端调用  -->
 	<bean id="httpInvokerHelloService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean"
 		  p:serviceUrl="http://localhost:8080/maven-framework/remote/service"
 		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService"
 		  >
 	</bean>
-	-->
+	
 	<bean class="com.fengjing.framework.spring.rmi.HelloServiceClient" p:helloService-ref="rmiHelloService"/>
 	
 </beans>

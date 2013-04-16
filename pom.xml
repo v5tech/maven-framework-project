@@ -103,6 +103,7 @@
 		</dependency>
 
 		<!-- spring -->
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -170,6 +171,47 @@
 		  	</exclusion>
 		  </exclusions>
 		</dependency>
+		
+		<!-- JAX-WS --> 
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+ 
+ 		<!-- integrate Spring with JAX-WS --> 
+        <dependency>
+            <groupId>org.jvnet.jax-ws-commons.spring</groupId>
+            <artifactId>jaxws-spring</artifactId>
+            <version>1.8</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>com.sun.xml.ws</groupId>
+            		<artifactId>jaxws-rt</artifactId>
+            	</exclusion>
+            	<exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.xml.stream.buffer</groupId>
+                    <artifactId>streambuffer</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jvnet.staxex</groupId>
+                    <artifactId>stax-ex</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+		<!-- JAX-WS 完--> 
 		
 		<!-- Spring Hessian 远程方法调用-->
 		<dependency>
@@ -658,14 +700,53 @@
 				</configuration>
 			</plugin>
 			
+			<!-- Spring jax ws -->
+			<!-- http://jax-ws-commons.java.net/ -->
 			<plugin>
-				<groupId>com.springsource.bundlor</groupId>
-				<artifactId>com.springsource.bundlor.maven</artifactId>
-				<version>1.0.0.RELEASE</version>
-				<configuration>
-					<failOnWarnings>true</failOnWarnings>
-				</configuration>
-			</plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-tools</artifactId>
+                        <version>2.1.7</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.jvnet.staxex</groupId>
+                                <artifactId>stax-ex</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>    
+                    <dependency>
+                        <groupId>org.jvnet.staxex</groupId>
+                        <artifactId>stax-ex</artifactId>
+                        <version>1.7</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>javax.xml.stream</groupId>
+                                <artifactId>stax-api</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                </dependencies>
+                <executions>
+                	<!--  
+                    <execution>
+                    	<goals>
+                    		<goal>wsimport</goal>
+                    	</goals>
+                    </execution>
+                    -->
+                </executions>
+                <configuration>
+                    <wsdlUrls>
+                        <wsdlUrl>http://localhost:8080/maven-framework/service/hello?wsdl</wsdlUrl>
+                    </wsdlUrls>
+                    <packageName>com.fengjing.framework.spring.jax.ws.client</packageName>
+                    <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>

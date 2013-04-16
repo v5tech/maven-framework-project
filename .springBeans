@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/spring-data-jpa.xml</config>
 		<config>src/main/resources/sqlMapConfig.xml</config>
+		<config>src/main/resources/spring-jax-ws-servlet.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

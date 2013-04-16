@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+       xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://jax-ws.dev.java.net/spring/core
+       http://jax-ws.dev.java.net/spring/core.xsd
+       http://jax-ws.dev.java.net/spring/servlet
+       http://jax-ws.dev.java.net/spring/servlet.xsd">
+
+    <wss:binding url="/service/hello">
+        <wss:service>
+            <ws:service bean="#helloService"/>
+        </wss:service>
+    </wss:binding>
+    
+    <!-- Web service methods -->
+    <bean id="helloService" class="com.fengjing.framework.spring.jax.ws.service.Hello">
+    	<property name="hello" ref="helloImpl" />
+    </bean>
+ 
+    <bean id="helloImpl" class="com.fengjing.framework.spring.jax.ws.impl.HelloImpl" />
+</beans>

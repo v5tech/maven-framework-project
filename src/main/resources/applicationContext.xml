@@ -23,4 +23,5 @@
 	<import resource="spring-struts.xml"/>
 	<import resource="spring-struts2-servlet.xml"/>
 	<import resource="spring-security.xml"/> 
+	<import resource="spring-jax-ws-servlet.xml"/> 
 </beans>
