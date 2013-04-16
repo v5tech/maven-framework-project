@@ -41,27 +41,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SayHelloResponse }
+     * Create an instance of {@link GetAllUsers }
      * 
      */
-    public SayHelloResponse createSayHelloResponse() {
-        return new SayHelloResponse();
-    }
-
-    /**
-     * Create an instance of {@link SayHelloUsingSpringResponse }
-     * 
-     */
-    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
-        return new SayHelloUsingSpringResponse();
-    }
-
-    /**
-     * Create an instance of {@link Dept }
-     * 
-     */
-    public Dept createDept() {
-        return new Dept();
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
     }
 
     /**
@@ -89,11 +73,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllUsers }
+     * Create an instance of {@link User }
      * 
      */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link SayHelloResponse }
+     * 
+     */
+    public SayHelloResponse createSayHelloResponse() {
+        return new SayHelloResponse();
+    }
+
+    /**
+     * Create an instance of {@link SayHelloUsingSpringResponse }
+     * 
+     */
+    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
+        return new SayHelloUsingSpringResponse();
     }
 
     /**
@@ -105,11 +105,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link User }
+     * Create an instance of {@link Dept }
      * 
      */
-    public User createUser() {
-        return new User();
+    public Dept createDept() {
+        return new Dept();
     }
 
     /**

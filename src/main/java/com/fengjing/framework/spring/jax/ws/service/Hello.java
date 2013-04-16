@@ -4,6 +4,7 @@ package com.fengjing.framework.spring.jax.ws.service;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.fengjing.framework.spring.jax.ws.HelloInf;
@@ -24,13 +25,13 @@ public class Hello {
      * @return 
      */
     @WebMethod(operationName="sayHello")
-    public String sayHello(String name)
+    public String sayHello(@WebParam(name="name")String name)
     {
         return "Hey! "+name.toUpperCase()+ " Welocme to JAX-WS without Spring!";
     }
     
     @WebMethod(operationName="sayHelloUsingSpring")
-    public String sayHelloUsingSpring(String name)
+    public String sayHelloUsingSpring(@WebParam(name="name")String name)
     {
         return hello.sayHello(name);
     }
@@ -43,7 +44,7 @@ public class Hello {
     }
     
     @WebMethod(operationName="print")
-    public User print(User user){
+    public User print(@WebParam(name="user")User user){
     	return hello.print(user);
     }
     

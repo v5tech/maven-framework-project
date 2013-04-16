@@ -26,7 +26,7 @@ public interface Hello {
 
     /**
      * 
-     * @param arg0
+     * @param user
      * @return
      *     returns com.fengjing.framework.spring.jax.ws.client.User
      */
@@ -35,12 +35,12 @@ public interface Hello {
     @RequestWrapper(localName = "print", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.Print")
     @ResponseWrapper(localName = "printResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.PrintResponse")
     public User print(
-        @WebParam(name = "arg0", targetNamespace = "")
-        User arg0);
+        @WebParam(name = "user", targetNamespace = "")
+        User user);
 
     /**
      * 
-     * @param arg0
+     * @param name
      * @return
      *     returns java.lang.String
      */
@@ -49,12 +49,12 @@ public interface Hello {
     @RequestWrapper(localName = "sayHello", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.SayHello")
     @ResponseWrapper(localName = "sayHelloResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.SayHelloResponse")
     public String sayHello(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
 
     /**
      * 
-     * @param arg0
+     * @param name
      * @return
      *     returns java.lang.String
      */
@@ -63,8 +63,8 @@ public interface Hello {
     @RequestWrapper(localName = "sayHelloUsingSpring", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.SayHelloUsingSpring")
     @ResponseWrapper(localName = "sayHelloUsingSpringResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.SayHelloUsingSpringResponse")
     public String sayHelloUsingSpring(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
 
     /**
      * 
