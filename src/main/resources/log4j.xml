@@ -10,8 +10,8 @@
 		</layout>
 	</appender>
 
-	<logger name="org.springframework.samples">
-		<level value="debug" />
+	<logger name="org.springframework.data">
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.core">
@@ -32,6 +32,10 @@
 
 	<logger name="org.springframework.web">
 		<level value="debug" />
+	</logger>
+	
+	<logger name="jdbc.sqlonly">
+		<level value="INFO" />
 	</logger>
 
 	<root>
