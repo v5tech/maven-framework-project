@@ -1,12 +1,23 @@
 package com.fengjing.framework.mybatis.service.impl;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.fengjing.framework.mybatis.model.Product;
 
 
-//@ContextConfiguration(value="classpath:spring-mybatis.xml")
-//@RunWith(value=SpringJUnit4ClassRunner.class)
+
+@ContextConfiguration(value="classpath:spring-mybatis.xml")
+@RunWith(value=SpringJUnit4ClassRunner.class)
 public class ProducrServiceTest {
 	
-	/*@Resource(name="myBatisProductService")
+	@Resource(name="myBatisProductService")
 	ProductService productService;
 	
 	@Test
@@ -49,5 +60,5 @@ public class ProducrServiceTest {
 		for (Product product : lists) {
 			System.out.println(product.getName()+"\t"+product.getDescription()+"\t"+product.getCategoryid());
 		}
-	}*/
+	}
 }

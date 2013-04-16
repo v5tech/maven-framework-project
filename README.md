@@ -10,7 +10,7 @@
 
 * Spring  JAX-WS请参考[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)
 
-* Spring整合dwr时dwr版本很关键,否则包莫名其妙的错误,具体的整合方式参照[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)
+* Spring整合dwr时dwr版本很关键,否则报莫名其妙的错误,具体的整合方式参照[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)
 
 # 项目包结构图
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)

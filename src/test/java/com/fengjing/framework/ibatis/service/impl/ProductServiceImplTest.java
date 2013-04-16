@@ -1,11 +1,23 @@
 package com.fengjing.framework.ibatis.service.impl;
 
+import java.util.List;
 
-//@ContextConfiguration(locations="classpath:spring-ibatis.xml")
-//@RunWith(value=SpringJUnit4ClassRunner.class)
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.fengjing.framework.ibatis.model.Product;
+import com.fengjing.framework.ibatis.service.ProductService;
+
+
+@ContextConfiguration(locations="classpath:spring-ibatis.xml")
+@RunWith(value=SpringJUnit4ClassRunner.class)
 public class ProductServiceImplTest {
 	
-	/*@Resource(name="productServiceImpl")
+	@Resource(name="productServiceImpl")
 	private ProductService productService;
 	
 	@Test
@@ -46,5 +58,5 @@ public class ProductServiceImplTest {
 		for (Product product : lists) {
 			System.out.println(product.getName()+"\t"+product.getDescription()+"\t"+product.getCategory().getId()+"\t"+product.getCategory().getName());
 		}
-	}*/
+	}
 }

@@ -1,11 +1,24 @@
 package com.fengjing.framework.hibernate.service.impl;
 
+import java.util.List;
 
-//@ContextConfiguration(locations="classpath:spring-hibernate.xml")
-//@RunWith(value=SpringJUnit4ClassRunner.class)
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.fengjing.framework.hibernate.model.Department;
+import com.fengjing.framework.hibernate.model.Employee;
+import com.fengjing.framework.hibernate.service.EmployeeService;
+
+
+@ContextConfiguration(locations="classpath:spring-hibernate.xml")
+@RunWith(value=SpringJUnit4ClassRunner.class)
 public class EmployeeServiceImplTest {
 	
-	/*@Resource(name="employeeServiceImplHibernate4")
+	@Resource(name="employeeServiceImplHibernate4")
 	private EmployeeService employeeService;
 	
 	@Test
@@ -48,6 +61,6 @@ public class EmployeeServiceImplTest {
 		employee.getDepartment().setDeptname("¹úÎñÔº");
 		
 		employeeService.update(employee);
-	}*/
+	}
 	
 }

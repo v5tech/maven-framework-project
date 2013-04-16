@@ -29,5 +29,4 @@ public class DWRService {
 	public void printAddress() {
 		System.out.println("Printing");
 	}
-	
 }

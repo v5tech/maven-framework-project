@@ -30,6 +30,7 @@
 	<!-- 定义视图资源文件名称 -->
 	<bean id="resourceBundleViewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views"></property>
+		<property name="order" value="0" />
 	</bean>
 	
 	<!-- 表单校验国际化信息资源文件 -->
@@ -49,8 +50,6 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
-		<!-- 表示视图解析优先级最高 最先从jsp视图查找 -->
-		<property name="order" value="0" />
 	</bean>
 	
 	<!-- 使用SimpleUrlHandlerMapping来处理SpringMVC -->
