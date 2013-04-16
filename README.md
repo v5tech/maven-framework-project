@@ -8,6 +8,8 @@
 
 * 该项目中使用到的技术均与Spring已集成。除了DWR与Spring集成使用xml文件中配置bean外 其他的bean均使用注解完善。每一个与数据库有关的都有事务处理。
 
+* Spring  JAX-WS请参考[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)
+
 # 项目包结构图
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)
 
