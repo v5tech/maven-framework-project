@@ -1,10 +1,13 @@
 package com.fengjing.framework.spring.jax.ws.service;
 
 
+import java.util.List;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import com.fengjing.framework.spring.jax.ws.HelloInf;
+import com.fengjing.framework.spring.jax.ws.User;
 
 /*
  * wsdlµÿ÷∑http://localhost:8080/maven-framework/service/hello?wsdl
@@ -31,6 +34,19 @@ public class Hello {
     {
         return hello.sayHello(name);
     }
+    
+    
+    @WebMethod(operationName="getAllUsers")
+    public List<User> getAllUsers()
+    {
+        return hello.getAllUsers();
+    }
+    
+    @WebMethod(operationName="print")
+    public User print(User user){
+    	return hello.print(user);
+    }
+    
     
     @WebMethod(exclude=true)
     public void setHello(HelloInf hello)

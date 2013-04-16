@@ -1,6 +1,7 @@
 
 package com.fengjing.framework.spring.jax.ws.client;
 
+import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -22,6 +23,20 @@ import javax.xml.ws.ResponseWrapper;
 })
 public interface Hello {
 
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.fengjing.framework.spring.jax.ws.client.User
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "print", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.Print")
+    @ResponseWrapper(localName = "printResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.PrintResponse")
+    public User print(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0);
 
     /**
      * 
@@ -50,5 +65,16 @@ public interface Hello {
     public String sayHelloUsingSpring(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<com.fengjing.framework.spring.jax.ws.client.User>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllUsers", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.GetAllUsers")
+    @ResponseWrapper(localName = "getAllUsersResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.GetAllUsersResponse")
+    public List<User> getAllUsers();
 
 }
