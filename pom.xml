@@ -361,11 +361,6 @@
 		</dependency>
 		
 		<!-- Spring MVC 要用到 -->
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.1</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>org.aspectj</groupId>
