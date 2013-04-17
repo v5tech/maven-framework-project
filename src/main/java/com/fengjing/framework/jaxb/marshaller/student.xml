@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student>
+	<age>18</age>
+	<classRoom classroomid="classroom" classroomname="三年二班" />
+	<stuaddress>陕西西安</stuaddress>
+	<stuname>admin</stuname>
+</student>

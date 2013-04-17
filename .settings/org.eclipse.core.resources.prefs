@@ -1,5 +1,6 @@
-#Fri Apr 12 15:31:42 CST 2013
+#Wed Apr 17 12:11:23 CST 2013
 eclipse.preferences.version=1
+encoding//src/main/java/com/fengjing/framework/jaxb/marshaller/JaxbMarshaller.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/list.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/login.jsp=UTF-8
 encoding/<project>=GBK
