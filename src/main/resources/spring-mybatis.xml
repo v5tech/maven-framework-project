@@ -21,10 +21,13 @@
 	<tx:annotation-driven transaction-manager="myBatisTransactionManager"/>
 	
 	<bean id="myBatisDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    
+	    <!-- 使用log4jdbc跟踪sql语句 -->
+	    
+		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"></property>
+		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"></property>
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -2,8 +2,11 @@ package com.fengjing.framework.spring.data.jpa.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.fengjing.framework.springmvc.model.User;
 
+@Transactional
 public interface UserService {
 	
 	User findUserById(int id);
