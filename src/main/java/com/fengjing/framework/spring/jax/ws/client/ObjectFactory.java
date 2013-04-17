@@ -41,67 +41,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllUsers }
-     * 
-     */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
-    }
-
-    /**
      * Create an instance of {@link SayHelloUsingSpring }
      * 
      */
     public SayHelloUsingSpring createSayHelloUsingSpring() {
         return new SayHelloUsingSpring();
-    }
-
-    /**
-     * Create an instance of {@link GetAllUsersResponse }
-     * 
-     */
-    public GetAllUsersResponse createGetAllUsersResponse() {
-        return new GetAllUsersResponse();
-    }
-
-    /**
-     * Create an instance of {@link Print }
-     * 
-     */
-    public Print createPrint() {
-        return new Print();
-    }
-
-    /**
-     * Create an instance of {@link User }
-     * 
-     */
-    public User createUser() {
-        return new User();
-    }
-
-    /**
-     * Create an instance of {@link SayHelloResponse }
-     * 
-     */
-    public SayHelloResponse createSayHelloResponse() {
-        return new SayHelloResponse();
-    }
-
-    /**
-     * Create an instance of {@link SayHelloUsingSpringResponse }
-     * 
-     */
-    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
-        return new SayHelloUsingSpringResponse();
-    }
-
-    /**
-     * Create an instance of {@link PrintResponse }
-     * 
-     */
-    public PrintResponse createPrintResponse() {
-        return new PrintResponse();
     }
 
     /**
@@ -118,6 +62,62 @@ public class ObjectFactory {
      */
     public SayHello createSayHello() {
         return new SayHello();
+    }
+
+    /**
+     * Create an instance of {@link PrintResponse }
+     * 
+     */
+    public PrintResponse createPrintResponse() {
+        return new PrintResponse();
+    }
+
+    /**
+     * Create an instance of {@link Print }
+     * 
+     */
+    public Print createPrint() {
+        return new Print();
+    }
+
+    /**
+     * Create an instance of {@link SayHelloResponse }
+     * 
+     */
+    public SayHelloResponse createSayHelloResponse() {
+        return new SayHelloResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllUsersResponse }
+     * 
+     */
+    public GetAllUsersResponse createGetAllUsersResponse() {
+        return new GetAllUsersResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllUsers }
+     * 
+     */
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
+    }
+
+    /**
+     * Create an instance of {@link SayHelloUsingSpringResponse }
+     * 
+     */
+    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
+        return new SayHelloUsingSpringResponse();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
     }
 
     /**

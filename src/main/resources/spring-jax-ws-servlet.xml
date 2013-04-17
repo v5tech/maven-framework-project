@@ -8,7 +8,9 @@
        http://jax-ws.dev.java.net/spring/core.xsd
        http://jax-ws.dev.java.net/spring/servlet
        http://jax-ws.dev.java.net/spring/servlet.xsd">
-
+	
+    <!-- http://jax-ws-commons.java.net/spring/ -->
+    
     <wss:binding url="/service/hello">
         <wss:service>
             <ws:service bean="#helloService"/>
