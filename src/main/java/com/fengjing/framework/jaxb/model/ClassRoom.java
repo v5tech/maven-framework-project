@@ -1,4 +1,4 @@
-package com.fengjing.framework.jaxb;
+package com.fengjing.framework.jaxb.model;
 
 import java.util.List;
 

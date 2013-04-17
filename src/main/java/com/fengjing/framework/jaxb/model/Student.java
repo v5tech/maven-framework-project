@@ -1,4 +1,4 @@
-package com.fengjing.framework.jaxb;
+package com.fengjing.framework.jaxb.model;
 
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;

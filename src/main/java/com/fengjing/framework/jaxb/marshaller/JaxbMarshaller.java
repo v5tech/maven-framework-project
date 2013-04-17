@@ -7,8 +7,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.fengjing.framework.jaxb.ClassRoom;
-import com.fengjing.framework.jaxb.Student;
+import com.fengjing.framework.jaxb.model.ClassRoom;
+import com.fengjing.framework.jaxb.model.Student;
 
 
 public class JaxbMarshaller {
