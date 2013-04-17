@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  * /hello/jsp.do
  * /hello/velocity.do
  * /hello/freemarker.do
- * /hello/showUser/admin/admin.do
+ * /hello/showuser/admin/admin.do
  * @author fengjing
  *
  */
@@ -80,7 +80,7 @@ public class HelloSpringMvcController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping(value="/showUser/{name}/{pwd}")
+	@RequestMapping(value="/showuser/{name}/{pwd}")
 	public String showUserName(@PathVariable(value="name")String username,@PathVariable(value="pwd")String password,ModelMap map){
 		try {
 			map.addAttribute("username", new String(username.getBytes("iso-8859-1"),"utf-8"));

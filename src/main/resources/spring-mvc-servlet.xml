@@ -15,10 +15,6 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<context:component-scan base-package="com.fengjing.framework.spring.dwr">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-	</context:component-scan>
-	
 	<mvc:annotation-driven />
 	
 	<!-- 用于将实体转化为xml格式的数据 -->
@@ -62,7 +58,7 @@
 		<property name="alwaysUseFullPath" value="true"></property>
 		<property name="mappings">
 			<props>
-				<prop key="/simpleUrl.do">simpleUrlController</prop>
+				<prop key="/simpleurl.do">simpleUrlController</prop>
 			</props>
 		</property>
 	</bean>
