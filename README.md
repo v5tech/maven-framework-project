@@ -4,15 +4,13 @@
 
 * 该项目后期会陆续集成Spring的一些好的框架进来比如说Spring Web Flow、Spring Security 、Jbpm、WebService、Compass、Solr、nutch等。总之是一个综合性的项目。该项目不处理业务，主要是把目前自己工作中用到过的各种框架糅合到一个项目中。纯粹是一个jee框架的糅合，主要是介绍各种技术。
 
-* 项目中的持久化框架sql语句的跟踪采用了log4jdbc4结合log4j，在控制台可以看到完整的sql语句。
+* 项目中的持久化框架sql语句的跟踪分别采用*log4jdbc*结合*log4j*和*p6spy*,在控制台可以看到完整的sql语句。
 
 * 该项目中使用到的技术均与Spring已集成。除了DWR与Spring集成使用xml文件中配置bean外 其他的bean均使用注解完善。每一个与数据库有关的都有事务处理。
 
 * Spring  JAX-WS请参考[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)
 
 * Spring整合dwr时dwr版本很关键,否则报莫名其妙的错误,具体的整合方式参照[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)
-
-* 项目中分别采用log4jdbc和p6spy跟踪sql执行语句,使sql语句更加清晰直观(控制台打印的sql语句中含参数,不在是?等这种字符)
 
 # 项目包结构图
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)
