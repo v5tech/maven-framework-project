@@ -1,5 +1,5 @@
 # maven-framework-project
-
+==================================
 * 该项目基于maven3.0构建的，项目中融合了Struts1、Struts2、Spring、SpringMVC、Hibernate、Ibatis、MyBatis、Spring Data JPA、Spring JDBC、Spring DWR。页面展现这里使用Struts1、Struts2、SpringMVC（jsp视图、velocity视图、freemarker视图、pdf视图、excel视图、xml视图、json视图等）。是一个综合性的项目。
 
 * 该项目后期会陆续集成Spring的一些好的框架进来比如说Spring Web Flow、Spring Security 、Jbpm、WebService、Compass、Solr、nutch等。总之是一个综合性的项目。该项目不处理业务，主要是把目前自己工作中用到过的各种框架糅合到一个项目中。纯粹是一个jee框架的糅合，主要是介绍各种技术。
@@ -11,6 +11,8 @@
 * Spring  JAX-WS请参考[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)
 
 * Spring整合dwr时dwr版本很关键,否则报莫名其妙的错误,具体的整合方式参照[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)
+
+* 项目中分别采用log4jdbc和p6spy跟踪sql执行语句,使sql语句更加清晰直观(控制台打印的sql语句中含参数,不在是?等这种字符)
 
 # 项目包结构图
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)
@@ -25,6 +27,8 @@
 * Spring Data JPA 1.3.0.RELEASE
 * DWR 3.0.M1(该版本jar包在跟Spring整合使用注解方式时会有问题,建议使用项目中的dwr.jar)
 * Spring Security 3.1.3.RELEASE
+* log4jdbc 1.2 采用log4jdbc跟踪sql语句 查看[src/main/resources/log4j.xml](src/main/resources/log4j.xml)
+* p6spy 1.3 采用p6spy跟踪sql语句 详细查看[src/main/resources/spy.properties](src/main/resources/spy.properties)文件
 
 # 项目托管
 * <del>SVN地址：http://maven-framework-project.googlecode.com/svn/trunk/</del> (限于大陆google code 不稳定,导致经常无法访问,该地址已不在同步,建议使用github地址)
