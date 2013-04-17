@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/direct")
-public class DWRController {
+public class DWRControllerService{
 
 	@RequestMapping("/dwr")
 	public ModelAndView dwr(HttpServletRequest servletRequest,

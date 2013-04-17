@@ -13,28 +13,31 @@
     http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
+	<!-- spring mvc dwr整合 -->
 	
+	<!-- 扫描com.fengjing.framework.spring.dwr.DWRControllerService -->
 	<context:component-scan base-package="com.fengjing.framework.spring.dwr">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	
-	<!-- spring mvc dwr整合 -->
-	<!-- 基于xml配置方式dwr -->
-	<dwr:configuration>
-		<dwr:convert type="bean" class="com.fengjing.framework.springmvc.dwr.model.User"></dwr:convert>
-	</dwr:configuration>
-    
-    <dwr:controller id="dwrController" debug="true">
+	<!-- 配置controller,基于注解和xml两种方式的公共部分 两种方式都需要进行此配置-->
+	<dwr:controller id="dwrController" debug="true">
     	<!-- dwr在Tomcat7中报DWR CSRF Security Error 添加以下参数配置-->
     	<dwr:config-param name="crossDomainSessionSecurity" value="false"/>
     	<dwr:config-param name="allowScriptTagRemoting" value="true" />
     	<dwr:config-param name="debug" value="true" />
     </dwr:controller>
-    
+	
+	
+	
+	<!-- 基于xml配置方式dwr -->
+	<dwr:configuration>
+		<dwr:convert type="bean" class="com.fengjing.framework.springmvc.dwr.model.User"></dwr:convert>
+	</dwr:configuration>
+    <!-- 注入com.fengjing.framework.springmvc.dwr.dao.impl.UserDaoImpl -->
 	<bean class="com.fengjing.framework.springmvc.dwr.dao.impl.UserDaoImpl" id="userDaoImpl"/>
 	
-	
+	<!-- 暴露远程调用方法名 -->
 	<bean class="com.fengjing.framework.springmvc.dwr.service.impl.UserServiceImpl" id="userServiceImpl">
 		<property name="userDao" ref="userDaoImpl"></property>
 		<dwr:remote javascript="dwrUserService">
@@ -48,14 +51,9 @@
 	
 	
 	
-	
-	
 	<!-- 基于注解方式的dwr配置 -->
-	
-	<dwr:configuration />  
-	
-	<dwr:annotation-scan base-package="com.fengjing.framework.spring.dwr" scanDataTransferObject="true" scanRemoteProxy="true" />
-	
+	<dwr:configuration />
+	<dwr:url-mapping/>
 	<!-- 用于将dwr的请求交给dwrController来处理 -->
 	<bean id="dwrHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="alwaysUseFullPath" value="true"></property>
@@ -65,6 +63,7 @@
 			</props>
 		</property>
 	</bean>
-	
+	<!-- 扫描com.fengjing.framework.spring.dwr包下的dwr注解 -->
+	<dwr:annotation-scan base-package="com.fengjing.framework.spring.dwr" scanDataTransferObject="true" scanRemoteProxy="true" />	
 	<!-- 基于注解方式的dwr配置 -->
 </beans>
