@@ -11,29 +11,31 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.simple.ParameterizedSingleColumnRowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.fengjing.framework.spring.jdbc.dao.ProductDao;
 import com.fengjing.framework.spring.jdbc.model.Product;
 
 @Repository(value="jdbcProductDaoImpl")
-public class ProductDaoImpl extends JdbcDaoSupport implements ProductDao {
+public class ProductDaoImpl implements ProductDao {
 	public final static String OPTION_SAVE="save"; 	
 	public final static String OPTION_MODIFY="modify"; 	
 	
-	@SuppressWarnings("unused")
-	private JdbcTemplate jdbcTemplates;
+	private JdbcTemplate jdbcTemplate;
+	
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
 	
 	@Resource(name="jdbcTemplate")
-	public void setJdbcTemplates(JdbcTemplate jdbcTemplates) {
-		super.setJdbcTemplate(jdbcTemplates);
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 	
 	
 	@Override
 	public Product findById(long id) {
-		/*return super.getJdbcTemplate().queryForObject("select * from product where id = ? ",new Long[]{id}, new RowMapper<Product>(){
+		/*return getJdbcTemplate().queryForObject("select * from product where id = ? ",new Long[]{id}, new RowMapper<Product>(){
 
 			@Override
 			public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -48,7 +50,7 @@ public class ProductDaoImpl extends JdbcDaoSupport implements ProductDao {
 			
 		});*/
 		
-		return super.getJdbcTemplate().queryForObject("select * from product where id = ? ", new ParameterizedSingleColumnRowMapper<Product>(){
+		return getJdbcTemplate().queryForObject("select * from product where id = ? ", new ParameterizedSingleColumnRowMapper<Product>(){
 			
 			@Override
 			public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -67,14 +69,14 @@ public class ProductDaoImpl extends JdbcDaoSupport implements ProductDao {
 
 	@Override
 	public void modify(Product t) {
-		//super.getJdbcTemplate().update("update product set name =?,price=?,description=?,categoryid=?  where id =? ", new Object[]{t.getName(),t.getPrice(),t.getDescription(),t.getCategoryid()});
-		super.getJdbcTemplate().update("update product set name =?,price=?,description=?,categoryid=?  where id =? ", new ProductPreparedStatementSetter(t,OPTION_MODIFY));
+		//getJdbcTemplate().update("update product set name =?,price=?,description=?,categoryid=?  where id =? ", new Object[]{t.getName(),t.getPrice(),t.getDescription(),t.getCategoryid()});
+		getJdbcTemplate().update("update product set name =?,price=?,description=?,categoryid=?  where id =? ", new ProductPreparedStatementSetter(t,OPTION_MODIFY));
 	}
 
 	@Override
 	public void save(Product t) {
-		//super.getJdbcTemplate().update("insert into product(name,price,description,categoryid) values(?,?,?,?)", new Object[]{t.getName(),t.getPrice(),t.getDescription(),t.getCategoryid()});
-		super.getJdbcTemplate().update("insert into product(name,price,description,categoryid) values(?,?,?,?)", new ProductPreparedStatementSetter(t,OPTION_SAVE));
+		//getJdbcTemplate().update("insert into product(name,price,description,categoryid) values(?,?,?,?)", new Object[]{t.getName(),t.getPrice(),t.getDescription(),t.getCategoryid()});
+		getJdbcTemplate().update("insert into product(name,price,description,categoryid) values(?,?,?,?)", new ProductPreparedStatementSetter(t,OPTION_SAVE));
 	}
 	
 	
@@ -128,7 +130,7 @@ public class ProductDaoImpl extends JdbcDaoSupport implements ProductDao {
 
 	@Override
 	public void deleteById(long id) {
-		super.getJdbcTemplate().update("delete from product where id= ? ",new Object[]{id});
+		getJdbcTemplate().update("delete from product where id= ? ",new Object[]{id});
 	}
 
 	@Override
@@ -138,13 +140,13 @@ public class ProductDaoImpl extends JdbcDaoSupport implements ProductDao {
 
 	@Override
 	public List<Product> listAll() {
-		return super.getJdbcTemplate().query("select * from product",new BeanPropertyRowMapper<Product>(Product.class));
+		return getJdbcTemplate().query("select * from product",new BeanPropertyRowMapper<Product>(Product.class));
 	}
 
 
 	@Override
 	public List<Product> getProductListByCategory(String name) {
-		return super.getJdbcTemplate().query("select * from product inner join category on product.categoryid=category.id where category.name = ? ",new Object[]{name},new BeanPropertyRowMapper<Product>(Product.class));
+		return getJdbcTemplate().query("select * from product inner join category on product.categoryid=category.id where category.name = ? ",new Object[]{name},new BeanPropertyRowMapper<Product>(Product.class));
 	}
 
 }

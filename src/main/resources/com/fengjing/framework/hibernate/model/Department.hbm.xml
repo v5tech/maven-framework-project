@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.fengjing.framework.hibernate.model">
-	<class name="Department" table="t_department" catalog="maven">
+	<class name="Department" table="t_department" catalog="hibernate4">
 		<id name="id" column="id">
 			<generator class="native"></generator>
 		</id>

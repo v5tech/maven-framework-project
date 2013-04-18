@@ -16,32 +16,16 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
-	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.fengjing.framework.mybatis.*"></context:component-scan>
-	<tx:annotation-driven transaction-manager="myBatisTransactionManager"/>
-	
-	<bean id="myBatisDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	    
-	    <!-- 使用log4jdbc跟踪sql语句 -->
-	    
-		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
-		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"></property>
-	</bean>
+	<tx:annotation-driven transaction-manager="jdbc_ibatis_mybatisTransactionManager"/>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="myBatisDataSource"></property>
+		<property name="dataSource" ref="jdbc_ibatis_mybatisDataSource"></property>
 		<property name="typeAliasesPackage" value="com.fengjing.framework.mybatis"></property>
 	</bean>	
-	
-	<bean id="myBatisTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="myBatisDataSource"></property>
-	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
       	<property name="basePackage" value="com.fengjing.framework.mybatis.dao" />
     </bean>
-	
 		
 </beans>
