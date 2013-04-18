@@ -6,8 +6,6 @@
 
 * 项目中的持久化框架sql语句的跟踪分别采用<strong>log4jdbc</strong>结合<strong>log4j</strong>和<strong>p6spy</strong>,在控制台可以看到完整的sql语句。
 
-* 该项目中使用到的技术均与Spring已集成。除了DWR与Spring集成使用xml文件中配置bean外 其他的bean均使用注解完善。每一个与数据库有关的都有事务处理。
-
 * Spring  JAX-WS请参考[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)
 
 * Spring整合dwr时dwr版本很关键,否则报莫名其妙的错误,具体的整合方式参照[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)
