@@ -10,8 +10,11 @@ import javax.jws.WebService;
 import com.fengjing.framework.spring.jax.ws.HelloInf;
 import com.fengjing.framework.spring.jax.ws.User;
 
-/*
- * wsdlµÿ÷∑http://localhost:8080/maven-framework/service/hello?wsdl
+/**
+ * @see http://jax-ws-commons.java.net/spring/
+ * @see wsdlµÿ÷∑http://localhost:8080/maven-framework/service/hello?wsdl
+ * @author scott
+ *
  */
 
 @WebService

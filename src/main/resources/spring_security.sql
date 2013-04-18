@@ -17,7 +17,10 @@ CREATE TABLE `user_roles` (
 
 
 INSERT INTO spring_security.users (USER_ID, USERNAME,PASSWORD, ENABLED)
-VALUES (100, 'mkyong', '123456', TRUE);
+VALUES (100, 'admin', '123456', TRUE);
+VALUES (200, 'sysadmin', '123456', TRUE);
  
 INSERT INTO spring_security.user_roles (USER_ROLE_ID, USER_ID,AUTHORITY)
 VALUES (1, 100, 'ROLE_USER');
+VALUES (2, 200, 'ROLE_USER');
+VALUES (3, 200, 'ROLE_ADMIN');

@@ -22,10 +22,20 @@
 	<aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
 
 	<bean id="hibernateDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <!--  
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/hibernate4?useUnicode=true&amp;characterEncoding=utf8"></property>
+		-->
+		
+		<!-- 使用P6Spy跟踪sql语句 -->
+		
+		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/hibernate4?useUnicode=true&amp;characterEncoding=utf8"></property>
+		
 	</bean>
 
 

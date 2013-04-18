@@ -26,20 +26,6 @@ public interface Hello {
 
     /**
      * 
-     * @param user
-     * @return
-     *     returns com.fengjing.framework.spring.jax.ws.client.User
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "print", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.Print")
-    @ResponseWrapper(localName = "printResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.PrintResponse")
-    public User print(
-        @WebParam(name = "user", targetNamespace = "")
-        User user);
-
-    /**
-     * 
      * @param name
      * @return
      *     returns java.lang.String
@@ -76,5 +62,19 @@ public interface Hello {
     @RequestWrapper(localName = "getAllUsers", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.GetAllUsers")
     @ResponseWrapper(localName = "getAllUsersResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.GetAllUsersResponse")
     public List<User> getAllUsers();
+
+    /**
+     * 
+     * @param user
+     * @return
+     *     returns com.fengjing.framework.spring.jax.ws.client.User
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "print", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.Print")
+    @ResponseWrapper(localName = "printResponse", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", className = "com.fengjing.framework.spring.jax.ws.client.PrintResponse")
+    public User print(
+        @WebParam(name = "user", targetNamespace = "")
+        User user);
 
 }

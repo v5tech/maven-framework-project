@@ -23,7 +23,10 @@
 	<tx:annotation-driven transaction-manager="ibatisTransactionManager"/>
 	
 	<bean id="ibatisDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    
+	    <!-- 使用P6Spy跟踪sql语句 -->
+	    
+		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"></property>

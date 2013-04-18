@@ -1,1 +1,6 @@
 /target
+/spy.log
+/.settings
+/.classpath
+/.project
+/.springBeans
