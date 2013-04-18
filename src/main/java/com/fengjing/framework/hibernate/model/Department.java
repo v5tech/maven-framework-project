@@ -18,7 +18,7 @@ import org.hibernate.annotations.CascadeType;
  *
  */
 @Entity
-@Table(name="t_department")
+@Table(name="t_department",catalog="hibernate4")
 public class Department {
 	/**
 	 * ≤ø√≈±‡∫≈

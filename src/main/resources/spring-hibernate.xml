@@ -16,37 +16,18 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
-	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.fengjing.framework.hibernate"></context:component-scan>
 	<tx:annotation-driven transaction-manager="hibernate4TransactionManager"/>
 	<aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
 
-	<bean id="hibernateDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	    <!--  
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/hibernate4?useUnicode=true&amp;characterEncoding=utf8"></property>
-		-->
-		
-		<!-- 使用P6Spy跟踪sql语句 -->
-		
-		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/hibernate4?useUnicode=true&amp;characterEncoding=utf8"></property>
-		
-	</bean>
-
-
 	<bean id="hibernate4sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="hibernateDataSource"></property>
+		<property name="dataSource" ref="hibernate4DataSource"></property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
 				<prop key="hibernate.jdbc.batch_size">20</prop>
 			</props>
 		</property>

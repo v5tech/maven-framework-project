@@ -17,7 +17,7 @@ import org.hibernate.annotations.CascadeType;
  *
  */
 @Entity
-@Table(name="t_employee")
+@Table(name="t_employee",catalog="hibernate4")
 public class Employee {
 
 	/**

@@ -16,40 +16,15 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
-	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.fengjing.framework.ibatis"></context:component-scan>
 	
 	<aop:config></aop:config>
-	<tx:annotation-driven transaction-manager="ibatisTransactionManager"/>
 	
-	<bean id="ibatisDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	    
-	    <!-- 使用P6Spy跟踪sql语句 -->
-	    
-		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"></property>
-	</bean>
-	
-	<bean id="ibatisTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="ibatisDataSource"></property>
-	</bean>
-	
-
+	<tx:annotation-driven transaction-manager="jdbc_ibatis_mybatisTransactionManager"/>
 	
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
-		<property name="dataSource" ref="ibatisDataSource"></property>
+		<property name="dataSource" ref="jdbc_ibatis_mybatisDataSource"></property>
 	</bean>
-	
-	
-	<!-- 
-	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
-		<property name="sqlMapClient" ref="sqlMapClient"></property>
-	</bean> 
-	-->
-	
-	
 		
 </beans>
