@@ -26,6 +26,28 @@
 10. log4jdbc 1.2 采用log4jdbc跟踪sql语句 查看[src/main/resources/log4j.xml](src/main/resources/log4j.xml)
 11. p6spy 1.3 采用p6spy跟踪sql语句 详细查看[src/main/resources/spy.properties](src/main/resources/spy.properties)文件
 
+
+# 使用说明
+1. 手动创建数据库(framework、hibernate4、jdbc_ibatis_mybatis、spring_security)
+   * framework(会自动创建表) 用来演示spring data jpa 
+   * hibernate4(会自动创建表) 用来演示 hibernate4
+   * jdbc_ibatis_mybatis(自动创建表和导入数据) 用来演示spring jdbc、ibatis、mybatis,使用同一个数据库、同一个数据源、同一个事务管理
+   * spring_security(自动创建表和导入数据) 用来演示spring security
+2. 修改[src/main/resources/jdbc.properties](src/main/resources/jdbc.properties)文件 里面存放数据库连接信息.主要这里的driver和jdbc url与大家平常见到的不太一致,这是由于使用了sql语句跟踪的框架
+	* log4jdbc (spring jdbc、ibatis、mybatis、spring data jpa、spring security使用他跟踪sql)
+	* p6spy (hibernate使用p6spy跟踪sql)
+	* log4jdbc要结合<em>log4j</em>来使用
+	* p6spy要结合[src/main/resources/spy.properties](src/main/resources/spy.properties)配置文件
+	* 注意查看[src/main/resources/log4j.xml](src/main/resources/log4j.xml)文件
+3. 鉴于配置方便这里将各持久化框架的数据源集中配置在[src/main/resources/applicationContext.xml](src/main/resources/applicationContext.xml)文件中,其中spring jdbc、ibatis、mybatis,使用同一个数据库、同一个数据源、同一个事务管理
+4. 以上配置完成后您可采用一下方式运行该工程,详细使用方式请查看[pom](pom.xml)中的配置或者各插件的帮助文档
+   * 跳过单元测试 <em>mvn -Dmaven.test.skip=true</em> [参照](http://maven.apache.org/surefire/maven-surefire-plugin/examples/skipping-test.html)
+   * tomcat6 <em>mvn tomcat:run</em>
+   * tomcat7 <em>mvn tomcat7:run</em>
+   * jetty <em>mvn jetty:run</em>
+   * jboss <em>mvn jboss:start</em> <em>mvn jboss:hard-deploy</em>
+   * jboss-as <em>mvn jboss-as:deploy</em> <em>mvn jboss-as:run</em>
+	
 # 项目托管
 * <del>SVN地址：http://maven-framework-project.googlecode.com/svn/trunk/</del> (限于大陆google code 不稳定,导致经常无法访问,该地址已不在同步,建议使用github地址)
 * GitHub地址：https://github.com/sxyx2008/maven-framework-project/
