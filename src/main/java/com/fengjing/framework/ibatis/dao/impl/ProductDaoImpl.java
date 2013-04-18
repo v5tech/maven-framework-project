@@ -1,10 +1,10 @@
 package com.fengjing.framework.ibatis.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.fengjing.framework.ibatis.dao.ProductDao;
@@ -12,44 +12,76 @@ import com.fengjing.framework.ibatis.model.Product;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Repository(value="productDaoImpl")
-public class ProductDaoImpl extends SqlMapClientDaoSupport implements ProductDao {
+public class ProductDaoImpl implements ProductDao {
 	
-	@SuppressWarnings("unused")
-	private SqlMapClient sqlMapClients;
+	private SqlMapClient sqlMapClient;
 	
-	@SuppressWarnings("unchecked")
-	public List<Product> listAll() {
-		return getSqlMapClientTemplate().queryForList("com.fengjing.framework.ibatis.model.Product.selectAll");
-	}
-
-	
-	public boolean save(Product product) {
-		Object object = getSqlMapClientTemplate().insert("com.fengjing.framework.ibatis.model.Product.save", product);
-		return object==null?false:true;
-	}
-
-
-	public boolean update(Product product) {
-		int n=getSqlMapClientTemplate().update("com.fengjing.framework.ibatis.model.Product.update", product);
-		return n==1?true:false;
+	public SqlMapClient getSqlMapClient() {
+		return sqlMapClient;
 	}
 	
 	//½«sqlMapClient×¢Èë
 	@Resource(name="sqlMapClient")
-	public void setSqlMapClients(SqlMapClient sqlMapClients) {
-		super.setSqlMapClient(sqlMapClients);
+	public void setSqlMapClient(SqlMapClient sqlMapClient) {
+		this.sqlMapClient = sqlMapClient;
 	}
 
 
+	@SuppressWarnings("unchecked")
+	public List<Product> listAll() {
+		try {
+			return getSqlMapClient().queryForList("com.fengjing.framework.ibatis.model.Product.selectAll");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
+	public boolean save(Product product) {
+		try {
+			Object object = getSqlMapClient().insert("com.fengjing.framework.ibatis.model.Product.save", product);
+			return object==null?false:true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	public boolean update(Product product) {
+		try {
+			int n=getSqlMapClient().update("com.fengjing.framework.ibatis.model.Product.update", product);
+			return n==1?true:false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
+
+
 	public Product getModel(int id) {
-		return (Product) getSqlMapClientTemplate().queryForObject("com.fengjing.framework.ibatis.model.Product.selectById", id);
+		try {
+			return (Product) getSqlMapClient().queryForObject("com.fengjing.framework.ibatis.model.Product.selectById", id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Product> selectLikeName(String name) {
-		return getSqlMapClientTemplate().queryForList("com.fengjing.framework.ibatis.model.Product.selectProductLikeName",name);
+		try {
+			return getSqlMapClient().queryForList("com.fengjing.framework.ibatis.model.Product.selectProductLikeName",name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
