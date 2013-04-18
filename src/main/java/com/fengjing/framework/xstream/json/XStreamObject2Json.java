@@ -1,5 +1,7 @@
 package com.fengjing.framework.xstream.json;
 
+import org.junit.Test;
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
@@ -10,7 +12,8 @@ import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
  */
 public class XStreamObject2Json {
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		Product product = new Product();
 		
 		product.setId("123");

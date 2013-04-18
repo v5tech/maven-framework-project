@@ -1,5 +1,7 @@
 package com.fengjing.framework.xstream.annotation.xml2bean;
 
+import org.junit.Test;
+
 import com.fengjing.framework.xstream.annotation.Person;
 import com.thoughtworks.xstream.XStream;
 
@@ -10,7 +12,8 @@ import com.thoughtworks.xstream.XStream;
  */
 public class DeserializingXM2Object {
 	
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		
 		XStream xstream = new XStream();
 		//XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library

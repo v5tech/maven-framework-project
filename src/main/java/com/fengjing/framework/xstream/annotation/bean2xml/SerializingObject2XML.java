@@ -1,5 +1,7 @@
 package com.fengjing.framework.xstream.annotation.bean2xml;
 
+import org.junit.Test;
+
 import com.fengjing.framework.xstream.annotation.Person;
 import com.fengjing.framework.xstream.annotation.PhoneNumber;
 import com.thoughtworks.xstream.XStream;
@@ -11,7 +13,8 @@ import com.thoughtworks.xstream.XStream;
  */
 public class SerializingObject2XML {
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		
 		XStream xstream = new XStream();
 		//XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
