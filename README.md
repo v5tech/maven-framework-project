@@ -14,22 +14,22 @@
 ![src/main/resources/package.jpg](src/main/resources/package.jpg)
 
 # 项目中所使用框架版本信息
-1. Struts1 1.3.10 参照<em>[spring-struts.xml](src/main/resources/spring-struts.xml)</em>、<em>[struts-config.xml](src/main/webapp/WEB-INF/struts-config.xml)</em>配置
-   *<em>[http://localhost:8080/maven-framework/helloWorld.str](http://localhost:8080/maven-framework/helloWorld.str)</em>
-2. Struts2 2.3.8  参照<em>[spring-struts2-servlet.xml](src/main/resources/spring-struts2-servlet.xml)</em>、<em>[struts.xml](src/main/resources/struts.xml)</em>配置
-   *<em>[http://localhost:8080/maven-framework/helloAction!hello.action](http://localhost:8080/maven-framework/helloAction!hello.action)</em>
+1. Struts1 1.3.10 参照<em>[spring-struts.xml](src/main/resources/spring-struts.xml)</em>、<em>[struts-config.xml](src/main/webapp/WEB-INF/struts-config.xml)</em>、<em>[web.xml](src/main/webapp/WEB-INF/web.xml)</em>配置
+   * <em>[http://localhost:8080/maven-framework/helloWorld.str](http://localhost:8080/maven-framework/helloWorld.str)</em>
+2. Struts2 2.3.8  参照<em>[spring-struts2-servlet.xml](src/main/resources/spring-struts2-servlet.xml)</em>、<em>[struts.xml](src/main/resources/struts.xml)</em>、<em>[web.xml](src/main/webapp/WEB-INF/web.xml)</em>配置
+   * <em>[http://localhost:8080/maven-framework/helloAction!hello.action](http://localhost:8080/maven-framework/helloAction!hello.action)</em>
 3. Spring 3.2.1.RELEASE 参照<em>[applicationContext.xml](src/main/resources/applicationContext.xml)</em>配置
 4. Spring JDBC 参照<em>[spring-jdbc.xml](src/main/resources/spring-jdbc.xml)</em>配置
-   *单元测试[ProducrServiceTest.java](src/test/java/com/fengjing/framework/spring/jdbc/service/impl/ProducrServiceTest.java)
+   * 单元测试[ProducrServiceTest.java](src/test/java/com/fengjing/framework/spring/jdbc/service/impl/ProducrServiceTest.java)
 5. Hibernate 4.2.0.Final 参照<em>[spring-hibernate.xml](src/main/resources/spring-hibernate.xml)</em>配置
-   *单元测试[EmployeeServiceImplTest.java](src/test/java/com/fengjing/framework/hibernate/service/impl/EmployeeServiceImplTest.java)
+   * 单元测试[EmployeeServiceImplTest.java](src/test/java/com/fengjing/framework/hibernate/service/impl/EmployeeServiceImplTest.java)
 6. ibatis 2.3.4.726  参照<em>[spring-ibatis.xml](src/main/resources/spring-ibatis.xml)</em>配置
-   *单元测试[ProductServiceImplTest.java](src/test/java/com/fengjing/framework/ibatis/service/impl/ProductServiceImplTest.java)
+   * 单元测试[ProductServiceImplTest.java](src/test/java/com/fengjing/framework/ibatis/service/impl/ProductServiceImplTest.java)
 7. MyBatis 3.1.1   参照<em>[spring-mybatis.xml](src/main/resources/spring-mybatis.xml)</em>配置
-   *单元测试[ProducrServiceTest.java](src/test/java/com/fengjing/framework/mybatis/service/impl/ProducrServiceTest.java)
+   * 单元测试[ProducrServiceTest.java](src/test/java/com/fengjing/framework/mybatis/service/impl/ProducrServiceTest.java)
 8. Spring Data JPA 1.3.0.RELEASE  参照<em>[spring-data-jpa.xml](src/main/resources/spring-data-jpa.xml)</em>配置
-   *单元测试[UserServiceImplTest.java](src/test/java/com/fengjing/framework/spring/data/jpa/service/impl/UserServiceImplTest.java)
-9. DWR 3.0(该版本jar包在跟Spring整合使用注解方式时会有问题,建议使用项目中的dwr.jar)  参照<em>[spring-mvc-dwr.xml](src/main/resources/spring-mvc-dwr.xml)</em>配置
+   * 单元测试[UserServiceImplTest.java](src/test/java/com/fengjing/framework/spring/data/jpa/service/impl/UserServiceImplTest.java)
+9. DWR 3.0(该版本jar包在跟Spring整合使用注解方式时会有问题,建议使用项目中的dwr.jar)  参照<em>[spring-mvc-dwr.xml](src/main/resources/spring-mvc-dwr.xml)</em>、<em>[web.xml](src/main/webapp/WEB-INF/web.xml)</em>配置
    * dwr测试地址<em>[http://localhost:8080/maven-framework/dwr/index.html](http://localhost:8080/maven-framework/dwr/index.html)</em>
    * dwr文件上传下载<em>[http://localhost:8080/maven-framework/direct/dwr.do](http://localhost:8080/maven-framework/direct/dwr.do)</em>
 10. Spring Security 3.1.3.RELEASE 参照<em>[spring-security.xml](src/main/resources/spring-security.xml)</em>配置
@@ -37,7 +37,7 @@
 12. p6spy 1.3 采用p6spy跟踪sql语句 详细查看<em>[spy.properties](src/main/resources/spy.properties)</em>文件
 13. spring rmi远程方法调用 参照<em>[spring-rmi.xml](src/main/resources/spring-rmi.xml)</em>
 	* 调用<em>[HelloServiceTest.java](src/test/java/com/fengjing/framework/spring/rmi/HelloServiceTest.java)</em>
-14. Spring MVC 参照<em>[spring-mvc-servlet.xml](src/main/resources/spring-mvc-servlet.xml)</em>
+14. Spring MVC 参照<em>[spring-mvc-servlet.xml](src/main/resources/spring-mvc-servlet.xml)</em>、<em>[web.xml](src/main/webapp/WEB-INF/web.xml)</em>
 	* jsp视图<em>[http://localhost:8080/maven-framework/hello/jsp.do](http://localhost:8080/maven-framework/hello/jsp.do)</em>
 	* velocity视图<em>[http://localhost:8080/maven-framework/hello/velocity.do](http://localhost:8080/maven-framework/hello/velocity.do)</em>
 	* freemarker视图<em>[http://localhost:8080/maven-framework/hello/freemarker.do](http://localhost:8080/maven-framework/hello/freemarker.do)</em>
@@ -51,7 +51,7 @@
 	* 基于SimpleUrlHandlerMapping方式的rest方式<em>[http://localhost:8080/maven-framework/simpleurl/showuser/admin/admin.do](http://localhost:8080/maven-framework/simpleurl/showuser/admin/admin.do)</em>
 	* 基于普通的rest方式<em>[http://localhost:8080/maven-framework/hello/showuser/admin/admin.do](http://localhost:8080/maven-framework/hello/showuser/admin/admin.do)</em>
 	* 基于rest方式的spring mvc crud详细查看<em>[ContactControll](src/main/java/com/fengjing/framework/springmvc/controller/ContactControll.java)</em>中的配置
-15. Spring Jax WS 参照<em>[spring-jax-ws-servlet.xml](src/main/resources/spring-jax-ws-servlet.xml) 注意查看[pom](pom.xml)中wsimport的配置</em>
+15. Spring Jax WS 参照<em>[spring-jax-ws-servlet.xml](src/main/resources/spring-jax-ws-servlet.xml)、<em>[web.xml](src/main/webapp/WEB-INF/web.xml)</em> 注意查看[pom](pom.xml)中wsimport的配置</em>
 	* <em>[http://localhost:8080/maven-framework/service/hello?wsdl](http://localhost:8080/maven-framework/service/hello?wsdl)</em>
     * 生成客户端访问执行<em>mvn jaxws:wsimport</em>
     * 客户端访问<em>[HelloWebServiceClient](src/main/java/com/fengjing/framework/spring/jax/ws/client/HelloWebServiceClient.java)</em>
