@@ -39,10 +39,8 @@
 	
 	
 	<bean id="springDataJpaentityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-
 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"></property> 
 		<property name="persistenceUnitName" value="spring.data.jpa.framework"></property>
-
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="database" value="MYSQL"></property>
@@ -55,6 +53,13 @@
 		<property name="entityManagerFactory" ref="springDataJpaentityManagerFactory"></property>
 		<property name="dataSource" ref="springDataJpadataSource"></property>
  	</bean>
+	
+	<!-- SpringDataJpa DataSourceTransactionManager-->
+	<!--  
+	<bean id="springDataJpatransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="springDataJpadataSource"></property>
+	</bean>
+	-->
 	
 	<jpa:repositories base-package="com.fengjing.framework.spring.data.jpa.repository"
 		transaction-manager-ref="springDataJpatransactionManager"

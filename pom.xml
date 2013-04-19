@@ -574,8 +574,26 @@
 	    	<groupId>org.codehaus.xfire</groupId>
 	    	<artifactId>xfire-java5</artifactId>
 	    	<version>1.2.6</version>
+	    	<exclusions>
+	    		<exclusion>
+	    			<groupId>org.apache.ws.commons</groupId>
+					<artifactId>XmlSchema</artifactId>
+	    		</exclusion>
+	    	</exclusions>
 	    </dependency>
 		
+		<!-- cxf -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+            
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>2.7.3</version>
+		</dependency>
 		
 	</dependencies>
 
@@ -780,6 +798,31 @@
 			         </reportPlugins>
 				</configuration>
 			</plugin>
+			
+			
+			
+			<!-- exec-maven-plugin -->
+			<!--  
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>exec-maven-plugin</artifactId>
+			    <version>1.2.1</version>
+			    <executions>
+			      <execution>
+			        <goals>
+			          <goal>exec</goal>
+			        </goals>
+			      </execution>
+			    </executions>
+			     <configuration>
+			      <executable>java</executable>
+			      <arguments>
+			      </arguments>
+			    </configuration>
+			  </plugin>
+			-->
+			
+			
 			
 			<!-- Spring jax ws -->
 			<!-- http://jax-ws-commons.java.net/ -->

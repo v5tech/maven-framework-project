@@ -13,6 +13,11 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<listener>
+    	<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -151,22 +156,23 @@
 		<url-pattern>/remote/service</url-pattern>
 	</servlet-mapping>
 	
-	<!-- xfire 集成Spring发布webservice-->
+	<!-- xfire 集成Spring发布webservice -->
 	<servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>*.ws</url-pattern>
 	</servlet-mapping>
 	
-	<!--  
+	<!-- CXF 集成Spring发布webservice -->
 	<servlet>
 	    <servlet-name>CXFServlet</servlet-name>
 	    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>CXFServlet</servlet-name>
-	    <url-pattern>/cxf/service</url-pattern>
+	    <url-pattern>/ws</url-pattern>
 	</servlet-mapping>
-	-->
+	
 	
 	<session-config>
 		<session-timeout>30</session-timeout>
