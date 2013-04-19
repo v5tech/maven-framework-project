@@ -26,11 +26,10 @@
 	<tx:annotation-driven transaction-manager="springDataJpatransactionManager"/>
 	
 	<bean id="springDataJpaentityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- 
-			<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"></property> 
-			<property name="persistenceUnitName" value="spring.data.jpa.framework"></property>
-		-->
-		
+
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"></property> 
+		<property name="persistenceUnitName" value="spring.data.jpa.framework"></property>
+
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="database" value="MYSQL"></property>

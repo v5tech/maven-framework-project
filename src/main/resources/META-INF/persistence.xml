@@ -8,9 +8,9 @@
 			<property name="hibernate.connection.url" value="jdbc:log4jdbc:mysql://localhost:3306/framework" />
 			<property name="hibernate.connection.driver_class" value="net.sf.log4jdbc.DriverSpy" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="" /> 
+			<property name="hibernate.connection.password" value="" />
+			--> 
 			<property name="hibernate.hbm2ddl.auto" value="update" /> 
-			-->
 		</properties>
 	</persistence-unit>
 </persistence>
