@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<import resource="classpath:org/codehaus/xfire/spring/xfire.xml"/>
+	
+	<bean id="xfire.annotationServiceFactory"
+        class="org.codehaus.xfire.annotations.AnnotationServiceFactory">
+        <constructor-arg index="0">
+            <ref bean="xfire.commonsAnnotations"/>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <ref bean="xfire.transportManager"/>
+        </constructor-arg>
+        <constructor-arg index="2">
+            <ref bean="xfire.aegisBindingProvider"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="xfire.commonsAnnotations"
+        class="org.codehaus.xfire.annotations.jsr181.Jsr181WebAnnotations"/>
+    
+    <!-- http://localhost:8080/maven-framework/helloXfireService.ws?wsdl -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+            <map>
+                <entry key="/helloXfireService.ws">
+                    <ref bean="helloXfireService"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+    <bean name="helloXfireService" class="org.codehaus.xfire.spring.remoting.XFireExporter">
+      <property name="serviceBean" ref="helloXfireServiceImplBean"/>
+      <property name="serviceClass" value="com.fengjing.framework.webservice.xfire.HelloXfireService"/>
+      <property name="serviceFactory" ref="xfire.annotationServiceFactory"/>
+    </bean>
+
+    <bean id="helloXfireServiceImplBean" class="com.fengjing.framework.webservice.xfire.impl.HelloXfireServiceImpl"/>
+    
+    
+    
+    
+    <!-- 配置客户端调用 -->
+    <!-- 
+    <bean id="helloXfireServiceClient" class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+    	<property name="serviceClass" value="com.fengjing.framework.webservice.xfire.HelloXfireService"></property>
+    	<property name="wsdlDocumentUrl" value="http://localhost:8080/maven-framework/helloXfireService.ws?wsdl"></property>
+    </bean>
+    -->
+</beans>

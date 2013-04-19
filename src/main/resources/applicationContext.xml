@@ -62,8 +62,6 @@
 	</bean>
 	
 	
-	
-	
 	<import resource="spring-data-jpa.xml"/>
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-ibatis.xml"/>
@@ -75,6 +73,7 @@
 	<import resource="spring-struts2-servlet.xml"/>
 	<import resource="spring-security.xml"/> 
 	<import resource="spring-jax-ws-servlet.xml"/> 
+	<import resource="spring-xfire-servlet.xml"/> 
 	
 	<!-- Spring Security初始化数据导入 -->
 	<jdbc:initialize-database data-source="securitydataSource">

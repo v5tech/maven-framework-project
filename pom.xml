@@ -564,6 +564,19 @@
 		  <version>1.2.0</version>
 		</dependency>
 		
+		<!-- xfire -->
+		<dependency>
+	    	<groupId>org.codehaus.xfire</groupId>
+	    	<artifactId>xfire-spring</artifactId>
+	    	<version>1.2.6</version>
+    	</dependency>
+		<dependency>
+	    	<groupId>org.codehaus.xfire</groupId>
+	    	<artifactId>xfire-java5</artifactId>
+	    	<version>1.2.6</version>
+	    </dependency>
+		
+		
 	</dependencies>
 
 	<build>

@@ -151,6 +151,13 @@
 		<url-pattern>/remote/service</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!-- xfire 集成Spring发布webservice-->
+	<servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.ws</url-pattern>
+	</servlet-mapping>
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
