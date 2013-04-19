@@ -29,6 +29,7 @@
 	<import resource="spring-security.xml"/> 
 	<import resource="spring-jax-ws-servlet.xml"/> 
 	<import resource="spring-xfire-servlet.xml"/> 
+	<import resource="spring-cxf-servlet.xml"/> 
 	
 	<!-- spring jdbc ibatis  mybatis初始化数据导入 -->
 	<jdbc:initialize-database data-source="ibatisDataSource">
