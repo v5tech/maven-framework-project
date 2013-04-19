@@ -16,15 +16,30 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    
 	<context:component-scan base-package="com.fengjing.framework.ibatis"></context:component-scan>
 	
 	<aop:config></aop:config>
 	
-	<tx:annotation-driven transaction-manager="jdbc_ibatis_mybatisTransactionManager"/>
+	<tx:annotation-driven transaction-manager="ibatisTransactionManager"/>
+	
+	<!-- ibatis数据源 -->
+	<bean id="ibatisDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${log4jdbc.driverClassName}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="url" value="${jdbc_ibatis_mybatis.log4jdbc.jdbc.url}"></property>
+	</bean>
+	
+	<!-- ibatis transactionmanager-->
+	<bean id="ibatisTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ibatisDataSource"></property>
+	</bean>
 	
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
-		<property name="dataSource" ref="jdbc_ibatis_mybatisDataSource"></property>
+		<property name="dataSource" ref="ibatisDataSource"></property>
 	</bean>
 		
 </beans>

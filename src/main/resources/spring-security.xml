@@ -12,6 +12,8 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
  	
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    
  	<!-- 扫描注入com.fengjing.framework.spring.security包下仅包含@Controller注解的bean -->
 	<context:component-scan base-package="com.fengjing.framework.spring.security">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -19,6 +21,15 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
  	
+	<!-- Spring Security DataSource数据源 -->
+	<beans:bean id="securitydataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="username" value="${username}"></beans:property>
+		<beans:property name="password" value="${password}"></beans:property>
+		<beans:property name="url" value="${security.log4jdbc.jdbc.url}"></beans:property>
+		<beans:property name="driverClassName" value="${log4jdbc.driverClassName}"></beans:property>
+	</beans:bean>
+	
+	
  	<beans:bean id="securityjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
  		<beans:property name="dataSource" ref="securitydataSource"></beans:property>
  	</beans:bean>
@@ -59,23 +70,19 @@
  	<!-- 2、使用user-service -->
  	<http auto-config="true" access-denied-page="/403.jsp">
  	    
- 	    <intercept-url pattern="/*.ws/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
- 	    
- 		<intercept-url pattern="/dwr/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
- 		<intercept-url pattern="/interface/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
- 		
- 		<intercept-url pattern="/service/hello*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
- 		<intercept-url pattern="/remote/service*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/login.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 	    <!-- 
+ 	    <intercept-url pattern="/login.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/loginfailed.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/logout.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED" /> 
+		-->
 		
 		<intercept-url pattern="/admin*" access="ROLE_ADMIN" />
-		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED" />
 		
 		<form-login login-page="/login.do" authentication-failure-url="/loginfailed.do"/>
 		<logout logout-success-url="/logout.do" delete-cookies="JSESSIONID" invalidate-session="true"/>
 		<remember-me key="spring_security"/>
+		
 	</http>
  
 	<authentication-manager>

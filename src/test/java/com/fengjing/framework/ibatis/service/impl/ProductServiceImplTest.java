@@ -13,7 +13,7 @@ import com.fengjing.framework.ibatis.model.Product;
 import com.fengjing.framework.ibatis.service.ProductService;
 
 
-@ContextConfiguration(locations="classpath:spring-ibatis.xml")
+@ContextConfiguration(locations={"classpath:spring-ibatis.xml"})
 @RunWith(value=SpringJUnit4ClassRunner.class)
 public class ProductServiceImplTest {
 	

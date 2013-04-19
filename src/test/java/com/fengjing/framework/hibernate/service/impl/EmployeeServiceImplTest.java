@@ -14,7 +14,7 @@ import com.fengjing.framework.hibernate.model.Employee;
 import com.fengjing.framework.hibernate.service.EmployeeService;
 
 
-@ContextConfiguration(locations="classpath:spring-hibernate.xml")
+@ContextConfiguration(locations={"classpath:spring-hibernate.xml"})
 @RunWith(value=SpringJUnit4ClassRunner.class)
 public class EmployeeServiceImplTest {
 	

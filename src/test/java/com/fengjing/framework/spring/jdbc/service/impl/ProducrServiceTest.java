@@ -14,7 +14,7 @@ import com.fengjing.framework.spring.jdbc.service.ProductService;
 
 
 
-@ContextConfiguration(value="classpath:spring-jdbc.xml")
+@ContextConfiguration(locations={"classpath:spring-jdbc.xml"})
 @RunWith(value=SpringJUnit4ClassRunner.class)
 public class ProducrServiceTest {
 	

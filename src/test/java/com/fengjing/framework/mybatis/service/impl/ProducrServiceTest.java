@@ -13,7 +13,7 @@ import com.fengjing.framework.mybatis.model.Product;
 
 
 
-@ContextConfiguration(value="classpath:spring-mybatis.xml")
+@ContextConfiguration(locations={"classpath:spring-mybatis.xml"})
 @RunWith(value=SpringJUnit4ClassRunner.class)
 public class ProducrServiceTest {
 	

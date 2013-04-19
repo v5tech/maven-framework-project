@@ -19,11 +19,24 @@
 	http://www.springframework.org/schema/data/jpa 
 	http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd">
 	
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    
+    
 	<context:component-scan base-package="com.fengjing.framework.spring.data.jpa">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
 	<tx:annotation-driven transaction-manager="springDataJpatransactionManager"/>
+	
+	
+	<!-- Spring Data Jpa数据源 -->
+	<bean id="springDataJpadataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="url" value="${jpa.log4jdbc.url}"></property>
+		<property name="driverClassName" value="${log4jdbc.driverClassName}"></property>
+	</bean>
+	
 	
 	<bean id="springDataJpaentityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 

@@ -17,51 +17,6 @@
     http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	<context:annotation-config/>
 	
-	<context:property-placeholder location="classpath:jdbc.properties"/>
-	
-	<!-- 使用log4jdbc跟踪sql语句 -->
-	
-	<!-- Spring Security DataSource数据源 -->
-	<bean id="securitydataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="username" value="${username}"></property>
-		<property name="password" value="${password}"></property>
-		<property name="url" value="${security.log4jdbc.jdbc.url}"></property>
-		<property name="driverClassName" value="${log4jdbc.driverClassName}"></property>
-	</bean>
-	
-	<!-- Spring Data Jpa数据源 -->
-	<bean id="springDataJpadataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="username" value="${username}"></property>
-		<property name="password" value="${password}"></property>
-		<property name="url" value="${jpa.log4jdbc.url}"></property>
-		<property name="driverClassName" value="${log4jdbc.driverClassName}"></property>
-	</bean> 
-	
-	<!-- jdbc ibatis mybatis数据源 -->
-	<bean id="jdbc_ibatis_mybatisDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${log4jdbc.driverClassName}"></property>
-		<property name="username" value="${username}"></property>
-		<property name="password" value="${password}"></property>
-		<property name="url" value="${jdbc_ibatis_mybatis.log4jdbc.jdbc.url}"></property>
-	</bean>
-	
-	<!-- 使用P6Spy跟踪sql语句 -->
-	
-	<!-- Hibernate 4 DataSource数据源 -->
-	<bean id="hibernate4DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="username" value="${username}"></property>
-		<property name="password" value="${password}"></property>
-		<property name="url" value="${hibernate4.url}"></property>
-		<property name="driverClassName" value="${P6Spy.driverClassName}"></property>
-	</bean>
-	
-	
-	<!-- jdbc_ibatis_mybatis transactionmanager-->
-	<bean id="jdbc_ibatis_mybatisTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="jdbc_ibatis_mybatisDataSource"></property>
-	</bean>
-	
-	
 	<import resource="spring-data-jpa.xml"/>
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-ibatis.xml"/>
@@ -74,20 +29,26 @@
 	<import resource="spring-security.xml"/> 
 	<import resource="spring-jax-ws-servlet.xml"/> 
 	<import resource="spring-xfire-servlet.xml"/> 
+	<!-- <import resource="spring-cxf-servlet.xml"/> --> 
+	
+	
+	<!-- spring jdbc ibatis  mybatis初始化数据导入 -->
+	<jdbc:initialize-database data-source="ibatisDataSource">
+ 		<jdbc:script location="classpath:jdbc_ibatis_mybatis.sql" encoding="UTF-8"/>
+ 	</jdbc:initialize-database>
+	
 	
 	<!-- Spring Security初始化数据导入 -->
 	<jdbc:initialize-database data-source="securitydataSource">
  		<jdbc:script location="classpath:spring_security.sql" encoding="UTF-8"/>
  	</jdbc:initialize-database>
-	
-	<!-- spring jdbc ibatis  mybatis初始化数据导入 -->
-	<jdbc:initialize-database data-source="jdbc_ibatis_mybatisDataSource">
- 		<jdbc:script location="classpath:jdbc_ibatis_mybatis.sql" encoding="UTF-8"/>
- 	</jdbc:initialize-database>
+ 	
 	
 	<!-- Hibernate4初始化数据导入 -->
 	<jdbc:initialize-database data-source="hibernate4DataSource">
  		<jdbc:script location="classpath:Hibernate4.sql" encoding="UTF-8"/>
  	</jdbc:initialize-database>
+	
+	
 	
 </beans>
