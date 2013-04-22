@@ -68,4 +68,13 @@
 	
 	<bean class="com.fengjing.framework.spring.rmi.HelloServiceClient" p:helloService-ref="rmiHelloService"/>
 	
+	<!-- 使用SimpleJaxWsHelloService发布WebService -->
+	
+	<bean id="simpleJaxWsHelloService" class="com.fengjing.framework.spring.jax.ws.SimpleJaxWsHelloService"></bean>
+	
+	<!-- 访问地址http://localhost:9999/SimpleJaxWsHelloService?wsdl -->
+	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
+		  p:baseAddress="http://localhost:9999/"
+	/>
+	
 </beans>
