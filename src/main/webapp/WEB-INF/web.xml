@@ -184,6 +184,21 @@
 	    <url-pattern>/ws/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- spring-ws 发布webservice -->
+	<servlet>
+        <servlet-name>spring-ws</servlet-name>
+        <servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+        <init-param>
+	      <param-name>transformWsdlLocations</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>spring-ws</servlet-name>
+        <url-pattern>/sws/*</url-pattern>
+    </servlet-mapping>
+	
 	
 	<session-config>
 		<session-timeout>30</session-timeout>

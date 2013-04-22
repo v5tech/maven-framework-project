@@ -641,21 +641,18 @@
 	          <artifactId>tomcat7-maven-plugin</artifactId>
 	          <version>2.0</version>
 	        </plugin>
-			
-			
-			<!-- 
+
+	        <!-- 
 				maven jetty plugin 
 					usage
 				mvn jetty:run
 			-->
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>7.6.5.v20120716</version>
+			  <groupId>org.mortbay.jetty</groupId>
+			  <artifactId>maven-jetty-plugin</artifactId>
+			  <version>6.1.9</version>
 			</plugin>
-			
-			
-			
+									
 			<!-- 
 				maven jboss plugin 
 					usage
@@ -813,29 +810,25 @@
 				</configuration>
 			</plugin>
 			
-			
-			
 			<!-- exec-maven-plugin -->
-			<!--  
 			<plugin>
-			    <groupId>org.codehaus.mojo</groupId>
-			    <artifactId>exec-maven-plugin</artifactId>
-			    <version>1.2.1</version>
-			    <executions>
-			      <execution>
-			        <goals>
-			          <goal>exec</goal>
-			        </goals>
-			      </execution>
-			    </executions>
-			     <configuration>
-			      <executable>java</executable>
-			      <arguments>
-			      </arguments>
-			    </configuration>
-			  </plugin>
-			-->
-			
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.fengjing.framework.webservice.springws.client.sws.EchoClient</mainClass>
+                    <!--  
+                    	<mainClass>com.fengjing.framework.webservice.springws.client.saaj.EchoClient</mainClass>
+                    -->
+                </configuration>
+            </plugin>
 			
 			
 			<!-- Spring jax ws -->

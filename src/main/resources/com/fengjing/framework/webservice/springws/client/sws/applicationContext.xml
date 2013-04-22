@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="echoClient" class="com.fengjing.framework.webservice.springws.client.sws.EchoClient">
+        <property name="defaultUri" value="http://localhost:8080/maven-framework/sws/services"/>
+        <property name="request" value="classpath:com/fengjing/framework/webservice/springws/client/sws/echoRequest.xml"/>
+    </bean>
+
+</beans>
