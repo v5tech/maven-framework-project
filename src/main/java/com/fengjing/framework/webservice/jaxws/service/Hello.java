@@ -8,7 +8,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.fengjing.framework.webservice.jaxws.HelloInf;
-import com.fengjing.framework.webservice.jaxws.User;
+import com.fengjing.framework.webservice.jaxws.model.User;
 
 /**
  * @see http://jax-ws-commons.java.net/spring/

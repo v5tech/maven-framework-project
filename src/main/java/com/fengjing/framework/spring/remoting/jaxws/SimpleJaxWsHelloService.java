@@ -6,9 +6,9 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import com.fengjing.framework.webservice.jaxws.Dept;
 import com.fengjing.framework.webservice.jaxws.HelloInf;
-import com.fengjing.framework.webservice.jaxws.User;
+import com.fengjing.framework.webservice.jaxws.model.Dept;
+import com.fengjing.framework.webservice.jaxws.model.User;
 
 @WebService(serviceName="SimpleJaxWsHelloService",endpointInterface="com.fengjing.framework.webservice.jaxws.HelloInf")
 public class SimpleJaxWsHelloService implements HelloInf{

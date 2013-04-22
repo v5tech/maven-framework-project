@@ -22,5 +22,5 @@
     	<property name="hello" ref="helloImpl" />
     </bean>
  
-    <bean id="helloImpl" class="com.fengjing.framework.webservice.jaxws.impl.HelloImpl" />
+    <bean id="helloImpl" class="com.fengjing.framework.webservice.jaxws.service.impl.HelloImpl" />
 </beans>

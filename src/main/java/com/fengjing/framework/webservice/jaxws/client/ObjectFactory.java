@@ -41,27 +41,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Print }
+     * Create an instance of {@link GetAllUsersResponse }
      * 
      */
-    public Print createPrint() {
-        return new Print();
+    public GetAllUsersResponse createGetAllUsersResponse() {
+        return new GetAllUsersResponse();
     }
 
     /**
-     * Create an instance of {@link GetAllUsers }
+     * Create an instance of {@link SayHelloUsingSpringResponse }
      * 
      */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
-    }
-
-    /**
-     * Create an instance of {@link PrintResponse }
-     * 
-     */
-    public PrintResponse createPrintResponse() {
-        return new PrintResponse();
+    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
+        return new SayHelloUsingSpringResponse();
     }
 
     /**
@@ -89,19 +81,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SayHelloUsingSpringResponse }
+     * Create an instance of {@link GetAllUsers }
      * 
      */
-    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
-        return new SayHelloUsingSpringResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAllUsersResponse }
-     * 
-     */
-    public GetAllUsersResponse createGetAllUsersResponse() {
-        return new GetAllUsersResponse();
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
     }
 
     /**
@@ -113,11 +97,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Print }
+     * 
+     */
+    public Print createPrint() {
+        return new Print();
+    }
+
+    /**
      * Create an instance of {@link SayHelloUsingSpring }
      * 
      */
     public SayHelloUsingSpring createSayHelloUsingSpring() {
         return new SayHelloUsingSpring();
+    }
+
+    /**
+     * Create an instance of {@link PrintResponse }
+     * 
+     */
+    public PrintResponse createPrintResponse() {
+        return new PrintResponse();
     }
 
     /**

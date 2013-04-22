@@ -1,11 +1,11 @@
-package com.fengjing.framework.webservice.jaxws.impl;
+package com.fengjing.framework.webservice.jaxws.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fengjing.framework.webservice.jaxws.Dept;
 import com.fengjing.framework.webservice.jaxws.HelloInf;
-import com.fengjing.framework.webservice.jaxws.User;
+import com.fengjing.framework.webservice.jaxws.model.Dept;
+import com.fengjing.framework.webservice.jaxws.model.User;
 
 
 public class HelloImpl implements HelloInf{

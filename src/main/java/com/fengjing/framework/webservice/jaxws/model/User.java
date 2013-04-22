@@ -1,4 +1,4 @@
-package com.fengjing.framework.webservice.jaxws;
+package com.fengjing.framework.webservice.jaxws.model;
 
 import java.io.Serializable;
 

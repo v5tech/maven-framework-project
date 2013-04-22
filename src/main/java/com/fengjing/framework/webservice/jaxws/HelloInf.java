@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.jws.WebService;
 
+import com.fengjing.framework.webservice.jaxws.model.User;
+
 @WebService
 public interface HelloInf {
     
