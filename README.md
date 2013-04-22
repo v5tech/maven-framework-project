@@ -2,7 +2,7 @@
 ==================================
 * 该项目基于maven3.0构建的，项目中融合了<em>Struts1</em>、<em>Struts2</em>、<em>Spring</em>、<em>SpringMVC</em>、<em>Hibernate</em>、<em>Ibatis</em>、<em>MyBatis</em>、<em>Spring Data JPA</em>、<em>Spring JDBC</em>、<em>Spring DWR</em>。页面展现这里使用Struts1、Struts2、SpringMVC（jsp视图、velocity视图、freemarker视图、pdf视图、excel视图、xml视图、json视图等）。是一个综合性的项目。
 
-* 该项目后期会陆续集成Spring的一些好的框架进来比如说Spring Web Flow、Jbpm、WebService、Compass、Solr、nutch等。总之是一个综合性的项目。该项目不处理业务，主要是把目前自己工作中用到过的各种框架糅合到一个项目中。纯粹是一个jee框架的糅合，主要是介绍各种技术。
+* 该项目后期会陆续集成一些好的框架进来比如说Spring Web Flow、Jbpm、WebService、Compass、Solr、nutch等。总之是一个综合性的项目。该项目不处理业务，主要是把目前自己工作中用到过的各种框架糅合到一个项目中。纯粹是一个jee框架的糅合，主要是介绍各种技术。
 
 * 项目中的持久化框架sql语句的跟踪分别采用<strong>log4jdbc</strong>结合<strong>log4j</strong>和<strong>p6spy</strong>,在控制台可以看到完整的sql语句。
 
@@ -55,13 +55,21 @@
 	* <em>[http://localhost:8080/maven-framework/service/hello?wsdl](http://localhost:8080/maven-framework/service/hello?wsdl)</em>
     * 生成客户端访问执行<em>mvn jaxws:wsimport</em>
     * 客户端访问<em>[HelloWebServiceClient](src/main/java/com/fengjing/framework/spring/jax/ws/client/HelloWebServiceClient.java)</em>
+16. CXF集成Spring发布WebService 参照<em>[spring-cxf-servlet.xml](src/main/resources/spring-cxf-servlet.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)</em>配置
+	* 访问地址:<em>[http://localhost:8080/maven-framework/ws/HelloWorldService?wsdl](http://localhost:8080/maven-framework/ws/HelloWorldService?wsdl)</em>
+    * 客户端访问:<em>[CxfClient.java](src/main/java/com/fengjing/framework/webservice/cxf/CxfClient.java)</em>
+17. Xfire集成Spring发布WebService 参照<em>[spring-xfire-servlet.xml](src/main/resources/spring-xfire-servlet.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)</em>配置
+	* 访问地址:<em>[http://localhost:8080/maven-framework/helloXfireService.ws?wsdl](http://localhost:8080/maven-framework/helloXfireService.ws?wsdl)</em>
+	* 客户端访问:<em>[HelloXfireServiceClient.java](src/main/java/com/fengjing/framework/webservice/xfire/client/HelloXfireServiceClient.java)</em>
+
+
 
 
 # 使用说明
 1. 手动创建数据库(framework、hibernate4、jdbc_ibatis_mybatis、spring_security)
    * framework(自动创建表和导入数据) 用来演示spring data jpa 
    * hibernate4(自动创建表和导入数据) 用来演示 hibernate4
-   * jdbc_ibatis_mybatis(自动创建表和导入数据) 用来演示spring jdbc、ibatis、mybatis,使用同一个数据库、同一个数据源、同一个事务管理
+   * jdbc_ibatis_mybatis(自动创建表和导入数据) 用来演示spring jdbc、ibatis、mybatis
    * spring_security(自动创建表和导入数据) 用来演示spring security
 2. 修改<em>[jdbc.properties](src/main/resources/jdbc.properties)</em>文件 里面存放数据库连接信息.主要这里的driver和jdbc url与大家平常见到的不太一致,这是由于使用了sql语句跟踪的框架
 	* log4jdbc (spring jdbc、ibatis、mybatis、spring data jpa、spring security使用他跟踪sql)
