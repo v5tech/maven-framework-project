@@ -1,7 +1,5 @@
-package com.fengjing.framework.spring.rmi.impl;
+package com.fengjing.framework.spring.remoting;
 
-import com.fengjing.framework.spring.rmi.HelloService;
-import com.fengjing.framework.spring.rmi.User;
 
 public class HelloServiceImpl implements HelloService {
 

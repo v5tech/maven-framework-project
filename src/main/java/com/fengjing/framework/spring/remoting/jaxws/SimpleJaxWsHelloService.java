@@ -1,4 +1,4 @@
-package com.fengjing.framework.spring.jax.ws;
+package com.fengjing.framework.spring.remoting.jaxws;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +6,16 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-@WebService(serviceName="SimpleJaxWsHelloService",endpointInterface="com.fengjing.framework.spring.jax.ws.HelloInf")
+import com.fengjing.framework.webservice.jaxws.Dept;
+import com.fengjing.framework.webservice.jaxws.HelloInf;
+import com.fengjing.framework.webservice.jaxws.User;
+
+@WebService(serviceName="SimpleJaxWsHelloService",endpointInterface="com.fengjing.framework.webservice.jaxws.HelloInf")
 public class SimpleJaxWsHelloService implements HelloInf{
 	
 	@WebMethod(operationName="sayHello")
 	public String sayHello(String name) {
-        return "Hey! "+name.toUpperCase()+ " Welocme to JAX-WS with Spring!";
+        return "Hey! "+name.toUpperCase()+ " Welocme to SimpleJaxWebService with Spring!";
     }
 
 	@WebMethod(operationName="getAllUsers")

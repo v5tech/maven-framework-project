@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.fengjing.framework.spring.remoting.HelloServiceClient;
+import com.fengjing.framework.spring.remoting.User;
+
 @ContextConfiguration(locations={"classpath:spring-rmi.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class HelloServiceTest {

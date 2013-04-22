@@ -1,5 +1,5 @@
 
-package com.fengjing.framework.spring.jax.ws.client;
+package com.fengjing.framework.webservice.jaxws.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,19 +17,19 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "HelloService", targetNamespace = "http://service.ws.jax.spring.framework.fengjing.com/", wsdlLocation = "http://localhost:8080/maven-framework/service/hello?wsdl")
+@WebServiceClient(name = "HelloService", targetNamespace = "http://service.jaxws.webservice.framework.fengjing.com/", wsdlLocation = "http://localhost:8080/maven-framework/service/hello?wsdl")
 public class HelloService
     extends Service
 {
 
     private final static URL HELLOSERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(com.fengjing.framework.spring.jax.ws.client.HelloService.class.getName());
+    private final static Logger logger = Logger.getLogger(com.fengjing.framework.webservice.jaxws.client.HelloService.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = com.fengjing.framework.spring.jax.ws.client.HelloService.class.getResource(".");
+            baseUrl = com.fengjing.framework.webservice.jaxws.client.HelloService.class.getResource(".");
             url = new URL(baseUrl, "http://localhost:8080/maven-framework/service/hello?wsdl");
         } catch (MalformedURLException e) {
             logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/maven-framework/service/hello?wsdl', retrying as a local file");
@@ -43,7 +43,7 @@ public class HelloService
     }
 
     public HelloService() {
-        super(HELLOSERVICE_WSDL_LOCATION, new QName("http://service.ws.jax.spring.framework.fengjing.com/", "HelloService"));
+        super(HELLOSERVICE_WSDL_LOCATION, new QName("http://service.jaxws.webservice.framework.fengjing.com/", "HelloService"));
     }
 
     /**
@@ -53,7 +53,7 @@ public class HelloService
      */
     @WebEndpoint(name = "HelloPort")
     public Hello getHelloPort() {
-        return super.getPort(new QName("http://service.ws.jax.spring.framework.fengjing.com/", "HelloPort"), Hello.class);
+        return super.getPort(new QName("http://service.jaxws.webservice.framework.fengjing.com/", "HelloPort"), Hello.class);
     }
 
     /**
@@ -65,7 +65,7 @@ public class HelloService
      */
     @WebEndpoint(name = "HelloPort")
     public Hello getHelloPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://service.ws.jax.spring.framework.fengjing.com/", "HelloPort"), Hello.class, features);
+        return super.getPort(new QName("http://service.jaxws.webservice.framework.fengjing.com/", "HelloPort"), Hello.class, features);
     }
 
 }

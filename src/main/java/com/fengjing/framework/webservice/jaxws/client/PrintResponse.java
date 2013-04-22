@@ -1,5 +1,5 @@
 
-package com.fengjing.framework.spring.jax.ws.client;
+package com.fengjing.framework.webservice.jaxws.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://service.ws.jax.spring.framework.fengjing.com/}user" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://service.jaxws.webservice.framework.fengjing.com/}user" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

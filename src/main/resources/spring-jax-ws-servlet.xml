@@ -18,9 +18,9 @@
     </wss:binding>
     
     <!-- Web service methods -->
-    <bean id="helloService" class="com.fengjing.framework.spring.jax.ws.service.Hello">
+    <bean id="helloService" class="com.fengjing.framework.webservice.jaxws.service.Hello">
     	<property name="hello" ref="helloImpl" />
     </bean>
  
-    <bean id="helloImpl" class="com.fengjing.framework.spring.jax.ws.impl.HelloImpl" />
+    <bean id="helloImpl" class="com.fengjing.framework.webservice.jaxws.impl.HelloImpl" />
 </beans>

@@ -1,4 +1,4 @@
-package com.fengjing.framework.spring.rmi;
+package com.fengjing.framework.spring.remoting;
 
 
 public interface HelloService {

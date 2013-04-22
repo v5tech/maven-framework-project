@@ -1,4 +1,4 @@
-package com.fengjing.framework.spring.jax.ws.service;
+package com.fengjing.framework.webservice.jaxws.service;
 
 
 import java.util.List;
@@ -7,8 +7,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import com.fengjing.framework.spring.jax.ws.HelloInf;
-import com.fengjing.framework.spring.jax.ws.User;
+import com.fengjing.framework.webservice.jaxws.HelloInf;
+import com.fengjing.framework.webservice.jaxws.User;
 
 /**
  * @see http://jax-ws-commons.java.net/spring/

@@ -1,4 +1,4 @@
-package com.fengjing.framework.spring.jax.ws.client;
+package com.fengjing.framework.webservice.jaxws.client;
 
 import java.util.List;
 

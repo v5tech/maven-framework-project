@@ -6,33 +6,33 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	
 	
-	<bean id="HelloService" class="com.fengjing.framework.spring.rmi.impl.HelloServiceImpl"/>
+	<bean id="HelloService" class="com.fengjing.framework.spring.remoting.HelloServiceImpl"/>
 	
 	<!-- 使用Spring RMI远程方法调用 -->
 	<bean class="org.springframework.remoting.rmi.RmiServiceExporter" 
 		  p:serviceName="HelloService"
 		  p:service-ref="HelloService"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService">
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService">
 	</bean>
 	
 	
 	<!-- 使用Spring RMI方式客户端调用 -->
 	<bean id="rmiHelloService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean"
 		  p:serviceUrl="rmi://localhost:1099/HelloService"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService">
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService">
 	</bean>
 	
 	
 	<!-- 使用Spring Hessian远程方法调用 
 	<bean class="org.springframework.remoting.caucho.HessianServiceExporter" 
 		  p:service-ref="HelloService"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService">
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService">
 	</bean>
 	-->
 	<!-- 使用Spring Hessian方式客户端调用 
 	<bean id="hessianHelloService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean"
 		  p:serviceUrl="http://localhost:8080/maven-framework/remote/service"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService"
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService"
 		  >
 	</bean>
 	-->
@@ -41,13 +41,13 @@
 	<!-- 使用Spring Burlap远程方法调用 
 	<bean class="org.springframework.remoting.caucho.BurlapServiceExporter" 
 		  p:service-ref="HelloService"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService">
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService">
 	</bean>
 	-->
 	<!-- 使用Spring Burlap方式客户端调用  
 	<bean id="burlapHelloService" class="org.springframework.remoting.caucho.BurlapProxyFactoryBean"
 		  p:serviceUrl="http://localhost:8080/maven-framework/remote/service"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService"
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService"
 		  >
 	</bean>
 	-->
@@ -56,21 +56,21 @@
 	<!-- 使用Spring HttpInvoker远程方法调用 -->
 	<bean class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" 
 		  p:service-ref="HelloService"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService">
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService">
 	</bean>
 	
 	<!-- 使用Spring HttpInvoker方式客户端调用  -->
 	<bean id="httpInvokerHelloService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean"
 		  p:serviceUrl="http://localhost:8080/maven-framework/remote/service"
-		  p:serviceInterface="com.fengjing.framework.spring.rmi.HelloService"
+		  p:serviceInterface="com.fengjing.framework.spring.remoting.HelloService"
 		  >
 	</bean>
 	
-	<bean class="com.fengjing.framework.spring.rmi.HelloServiceClient" p:helloService-ref="rmiHelloService"/>
+	<bean class="com.fengjing.framework.spring.remoting.HelloServiceClient" p:helloService-ref="rmiHelloService"/>
 	
 	<!-- 使用SimpleJaxWsHelloService发布WebService -->
 	
-	<bean id="simpleJaxWsHelloService" class="com.fengjing.framework.spring.jax.ws.SimpleJaxWsHelloService"></bean>
+	<bean id="simpleJaxWsHelloService" class="com.fengjing.framework.spring.remoting.jaxws.SimpleJaxWsHelloService"></bean>
 	
 	<!-- 访问地址http://localhost:9999/SimpleJaxWsHelloService?wsdl -->
 	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"

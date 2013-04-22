@@ -1,5 +1,5 @@
 
-package com.fengjing.framework.spring.jax.ws.client;
+package com.fengjing.framework.webservice.jaxws.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

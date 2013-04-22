@@ -1,5 +1,5 @@
 
-package com.fengjing.framework.spring.jax.ws.client;
+package com.fengjing.framework.webservice.jaxws.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="age" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="dept" type="{http://service.ws.jax.spring.framework.fengjing.com/}dept" minOccurs="0"/>
+ *         &lt;element name="dept" type="{http://service.jaxws.webservice.framework.fengjing.com/}dept" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>

@@ -881,7 +881,7 @@
                     <wsdlUrls>
                         <wsdlUrl>http://localhost:8080/maven-framework/service/hello?wsdl</wsdlUrl>
                     </wsdlUrls>
-                    <packageName>com.fengjing.framework.spring.jax.ws.client</packageName>
+                    <packageName>com.fengjing.framework.webservice.jaxws.client</packageName>
                     <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
                 </configuration>
             </plugin>
