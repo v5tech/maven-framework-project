@@ -1,4 +1,4 @@
-package com.fengjing.framework.spring.rmi;
+package com.fengjing.framework.spring.remoting;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
