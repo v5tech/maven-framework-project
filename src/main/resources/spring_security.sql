@@ -1,3 +1,4 @@
+
 use `spring_security`;
 
 DROP TABLE IF EXISTS `user_roles`;
