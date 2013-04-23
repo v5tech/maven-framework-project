@@ -6,5 +6,12 @@
         <property name="defaultUri" value="http://localhost:8080/maven-framework/sws/services"/>
         <property name="request" value="classpath:com/fengjing/framework/webservice/springws/client/sws/echoRequest.xml"/>
     </bean>
-
+	
+	
+	<bean id="studentDetailsClient" class="com.fengjing.framework.webservice.springws.client.sws.StudentDetailsClient">
+        <property name="defaultUri" value="http://localhost:8080/maven-framework/sws/services"/>
+        <property name="request" value="classpath:com/fengjing/framework/webservice/springws/client/sws/studentRequest.xml"/>
+    </bean>
+	
+	
 </beans>

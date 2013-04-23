@@ -879,12 +879,27 @@
                 </configuration>
             </plugin>
             
-            
             <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>1.3</version>
-			</plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>jaxb2-maven-plugin</artifactId>
+		        <version>1.5</version>
+		        <executions>
+		            <execution>
+		                <id>xjc</id>
+		                <goals>
+		                    <goal>xjc</goal>
+		                </goals>
+		                <configuration>
+		                	<!-- The directory for XML Schema files (XSDs).Default value is: ${project.basedir}/src/main/xsd. -->
+		                	<schemaDirectory>${project.basedir}/src/main/resources/META-INF/schemas/</schemaDirectory>
+		                	<!-- schemaFiles -->
+		                    <schemaFiles>student.xsd</schemaFiles>
+		                    <!-- The package under which the source files will be generated. -->
+		                    <packageName>com.fengjing.framework.webservice.springws.domain</packageName>
+		                </configuration>
+		            </execution>
+		        </executions>
+		    </plugin>
 			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

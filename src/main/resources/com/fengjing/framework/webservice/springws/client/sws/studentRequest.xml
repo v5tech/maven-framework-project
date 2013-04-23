@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studentRequest xmlns="http://www.example.org/student">
+	<Name>来自契约优先的WebService</Name>
+	<Subject1>1</Subject1>
+	<Subject2>3</Subject2>
+	<Subject3>5</Subject3>
+</studentRequest>

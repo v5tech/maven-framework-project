@@ -41,35 +41,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllUsersResponse }
-     * 
-     */
-    public GetAllUsersResponse createGetAllUsersResponse() {
-        return new GetAllUsersResponse();
-    }
-
-    /**
-     * Create an instance of {@link SayHelloUsingSpringResponse }
-     * 
-     */
-    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
-        return new SayHelloUsingSpringResponse();
-    }
-
-    /**
-     * Create an instance of {@link SayHello }
-     * 
-     */
-    public SayHello createSayHello() {
-        return new SayHello();
-    }
-
-    /**
      * Create an instance of {@link User }
      * 
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link GetAllUsersResponse }
+     * 
+     */
+    public GetAllUsersResponse createGetAllUsersResponse() {
+        return new GetAllUsersResponse();
     }
 
     /**
@@ -81,11 +65,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllUsers }
+     * Create an instance of {@link SayHelloUsingSpringResponse }
      * 
      */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
+    public SayHelloUsingSpringResponse createSayHelloUsingSpringResponse() {
+        return new SayHelloUsingSpringResponse();
     }
 
     /**
@@ -105,6 +89,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllUsers }
+     * 
+     */
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
+    }
+
+    /**
      * Create an instance of {@link SayHelloUsingSpring }
      * 
      */
@@ -118,6 +110,14 @@ public class ObjectFactory {
      */
     public PrintResponse createPrintResponse() {
         return new PrintResponse();
+    }
+
+    /**
+     * Create an instance of {@link SayHello }
+     * 
+     */
+    public SayHello createSayHello() {
+        return new SayHello();
     }
 
     /**

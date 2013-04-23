@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.example.org/student" 
+	xmlns:tns="http://www.example.org/student" 
+	elementFormDefault="qualified">
+	
+	<xs:element name="studentRequest" type="tns:studentRequestType"></xs:element>
+	<xs:element name="studentResponse" type="tns:studentResponseType"></xs:element>
+	
+	<xs:complexType name="studentRequestType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"></xs:element>
+			<xs:element name="Subject1" type="xs:int"/>
+            <xs:element name="Subject2" type="xs:int"/>
+            <xs:element name="Subject3" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="studentResponseType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+            <xs:element name="Department" type="xs:string"/>
+            <xs:element name="Subject1" type="xs:int"/>
+            <xs:element name="Subject2" type="xs:int"/>
+            <xs:element name="Subject3" type="xs:int"/>
+            <xs:element name="Total" type="xs:int"/>            
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+</xs:schema>

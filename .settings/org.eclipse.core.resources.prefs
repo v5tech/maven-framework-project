@@ -1,3 +1,4 @@
+#Tue Apr 23 11:57:26 CST 2013
 eclipse.preferences.version=1
 encoding//src/main/java=GBK
 encoding//src/main/java/com/fengjing/framework/jaxb/marshaller/JaxbMarshaller.java=UTF-8
@@ -8,5 +9,6 @@ encoding//src/main/resources/spring_security.sql=UTF-8
 encoding//src/main/webapp/WEB-INF/views/list.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/login.jsp=UTF-8
 encoding//src/test/java=GBK
+encoding//src/test/resources=GBK
 encoding/<project>=GBK
 encoding/README.md=UTF-8
