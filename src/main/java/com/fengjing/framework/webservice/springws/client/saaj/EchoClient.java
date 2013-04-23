@@ -13,6 +13,13 @@ import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPFault;
 import javax.xml.soap.SOAPMessage;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.stream.StreamResult;
 
 /**
  * @see http://localhost:8080/maven-framework/sws/services/echo.wsdl
@@ -44,6 +51,9 @@ public class EchoClient {
         SOAPBodyElement echoRequestElement = message.getSOAPBody()
                 .addBodyElement(echoRequestName);
         echoRequestElement.setValue("Hello");
+        
+        print(message);
+        
         return message;
     }
 
@@ -52,6 +62,7 @@ public class EchoClient {
         SOAPConnection connection = connectionFactory.createConnection();
         SOAPMessage response = connection.call(request, url);
         if (!response.getSOAPBody().hasFault()) {
+        	print(response);
             writeEchoResponse(response);
         }
         else {
@@ -72,7 +83,33 @@ public class EchoClient {
         System.out.println("Echo Response [" + echoValue + "]");
         System.out.println();
     }
-
+    
+    private void print(SOAPMessage message) throws SOAPException {
+		try {
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			
+			Transformer transformer = transformerFactory.newTransformer();
+			
+			Source sourceContent = message.getSOAPPart().getContent();
+			
+			StreamResult result = new StreamResult(System.out);
+			
+			transformer.transform(sourceContent, result);
+			
+			System.out.println();
+			
+			
+		} catch (TransformerConfigurationException e) {
+			e.printStackTrace();
+		} catch (TransformerFactoryConfigurationError e) {
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			e.printStackTrace();
+		}
+	}
+    
+    
+    
     public static void main(String[] args) throws Exception {
         String url = "http://localhost:8080/maven-framework/sws/services";
         if (args.length > 0) {
