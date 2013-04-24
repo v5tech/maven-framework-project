@@ -22,8 +22,7 @@
 		requestSuffix="Request" 
 		responseSuffix="Response"
 		targetNamespace="http://www.example.org/student">
-	<sws:xsd location="classpath:META-INF/schemas/student.xsd" />
-	
+		<sws:xsd location="classpath:META-INF/schemas/student.xsd" />
 	</sws:dynamic-wsdl>
 
 	<bean class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter">

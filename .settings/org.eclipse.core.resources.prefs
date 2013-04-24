@@ -1,7 +1,8 @@
-#Tue Apr 23 16:02:23 CST 2013
+#Wed Apr 24 11:12:07 CST 2013
 eclipse.preferences.version=1
 encoding//src/main/java=GBK
 encoding//src/main/java/com/fengjing/framework/jaxb/marshaller/JaxbMarshaller.java=UTF-8
+encoding//src/main/java/com/fengjing/framework/webservice/springws/client/saaj/StudentClientDetails.java=UTF-8
 encoding//src/main/java/com/fengjing/framework/webservice/springws/client/saaj/StudentDetailsClient.java=UTF-8
 encoding//src/main/resources=GBK
 encoding//src/main/resources/Hibernate4.sql=UTF-8
