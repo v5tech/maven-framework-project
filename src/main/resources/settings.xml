@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
@@ -52,7 +51,7 @@ under the License.
    | Default: ~/.m2/repository
   <localRepository>/path/to/local/repo</localRepository>
   -->
-  <localRepository>F:/.m2/repository</localRepository>
+  <localRepository>D:/developer/.m2/repository</localRepository>
   <!-- interactiveMode
    | This will determine whether maven prompts you when it needs input. If set to false,
    | maven will use a sensible default value, perhaps based on some other setting, for
@@ -102,6 +101,15 @@ under the License.
       <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
     </proxy>
     -->
+	<!--
+	<proxy>
+		<id>optional</id>
+		<active>true</active>
+		<protocol>http</protocol>
+		<host>127.0.0.1</host>
+		<port>8081</port>
+	</proxy>
+	-->
   </proxies>
 
   <!-- servers
@@ -133,13 +141,13 @@ under the License.
   <server>
     <id>nexus-releases</id>
     <username>admin</username>
-    <password>admin123</password>
+    <password>sysadmin</password>
   </server>
 
   <server>
     <id>nexus-snapshots</id>
     <username>admin</username>
-    <password>admin123</password>
+    <password>sysadmin</password>
   </server>
 
   </servers>
