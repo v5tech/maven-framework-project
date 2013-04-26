@@ -62,18 +62,83 @@
 	</distributionManagement>
 	
 	<properties>
+		
 		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+
 		<spring.version>3.2.1.RELEASE</spring.version>
 		<hibernate.version>4.2.0.Final</hibernate.version>
+		<hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
 		<struts2.version>2.3.8</struts2.version>
 		<struts.version>1.3.10</struts.version>
 		<mysql.version>5.1.24</mysql.version>
-		<spring.data.jpa.version>1.3.0.RELEASE</spring.data.jpa.version>
+		<spring.data.jpa.version>1.3.1.RELEASE</spring.data.jpa.version>
 		<junit.version>4.10</junit.version>
+		<druid.version>0.2.16</druid.version>
+		<spring.webflow.version>2.3.1.RELEASE</spring.webflow.version>
+		<jstl.version>1.2</jstl.version>
+		<javax.servlet.version>2.5</javax.servlet.version>
+		<jsp-api.version>2.1</jsp-api.version>
+		<jaxws.version>2.2.7</jaxws.version>
+		<jaxws.spring.version>1.8</jaxws.spring.version>
+		<burlap.version>2.1.12</burlap.version>
+		<hessian.version>3.1.5</hessian.version>
+		<log4j.version>1.2.17</log4j.version>
+		<p6spy.version>1.3</p6spy.version>
+		<log4jdbc.version>1.2</log4jdbc.version>
+		<slf4j.version>1.6.6</slf4j.version>
+		<aspectjweaver.version>1.7.0</aspectjweaver.version>
+		<velocity.version>1.4</velocity.version>
+		<jackson.version>1.9.7</jackson.version>
+		<rome.version>1.0.0</rome.version>
+		<mybatis.version>3.1.1</mybatis.version>
+		<mybatis.spring.version>1.1.1</mybatis.spring.version>
+		<dwr.version>3.0</dwr.version>
+		<ibatis.version>2.3.4.726</ibatis.version>
+		<poi.version>3.6</poi.version>
+		<jxl.version>2.6.3</jxl.version>
+		<itext.version>2.1.7</itext.version>
+		<spring.security.version>3.1.3.RELEASE</spring.security.version>
+		<xstream.version>1.4.4</xstream.version>
+		<jettison.version>1.3.3</jettison.version>
+		<xpp3.version>1.1.4c</xpp3.version>
+		<xmlpull.version>1.1.3.1</xmlpull.version>
+		<kxml2.version>2.3.0</kxml2.version>
+		<xom.version>1.2.5</xom.version>
+		<joda-time.version>2.2</joda-time.version>
+		<stax.version>1.2.0</stax.version>
+		<xfire.version>1.2.6</xfire.version>
+		<cxf.version>2.7.3</cxf.version>
+		<spring-ws.version>2.1.2.RELEASE</spring-ws.version>
+		<jdom.version>2.0.1</jdom.version>
+
 	</properties>
 	
 	<dependencies>
 		
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		
+		<!-- 数据库日志记录 -->		
+		<dependency>
+			<groupId>p6spy</groupId>
+			<artifactId>p6spy</artifactId>
+			<version>${p6spy.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4jdbc</groupId>
+			<artifactId>log4jdbc</artifactId>
+			<version>${log4jdbc.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -85,25 +150,24 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<version>${javax.servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
+			<version>${jsp-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- spring -->
-		
+		<!-- springframework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -140,10 +204,37 @@
 			<version>${spring.version}</version>
 		</dependency>
 		
+		<!-- Spring-Struts整合  -->
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-struts</artifactId>
+		  <version>${spring.version}</version>
+		  <exclusions>
+		  	<exclusion>
+		  		<groupId>struts</groupId>
+      			<artifactId>struts</artifactId>
+		  	</exclusion>
+		  </exclusions>
+		</dependency>
+
+		<!-- spring data jpa -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.data.jpa.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- spring-webflow -->
 		<dependency>
 		  <groupId>org.springframework.webflow</groupId>
 		  <artifactId>spring-webflow</artifactId>
-		  <version>2.3.1.RELEASE</version>
+		  <version>${spring.webflow.version}</version>
 		  <exclusions>
 		  	<exclusion>
 		  		<groupId>org.springframework</groupId>
@@ -172,11 +263,12 @@
 		  </exclusions>
 		</dependency>
 		
+		
 		<!-- JAX-WS --> 
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
-            <version>2.2.7</version>
+            <version>${jaxws.version}</version>
             <exclusions>
             	<exclusion>
             		<groupId>javax.xml.stream</groupId>
@@ -189,7 +281,7 @@
         <dependency>
             <groupId>org.jvnet.jax-ws-commons.spring</groupId>
             <artifactId>jaxws-spring</artifactId>
-            <version>1.8</version>
+            <version>${jaxws.spring.version}</version>
             <exclusions>
             	<exclusion>
             		<groupId>com.sun.xml.ws</groupId>
@@ -227,43 +319,17 @@
 		<dependency>
 		  <groupId>com.caucho</groupId>
 		  <artifactId>hessian</artifactId>
-		  <version>3.1.5</version>
+		  <version>${hessian.version}</version>
 		</dependency>
 		
 		<!-- Spring Burlap 远程方法调用-->
 		<dependency>
 		  <groupId>com.caucho</groupId>
 		  <artifactId>burlap</artifactId>
-		  <version>2.1.12</version>
+		  <version>${burlap.version}</version>
 		</dependency>
 		
-		<!-- Spring-Struts整合  -->
-		<dependency>
-		  <groupId>org.springframework</groupId>
-		  <artifactId>spring-struts</artifactId>
-		  <version>${spring.version}</version>
-		  <exclusions>
-		  	<exclusion>
-		  		<groupId>struts</groupId>
-      			<artifactId>struts</artifactId>
-		  	</exclusion>
-		  </exclusions>
-		</dependency>
-		
-		
-		<!-- spring data jpa -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>${spring.data.jpa.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-aop</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
+				
 		<!-- hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -274,7 +340,7 @@
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.0.Final</version>
+			<version>${hibernate.jpa.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -289,7 +355,6 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
 		
 		<!-- struts2 -->
 		<dependency>
@@ -333,31 +398,12 @@
 			<artifactId>struts2-convention-plugin</artifactId>
 			<version>${struts2.version}</version>
 		</dependency>
-		
+				
+		<!-- 阿里数据库连接池 -->
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-		
-		<!-- 数据库日志记录 -->		
-		<dependency>
-			<groupId>p6spy</groupId>
-			<artifactId>p6spy</artifactId>
-			<version>1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>log4jdbc</groupId>
-			<artifactId>log4jdbc4</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<!-- 数据库日志记录 -->		
-		
-		
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.6</version>
+		  <groupId>com.alibaba</groupId>
+		  <artifactId>druid</artifactId>
+		  <version>${druid.version}</version>
 		</dependency>
 		
 		<!-- Spring MVC 要用到 -->
@@ -365,18 +411,18 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.7.0</version>
+			<version>${aspectjweaver.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>velocity</groupId>
 			<artifactId>velocity-dep</artifactId>
-			<version>1.4</version>
+			<version>${velocity.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>velocity</groupId>
 			<artifactId>velocity</artifactId>
-			<version>1.4</version>
+			<version>${velocity.version}</version>
 		</dependency>
 
 		<!-- Jackson JSON Mapper -->
@@ -384,35 +430,34 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.7</version>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<!-- rss -->
 		<dependency>
 			<groupId>net.java.dev.rome</groupId>
 			<artifactId>rome</artifactId>
-			<version>1.0.0</version>
+			<version>${rome.version}</version>
 		</dependency>
-
 
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.1.1</version>
+			<version>${mybatis.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.1.1</version>
+			<version>${mybatis.spring.version}</version>
 		</dependency>
 
 		<!-- dwr -->
 		<dependency>
 		  <groupId>org.directwebremoting</groupId>
 		  <artifactId>dwr</artifactId>
-		  <version>3.0</version>
+		  <version>${dwr.version}</version>
 		</dependency>
 	
 		<dependency>
@@ -443,34 +488,35 @@
 		<dependency>
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis</artifactId>
-			<version>2.3.4.726</version>
+			<version>${ibatis.version}</version>
 		</dependency>
 		
 		<!-- poi excel -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>3.6</version>
+			<version>${poi.version}</version>
 		</dependency>
 
 		<!-- jxl excel -->
 		<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
-			<version>2.6.3</version>
+			<version>${jxl.version}</version>
 	    </dependency>
 	    
 	    <dependency>
 			<groupId>com.lowagie</groupId>
 			<artifactId>itext</artifactId>
-			<version>2.1.7</version>
+			<version>${itext.version}</version>
 	    </dependency>
 	    
+
 	    <!-- Spring Security -->
 	    <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.1.3.RELEASE</version>
+			<version>${spring.security.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-aop</artifactId>
@@ -482,7 +528,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>3.1.3.RELEASE</version>
+			<version>${spring.security.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-aop</artifactId>
@@ -494,7 +540,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>3.1.3.RELEASE</version>
+			<version>${spring.security.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-aop</artifactId>
@@ -506,7 +552,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>3.1.3.RELEASE</version>
+			<version>${spring.security.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-aop</artifactId>
@@ -514,66 +560,66 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- xml处理 -->
 		<dependency>
 		  <groupId>com.thoughtworks.xstream</groupId>
 		  <artifactId>xstream</artifactId>
-		  <version>1.4.4</version>
+		  <version>${xstream.version}</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>org.codehaus.jettison</groupId>
 		    <artifactId>jettison</artifactId>
-		    <version>1.3.3</version>
+		    <version>${jettison.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>xpp3</groupId>
 		  <artifactId>xpp3</artifactId>
-		  <version>1.1.4c</version>
+		  <version>${xpp3.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>xmlpull</groupId>
 		  <artifactId>xmlpull</artifactId>
-		  <version>1.1.3.1</version>
+		  <version>${xmlpull.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>kxml2</groupId>
 		  <artifactId>kxml2</artifactId>
-		  <version>2.3.0</version>
+		  <version>${kxml2.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>xom</groupId>
 		  <artifactId>xom</artifactId>
-		  <version>1.2.5</version>
+		  <version>${xom.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>joda-time</groupId>
 		  <artifactId>joda-time</artifactId>
-		  <version>2.2</version>
+		  <version>${joda-time.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>stax</groupId>
 		  <artifactId>stax</artifactId>
-		  <version>1.2.0</version>
+		  <version>${stax.version}</version>
 		</dependency>
 		
 		<!-- xfire -->
 		<dependency>
 	    	<groupId>org.codehaus.xfire</groupId>
 	    	<artifactId>xfire-spring</artifactId>
-	    	<version>1.2.6</version>
+	    	<version>${xfire.version}</version>
     	</dependency>
 		<dependency>
 	    	<groupId>org.codehaus.xfire</groupId>
 	    	<artifactId>xfire-java5</artifactId>
-	    	<version>1.2.6</version>
+	    	<version>${xfire.version}</version>
 	    	<exclusions>
 	    		<exclusion>
 	    			<groupId>org.apache.ws.commons</groupId>
@@ -586,27 +632,26 @@
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>2.7.3</version>
+			<version>${cxf.version}</version>
 		</dependency>
             
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>2.7.3</version>
+			<version>${cxf.version}</version>
 		</dependency>
 		
 		<!-- Spring-WS dependencies -->
-		
 		<dependency>
 		  <groupId>org.springframework.ws</groupId>
 		  <artifactId>spring-ws-security</artifactId>
-		  <version>2.1.2.RELEASE</version>
+		  <version>${spring-ws.version}</version>
 		</dependency>
 		        
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom</artifactId>
-            <version>2.0.1</version>
+            <version>${jdom.version}</version>
         </dependency>
         
 	</dependencies>
@@ -614,6 +659,7 @@
 	<build>
 		<finalName>maven-framework</finalName>
 		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -676,9 +722,7 @@
 		     
 		    <!-- 
 				jboss-as-maven-plugin
-				
 				mvn jboss-as:deploy
-				
 				mvn jboss-as:run
 			-->
 		   <plugin>
@@ -686,9 +730,7 @@
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.4.Final</version>
            </plugin>
-		     
-		     
-			
+		     			
 		   <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -743,7 +785,6 @@
 					     </plugin>
 						
 						
-						
 						<!-- 测试报告 -->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -778,6 +819,7 @@
 						        </rulesets>
 							</configuration>
 						</plugin>
+
 						<!-- 生成站点文件具体信息报告 -->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -786,7 +828,6 @@
 							<configuration>
 							</configuration>
 						</plugin>
-						
 						
 						<plugin>
 					        <groupId>org.apache.maven.plugins</groupId>
@@ -830,8 +871,6 @@
                 </configuration>
             </plugin>
 			
-			
-			<!-- Spring jax ws -->
 			<!-- http://jax-ws-commons.java.net/ -->
 			<plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
@@ -900,13 +939,7 @@
 		            </execution>
 		        </executions>
 		    </plugin>
-			
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxws-maven-plugin</artifactId>
-				<version>1.10</version>
-			</plugin>
-			
+						
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xmlbeans-maven-plugin</artifactId>
