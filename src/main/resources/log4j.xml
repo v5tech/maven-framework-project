@@ -37,7 +37,7 @@
 	<logger name="jdbc.sqlonly">
 		<level value="INFO" />
 	</logger>
-
+	
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
