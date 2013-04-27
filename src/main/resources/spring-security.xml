@@ -68,16 +68,29 @@
  	-->
  	
  	<!-- 2、使用user-service -->
- 	<http auto-config="true" access-denied-page="/403.jsp">
+ 	<http auto-config="true" access-denied-page="/WEB-INF/views/error/403.jsp">
+ 		
+ 		<!-- webservice匿名访问  -->
+ 		<!--  
+ 	    <intercept-url pattern="/service/hello**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 	    <intercept-url pattern="/remote/service**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 	    <intercept-url pattern="/*.ws**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 	    <intercept-url pattern="/ws/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 	    <intercept-url pattern="/sws/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 	    -->
  	    
- 	    <!-- 
+ 	    <!-- 需要admin权限访问 -->
+ 	    <intercept-url pattern="/druid/**" access="IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN" />
+ 	    <intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+ 	    
+ 	    <!-- 以下资源匿名访问 -->
+ 	    <intercept-url pattern="/bootstrap/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
  	    <intercept-url pattern="/login.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/loginfailed.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/logout.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED" /> 
-		-->
 		
-		<intercept-url pattern="/admin*" access="ROLE_ADMIN" />
+		<!-- 需要认证使用Remember me 的也可以访问-->
+		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY,IS_AUTHENTICATED_REMEMBERED" /> 
 		
 		<form-login login-page="/login.do" authentication-failure-url="/loginfailed.do"/>
 		<logout logout-success-url="/logout.do" delete-cookies="JSESSIONID" invalidate-session="true"/>
