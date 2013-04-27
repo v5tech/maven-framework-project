@@ -1,4 +1,4 @@
-#Wed Apr 24 11:12:07 CST 2013
+#Sat Apr 27 16:13:40 CST 2013
 eclipse.preferences.version=1
 encoding//src/main/java=GBK
 encoding//src/main/java/com/fengjing/framework/jaxb/marshaller/JaxbMarshaller.java=UTF-8
@@ -8,6 +8,7 @@ encoding//src/main/resources=GBK
 encoding//src/main/resources/Hibernate4.sql=UTF-8
 encoding//src/main/resources/jdbc_ibatis_mybatis.sql=UTF-8
 encoding//src/main/resources/spring_security.sql=UTF-8
+encoding//src/main/webapp/WEB-INF/views/contact.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/list.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/login.jsp=UTF-8
 encoding//src/test/java=GBK
