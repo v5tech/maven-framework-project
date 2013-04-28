@@ -107,11 +107,11 @@ body {
 		
 	</div> <!-- /container -->
 	
-	<div class="container-fluid">
-		<hr/>
-		<footer>
-		  <p align="center">&copy; maven-framework-project 2012</p>
-		</footer>
-	</div>	
+	<footer>
+		<div class="container-fluid">
+			<hr/>
+			<p align="center">&copy; maven-framework-project 2012</p>
+		</div>
+	</footer>
 </body>
 </html>

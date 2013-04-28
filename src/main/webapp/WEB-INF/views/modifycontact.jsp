@@ -117,6 +117,7 @@ body {
 	</table>  
 	</form:form>
 	-->
+	
 	<form:form method="post" action="${pageContext.request.contextPath }/add.do" commandName="model" cssClass="form-horizontal">
 	 	<form:errors path="*" cssClass="errorblock" element="div" />
 	 	<form:hidden path="id"/>
@@ -180,6 +181,13 @@ body {
 	            </div>
 		</fieldset>
 	</form:form>	
-	
+</div>
+
+<footer>
+	<div class="container-fluid">
+		<hr/>
+		<p align="center">&copy; maven-framework-project 2012</p>
+	</div>
+</footer>
 </body>
 </html>

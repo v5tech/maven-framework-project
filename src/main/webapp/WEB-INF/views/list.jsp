@@ -30,8 +30,8 @@ body {
 	margin: 0;
 }
 .pageinfo-view{
-	height:25px;
-	line-height: 25px;
+	height:28px;
+	line-height: 28px;
 }
 .infomation{
 	height: 12px;
@@ -46,6 +46,7 @@ body {
     border-radius: 15px 15px 15px 15px;
     display: inline-block;
     padding: 5px 14px;
+    line-height: 20px;
 }
 </style>
 </head>
@@ -163,14 +164,12 @@ body {
   </div>
 </div>
 
-
-
-<div class="container-fluid">
-	<hr/>
-	<footer>
-	  <p align="center">&copy; maven-framework-project 2012</p>
-	</footer>
-</div>
+<footer>
+	<div class="container-fluid">
+		<hr/>
+		<p align="center">&copy; maven-framework-project 2012</p>
+	</div>
+</footer>
 
 <script type="text/javascript">
 	function del(id,url){
