@@ -63,11 +63,11 @@
 	* 客户端访问:<em>[HelloXfireServiceClient.java](src/main/java/com/fengjing/framework/webservice/xfire/client/HelloXfireServiceClient.java)</em>
 18. 使用Spring WS编写基于契约优先的WebService 参照<em>[spring-ws-servlet.xml](src/main/resources/spring-ws-servlet.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)、[applicationContext.xml](src/main/resources/com/fengjing/framework/webservice/springws/client/sws/applicationContext.xml)</em>等配置
 	* 访问地址:
-		<em>[http://localhost:8080/maven-framework/sws/services/echo.wsdl](http://localhost:8080/maven-framework/sws/services/echo.wsdl)</em>
-		<em>[http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl](http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl)</em>
+		1. <em>[http://localhost:8080/maven-framework/sws/services/echo.wsdl](http://localhost:8080/maven-framework/sws/services/echo.wsdl)</em>
+		2. <em>[http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl](http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl)</em>
 	* 客户端访问
-		基于Spring WS方式的客户端调用<em>[StudentDetailsClient.java](src/main/java/com/fengjing/framework/webservice/springws/client/sws/StudentDetailsClient.java)</em>
-		基于SAAJ方式的客户端调用<em>[StudentDetailsClient.java](src/main/java/com/fengjing/framework/webservice/springws/client/saaj/StudentDetailsClient.java)</em>
+		1. 基于Spring WS方式的客户端调用<em>[StudentDetailsClient.java](src/main/java/com/fengjing/framework/webservice/springws/client/sws/StudentDetailsClient.java)</em>
+		2. 基于SAAJ方式的客户端调用<em>[StudentDetailsClient.java](src/main/java/com/fengjing/framework/webservice/springws/client/saaj/StudentDetailsClient.java)</em>
 19. 使用阿里Druid数据源 参照<em>[spring-data-jpa.xml](src/main/resources/spring-data-jpa.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)</em>
 	* 监控地址:[http://localhost:8080/maven-framework/druid/index.html](http://localhost:8080/maven-framework/druid/index.html)
 20. 使用Bootstrap框架美化页面
@@ -88,7 +88,7 @@
 	* log4jdbc要结合<em>log4j</em>来使用
 	* p6spy要结合<em>[spy.properties](src/main/resources/spy.properties)配置文件
 	* 注意查看<em>[log4j.xml](src/main/resources/log4j.xml)文件
-3. 鉴于配置方便这里将各持久化框架的数据源集中配置在[applicationContext.xml](src/main/resources/applicationContext.xml)文件中,其中spring jdbc、ibatis、mybatis,使用同一个数据库、同一个数据源、同一个事务管理
+3. 其中spring jdbc、ibatis、mybatis,使用同一个数据库
 4. 以上配置完成后您可采用一下方式运行该工程,详细使用方式请查看[pom](pom.xml)中的配置或者各插件的帮助文档
    * 跳过单元测试 <em>mvn -Dmaven.test.skip=true</em> 参照[http://maven.apache.org/surefire/maven-surefire-plugin/examples/skipping-test.html](http://maven.apache.org/surefire/maven-surefire-plugin/examples/skipping-test.html)
    * tomcat6 <em>mvn tomcat:run</em>
