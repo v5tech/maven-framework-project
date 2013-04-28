@@ -8,43 +8,41 @@
 	<version>0.0.1</version>
 
 	<name>maven-framework</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/sxyx2008/maven-framework-project</url>
 
 	
 	<!-- 问题解决信息 -->
 	<issueManagement>
-		<system>Linux</system>
-		<url>http://www.google.com.hk/</url>
+		<system>Github</system>
+        <url>https://github.com/sxyx2008/maven-framework-project/issues</url>
 	</issueManagement>
 	
 	<!-- 开发人员信息 -->
 	<developers>
 		<developer>
 			<id>fengjing</id>
-			<email>sxyx2008@gmail.com</email>
 			<name>fengjing</name>
+			<email>sxyx2008@gmail.com</email>
 			<organization>developer</organization>
 			<roles>
 				<role>softwareengineer</role>
 			</roles>
-			<timezone>8</timezone>
+			<timezone>+8</timezone>
 		</developer>
 	</developers>
 
-	<!--许可证 -->
 	<licenses>
 		<license>
-			<url>http://127.0.0.1:8080</url>
-			<comments>评论</comments>
-			<name>完全开源</name>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
 		</license>
 	</licenses>
 	
 	
 	<scm>
-		<connection>scm:svn:http://maven-framework-project.googlecode.com/svn/trunk/</connection>
-		<developerConnection>scm:svn:https://maven-framework-project.googlecode.com/svn/trunk/</developerConnection>
-		<url>https://code.google.com/p/maven-framework-project/</url>
+		<url>https://github.com/sxyx2008/maven-framework-project</url>
+		<connection>scm:git:git://github.com/sxyx2008/maven-framework-project.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:sxyx2008/maven-framework-project.git</developerConnection>
 	</scm>
 
 
