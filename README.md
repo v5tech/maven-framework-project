@@ -61,7 +61,18 @@
 17. Xfire集成Spring发布WebService 参照<em>[spring-xfire-servlet.xml](src/main/resources/spring-xfire-servlet.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)</em>配置
 	* 访问地址:<em>[http://localhost:8080/maven-framework/helloXfireService.ws?wsdl](http://localhost:8080/maven-framework/helloXfireService.ws?wsdl)</em>
 	* 客户端访问:<em>[HelloXfireServiceClient.java](src/main/java/com/fengjing/framework/webservice/xfire/client/HelloXfireServiceClient.java)</em>
-
+18. 使用Spring WS编写基于契约优先的WebService 参照<em>[spring-ws-servlet.xml](src/main/resources/spring-ws-servlet.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)、[applicationContext.xml](src/main/resources/com/fengjing/framework/webservice/springws/client/sws/applicationContext.xml)</em>等配置
+	* 访问地址:
+		<em>[http://localhost:8080/maven-framework/sws/services/echo.wsdl](http://localhost:8080/maven-framework/sws/services/echo.wsdl)</em>
+		<em>[http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl](http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl)</em>
+	* 客户端访问
+		基于Spring WS方式的客户端调用<em>[StudentDetailsClient.java](src/main/java/com/fengjing/framework/webservice/springws/client/sws/StudentDetailsClient.java)</em>
+		基于SAAJ方式的客户端调用<em>[StudentDetailsClient.java](src/main/java/com/fengjing/framework/webservice/springws/client/saaj/StudentDetailsClient.java)</em>
+19. 使用阿里Druid数据源 参照<em>[spring-data-jpa.xml](src/main/resources/spring-data-jpa.xml)、[web.xml](src/main/webapp/WEB-INF/web.xml)</em>
+	* 监控地址:[http://localhost:8080/maven-framework/druid/index.html](http://localhost:8080/maven-framework/druid/index.html)
+20. 使用Bootstrap框架美化页面
+	* [http://localhost:8080/maven-framework/](http://localhost:8080/maven-framework/)
+	* [http://localhost:8080/maven-framework/npage.do](http://localhost:8080/maven-framework/npage.do)
 
 
 
