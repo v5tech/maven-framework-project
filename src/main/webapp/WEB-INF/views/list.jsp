@@ -100,7 +100,6 @@ body {
 			<td><c:out value="${contact.email }"></c:out></td>
 			<td><c:out value="${contact.qq }"></c:out></td>
 			<td>
-				<a href="${pageContext.request.contextPath }/npage.do">新增</a>
 				<a href="${pageContext.request.contextPath }/modify/${contact.id }.do">修改</a>
 				<a href="#" onclick="del('${contact.id }','${pageContext.request.contextPath }/del/${contact.id }.do')">删除</a>
 			</td>
@@ -113,7 +112,8 @@ body {
 	
 	<div class="row-fluid">
 		
-		<div class="span3 pageinfo-view">
+		<div class="span4 pageinfo-view">
+			<a href="${pageContext.request.contextPath }/npage.do" class="json-btn">新增</a>
 			<a href="${pageContext.request.contextPath }/ajson.do" class="json-btn">查看json</a>
 			<a href="${pageContext.request.contextPath }/xml.do" class="json-btn">查看xml</a>
 		</div>
@@ -142,7 +142,7 @@ body {
 			</ul>
 		</div>
 		
-		<div class="span5" style="text-align: right;">
+		<div class="span4" style="text-align: right;">
 			<span class="label pageinfo-view">共${totalElements }条记录,<c:out value="${number }"></c:out>/<c:out value="${totalPages }"></c:out>,每页显示${size }条</span>
 		</div>
 	</div>
