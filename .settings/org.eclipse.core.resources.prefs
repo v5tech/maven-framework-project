@@ -1,4 +1,4 @@
-#Sat Apr 27 16:13:40 CST 2013
+#Sat Apr 27 17:50:01 CST 2013
 eclipse.preferences.version=1
 encoding//src/main/java=GBK
 encoding//src/main/java/com/fengjing/framework/jaxb/marshaller/JaxbMarshaller.java=UTF-8
@@ -15,3 +15,4 @@ encoding//src/test/java=GBK
 encoding//src/test/resources=GBK
 encoding/<project>=GBK
 encoding/README.md=UTF-8
+encoding/spy.log=UTF-8

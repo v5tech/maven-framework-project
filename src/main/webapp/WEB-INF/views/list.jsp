@@ -36,8 +36,16 @@ body {
 .infomation{
 	height: 12px;
 	line-height: 12px;
-	padding-top: 2px;
-	padding-left: 10px;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+.json-btn{
+	background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    padding: 5px 14px;
 }
 </style>
 </head>
@@ -94,7 +102,7 @@ body {
 			<td>
 				<a href="${pageContext.request.contextPath }/npage.do">新增</a>
 				<a href="${pageContext.request.contextPath }/modify/${contact.id }.do">修改</a>
-				<a href="${pageContext.request.contextPath }/del/${contact.id }.do">删除</a>
+				<a href="#" onclick="del('${contact.id }','${pageContext.request.contextPath }/del/${contact.id }.do')">删除</a>
 			</td>
 		</tr>
 		</c:forEach>
@@ -105,11 +113,12 @@ body {
 	
 	<div class="row-fluid">
 		
-		<div class="span2 pageinfo-view">
-			<a href="${pageContext.request.contextPath }/ajson.do">查看Json</a>
+		<div class="span3 pageinfo-view">
+			<a href="${pageContext.request.contextPath }/ajson.do" class="json-btn">查看json</a>
+			<a href="${pageContext.request.contextPath }/xml.do" class="json-btn">查看xml</a>
 		</div>
 		
-		<div class="span5">
+		<div class="span4">
 			<ul class="pager">
 				<c:if test="${number<=1}">
 					<li class="disabled"><a href="#">首页</a></li>
@@ -134,10 +143,28 @@ body {
 		</div>
 		
 		<div class="span5" style="text-align: right;">
-			<span class="label pageinfo-view">总共有${totalElements }条记录,当前是第<c:out value="${number }"></c:out>页,共<c:out value="${totalPages }"></c:out>页,每页显示${size }条</span>
+			<span class="label pageinfo-view">共${totalElements }条记录,<c:out value="${number }"></c:out>/<c:out value="${totalPages }"></c:out>,每页显示${size }条</span>
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div id="modifyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="modifyModalLabel">提示</h3>
+  </div>
+  <div class="modal-body">
+    <p id="delcontent"></p>
+  </div>
+  <div class="modal-footer">
+  	<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+  </div>
+</div>
+
+
+
 <div class="container-fluid">
 	<hr/>
 	<footer>
@@ -145,7 +172,15 @@ body {
 	</footer>
 </div>
 
-
+<script type="text/javascript">
+	function del(id,url){
+		$('#delcontent').text('你确定要删除id为'+id+'的记录吗?');
+		$('#modifyModal').modal('show');
+		$('.modal-footer .btn-primary').off('click').on('click',function(){
+			window.location.href=url;
+		});
+	}	
+</script>
 
 </body>
 </html>

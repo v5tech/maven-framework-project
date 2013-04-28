@@ -96,8 +96,8 @@ body {
 				    
 				    <div class="control-group">
 					    <div class="controls">
-					        <input name="submit" type="submit" value="submit" class="btn btn-primary"/>
-							<input name="reset" type="reset" value="reset" class="btn"/>
+							<button class="btn btn-primary" type="submit">确定</button>
+    						<button class="btn" type="reset">取消</button>
 				      	</div>
 			      	</div>
 			      	

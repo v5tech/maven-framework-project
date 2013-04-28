@@ -41,8 +41,8 @@ body {
 .infomation{
 	height: 12px;
 	line-height: 12px;
-	padding-top: 2px;
-	padding-left: 10px;
+	padding-top: 10px;
+	padding-left: 20px;
 }
 
 </style>
