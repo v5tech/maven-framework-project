@@ -6,6 +6,14 @@
 
 * 项目中的持久化框架sql语句的跟踪分别采用<strong>log4jdbc</strong>结合<strong>log4j</strong>和<strong>p6spy</strong>,在控制台可以看到完整的sql语句。
 
+* 项目中使用阿里Druid数据源
+
+* 项目中使用Spring Security做权限过滤
+
+* 项目中使用Twitter的Bootstrap框架做ui
+
+* 项目中使用Spring WS发布基于契约优先的WebService
+
 * Spring  JAX-WS请参考<em>[http://jax-ws-commons.java.net/](http://jax-ws-commons.java.net/)</em>
 
 * Spring整合dwr时dwr版本很关键,否则报莫名其妙的错误,具体的整合方式参照<em>[http://www.butterdev.com/category/dwr/](http://www.butterdev.com/category/dwr/)</em>
