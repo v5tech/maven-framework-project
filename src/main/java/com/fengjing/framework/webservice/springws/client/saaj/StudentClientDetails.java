@@ -37,13 +37,13 @@ public class StudentClientDetails {
     @Test
     public void sendRequesetBySOAPMessage() throws Exception{
     	
-    	/* SOAPæ¶ˆæ¯
+    	/* SOAPÏûÏ¢
          * <?xml version="1.0" encoding="UTF-8"?>
     	 * <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     	 * <SOAP-ENV:Header />
     	 * <SOAP-ENV:Body>
     	 * 			<tns:studentRequest xmlns:tns="http://www.example.org/student">
-    	 * 				<Name>ä½¿ç”¨SpringWSå‘å¸ƒæ¥è‡ªå¥‘çº¦ä¼˜å…ˆçš„WebService</Name>
+    	 * 				<Name>Ê¹ÓÃSpringWS·¢²¼À´×ÔÆõÔ¼ÓÅÏÈµÄWebService</Name>
     	 * 				<Subject1>1</Subject1>
     	 * 				<Subject2>3</Subject2>
     	 * 				<Subject3>5</Subject3>
@@ -52,60 +52,60 @@ public class StudentClientDetails {
     	 * </SOAP-ENV:Envelope>
          */
     	
-    	/****************åˆ›å»ºSOAPæ¶ˆæ¯*********************/
-    	//1ã€åˆ›å»ºMessageFactory
+    	/****************´´½¨SOAPÏûÏ¢*********************/
+    	//1¡¢´´½¨MessageFactory
     	MessageFactory messageFactory = MessageFactory.newInstance();
-    	//2ã€æ ¹æ®MessageFactoryåˆ›å»ºSOAPMessage
+    	//2¡¢¸ù¾İMessageFactory´´½¨SOAPMessage
     	SOAPMessage message = messageFactory.createMessage();
-    	//3ã€æ ¹æ®SOAPMessageè·å–SOAPPart
+    	//3¡¢¸ù¾İSOAPMessage»ñÈ¡SOAPPart
     	SOAPPart soapPart = message.getSOAPPart();
-    	//4ã€æ ¹æ®SOAPPartè·å–SOAPEnvelope
+    	//4¡¢¸ù¾İSOAPPart»ñÈ¡SOAPEnvelope
     	SOAPEnvelope soapEnvelope = soapPart.getEnvelope();
-    	//5ã€æ ¹æ®SOAPEnvelopeè·å–SOAPBody
+    	//5¡¢¸ù¾İSOAPEnvelope»ñÈ¡SOAPBody
     	SOAPBody soapBody = soapEnvelope.getBody();
     	
-    	//6ã€åˆ›å»ºSOAPæ¶ˆæ¯SOAPBodyElement
+    	//6¡¢´´½¨SOAPÏûÏ¢SOAPBodyElement
     	QName qname = new QName(NAMESPACE_URI, "studentRequest", PREFIX);
-    	//7ã€æ ¹æ®QNameåˆ›å»ºSOAPBodyElement
+    	//7¡¢¸ù¾İQName´´½¨SOAPBodyElement
     	SOAPBodyElement soapBodyElement = soapBody.addBodyElement(qname);
-    	soapBodyElement.addChildElement("Name").setValue("ä½¿ç”¨SpringWSå‘å¸ƒæ¥è‡ªå¥‘çº¦ä¼˜å…ˆçš„WebService");
+    	soapBodyElement.addChildElement("Name").setValue("Ê¹ÓÃSpringWS·¢²¼À´×ÔÆõÔ¼ÓÅÏÈµÄWebService");
     	soapBodyElement.addChildElement("Subject1").setValue("1");
     	soapBodyElement.addChildElement("Subject2").setValue("3");
     	soapBodyElement.addChildElement("Subject3").setValue("5");
     	message.saveChanges();
     	
-    	System.out.println("åˆ›å»ºçš„SOAPæ¶ˆæ¯ä½“ä¸º:");
+    	System.out.println("´´½¨µÄSOAPÏûÏ¢ÌåÎª:");
     	message.writeTo(System.out);
     	
     	
-    	/****************å‘é€SOAPæ¶ˆæ¯*********************/
-    	//1ã€åˆ›å»ºwsdl URLåœ°å€
+    	/****************·¢ËÍSOAPÏûÏ¢*********************/
+    	//1¡¢´´½¨wsdl URLµØÖ·
     	url = new URL("http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl");
     	/*
-    	 *2ã€åˆ›å»ºService
-    	 *ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºwsdl URLåœ°å€,
-    	 *ç¬¬äºŒä¸ªå‚æ•°WebService serviceçš„name StudentDetailsService å‚è§wsdlä¸­çš„<wsdl:service name="StudentDetailsService"> 
+    	 *2¡¢´´½¨Service
+    	 *µÚÒ»¸ö²ÎÊıÎªwsdl URLµØÖ·,
+    	 *µÚ¶ş¸ö²ÎÊıWebService serviceµÄname StudentDetailsService ²Î¼ûwsdlÖĞµÄ<wsdl:service name="StudentDetailsService"> 
     	 */
     	Service service=Service.create(url, new QName(NAMESPACE_URI, "StudentDetailsService"));
     	/*
-    	 * 3ã€åˆ›å»ºDispatch
-    	 * ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºportName å‚è§wsdlä¸­çš„<wsdl:port binding="tns:StudentDetailsSoap11" name="StudentDetailsSoap11">
-    	 * ç¬¬äºŒä¸ªå‚æ•°ä¸ºSOAPæ¶ˆæ¯æ˜¯å“ªç§ç±»å‹çš„ è¿™é‡Œæˆ‘ä»¬ä½¿ç”¨SOAPMessage
-    	 * ç¬¬ä¸‰ä¸ªå‚æ•°æ˜¯æŒ‡æ¶ˆæ¯æ­£æ–‡æ˜¯å“ªç§ç±»å‹çš„ MESSAGE provides access to entire protocol message, PAYLOAD to protocol message
+    	 * 3¡¢´´½¨Dispatch
+    	 * µÚÒ»¸ö²ÎÊıÎªportName ²Î¼ûwsdlÖĞµÄ<wsdl:port binding="tns:StudentDetailsSoap11" name="StudentDetailsSoap11">
+    	 * µÚ¶ş¸ö²ÎÊıÎªSOAPÏûÏ¢ÊÇÄÄÖÖÀàĞÍµÄ ÕâÀïÎÒÃÇÊ¹ÓÃSOAPMessage
+    	 * µÚÈı¸ö²ÎÊıÊÇÖ¸ÏûÏ¢ÕıÎÄÊÇÄÄÖÖÀàĞÍµÄ MESSAGE provides access to entire protocol message, PAYLOAD to protocol message
     	 */
     	Dispatch<SOAPMessage> dispatch = service.createDispatch(new QName(NAMESPACE_URI,"StudentDetailsSoap11"), SOAPMessage.class, Service.Mode.MESSAGE);
-    	//4ã€è°ƒç”¨dispatchçš„invokeæ–¹æ³• ä¼ é€’ä¸Šé¢æ„å»ºçš„SOAPMessageå‘é€webserviceè¯·æ±‚,è¿”å›çš„ä¹Ÿæ˜¯SOAPMessage
+    	//4¡¢µ÷ÓÃdispatchµÄinvoke·½·¨ ´«µİÉÏÃæ¹¹½¨µÄSOAPMessage·¢ËÍwebserviceÇëÇó,·µ»ØµÄÒ²ÊÇSOAPMessage
     	SOAPMessage soapMessage = dispatch.invoke(message);
-    	System.out.println("\nå“åº”çš„SOAPæ¶ˆæ¯ä½“ä¸º:");
+    	System.out.println("\nÏìÓ¦µÄSOAPÏûÏ¢ÌåÎª:");
     	soapMessage.writeTo(System.out);
     	
-    	//è§£ææ¶ˆæ¯
+    	//½âÎöÏûÏ¢
     	/*
     	 * <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     	 * 		<SOAP-ENV:Header/>
     	 * 			<SOAP-ENV:Body>
     	 * 				<ns2:studentResponse xmlns:ns2="http://www.example.org/student" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xml="http://www.w3.org/XML/1998/namespace">
-    	 * 				<ns2:Name>ä½¿ç”¨SpringWSå‘å¸ƒæ¥è‡ªå¥‘çº¦ä¼˜å…ˆçš„WebService</ns2:Name>
+    	 * 				<ns2:Name>Ê¹ÓÃSpringWS·¢²¼À´×ÔÆõÔ¼ÓÅÏÈµÄWebService</ns2:Name>
     	 * 				<ns2:Department>MCA</ns2:Department>
     	 * 				<ns2:Subject1>1</ns2:Subject1>
     	 * 				<ns2:Subject2>3</ns2:Subject2>
@@ -124,52 +124,52 @@ public class StudentClientDetails {
     	String subject3 = document.getElementsByTagNameNS(NAMESPACE_URI, "Subject3").item(0).getTextContent();
     	String total = document.getElementsByTagNameNS(NAMESPACE_URI, "Total").item(0).getTextContent();
     	
-    	System.out.println("\nè§£æåçš„æ•°æ®:\nName:"+name+"\nDepartment:"+department+"\nSubject1:"+subject1+"\nSubject2:"+subject2+"\nSubject3:"+subject3+"\nTotal:"+total);
+    	System.out.println("\n½âÎöºóµÄÊı¾İ:\nName:"+name+"\nDepartment:"+department+"\nSubject1:"+subject1+"\nSubject2:"+subject2+"\nSubject3:"+subject3+"\nTotal:"+total);
     	
     }
     
     
     
     /**
-     * ä½¿ç”¨PAYLOADæ–¹å¼ä¸WebæœåŠ¡äº¤äº’SOAPæ¶ˆæ¯ 
+     * Ê¹ÓÃPAYLOAD·½Ê½ÓëWeb·şÎñ½»»¥SOAPÏûÏ¢ 
      * @throws Exception
      */
     @Test
     public void sendRequesetByPAYLOAD() throws Exception{
-    	//1ã€æ‹¼æ¥payload
-    	String payload="<tns:studentRequest xmlns:tns=\"http://www.example.org/student\"><Name>ä½¿ç”¨SpringWSå‘å¸ƒæ¥è‡ªå¥‘çº¦ä¼˜å…ˆçš„WebService</Name><Subject1>1</Subject1><Subject2>3</Subject2><Subject3>5</Subject3></tns:studentRequest>";
+    	//1¡¢Æ´½Ópayload
+    	String payload="<tns:studentRequest xmlns:tns=\"http://www.example.org/student\"><Name>Ê¹ÓÃSpringWS·¢²¼À´×ÔÆõÔ¼ÓÅÏÈµÄWebService</Name><Subject1>1</Subject1><Subject2>3</Subject2><Subject3>5</Subject3></tns:studentRequest>";
     	
-    	//2ã€åˆ›å»ºwsdl URLåœ°å€
+    	//2¡¢´´½¨wsdl URLµØÖ·
     	url = new URL("http://localhost:8080/maven-framework/sws/services/studentDetails.wsdl");
     	/*
-    	 *3ã€åˆ›å»ºService
-    	 *ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºwsdl URLåœ°å€,
-    	 *ç¬¬äºŒä¸ªå‚æ•°WebService serviceçš„name StudentDetailsService å‚è§wsdlä¸­çš„<wsdl:service name="StudentDetailsService"> 
+    	 *3¡¢´´½¨Service
+    	 *µÚÒ»¸ö²ÎÊıÎªwsdl URLµØÖ·,
+    	 *µÚ¶ş¸ö²ÎÊıWebService serviceµÄname StudentDetailsService ²Î¼ûwsdlÖĞµÄ<wsdl:service name="StudentDetailsService"> 
     	 */
     	Service service=Service.create(url, new QName(NAMESPACE_URI, "StudentDetailsService"));
     	
     	/*
-    	 * 4ã€åˆ›å»ºDispatch
-    	 * ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºportName å‚è§wsdlä¸­çš„<wsdl:port binding="tns:StudentDetailsSoap11" name="StudentDetailsSoap11">
-    	 * ç¬¬äºŒä¸ªå‚æ•°ä¸ºSOAPæ¶ˆæ¯æ˜¯å“ªç§ç±»å‹çš„ è¿™é‡Œæˆ‘ä»¬ä½¿ç”¨Source
-    	 * ç¬¬ä¸‰ä¸ªå‚æ•°æ˜¯æŒ‡æ¶ˆæ¯æ­£æ–‡æ˜¯å“ªç§ç±»å‹çš„ MESSAGE provides access to entire protocol message, PAYLOAD to protocol message
+    	 * 4¡¢´´½¨Dispatch
+    	 * µÚÒ»¸ö²ÎÊıÎªportName ²Î¼ûwsdlÖĞµÄ<wsdl:port binding="tns:StudentDetailsSoap11" name="StudentDetailsSoap11">
+    	 * µÚ¶ş¸ö²ÎÊıÎªSOAPÏûÏ¢ÊÇÄÄÖÖÀàĞÍµÄ ÕâÀïÎÒÃÇÊ¹ÓÃSource
+    	 * µÚÈı¸ö²ÎÊıÊÇÖ¸ÏûÏ¢ÕıÎÄÊÇÄÄÖÖÀàĞÍµÄ MESSAGE provides access to entire protocol message, PAYLOAD to protocol message
     	 */
     	Dispatch<Source> dispatch = service.createDispatch(new QName(NAMESPACE_URI,"StudentDetailsSoap11"), Source.class, Service.Mode.PAYLOAD);
     	
     	/*
-    	 * 5ã€å‘é€æ¶ˆæ¯dispatch.invoke(new StreamSource(new StringReader(payload)));
+    	 * 5¡¢·¢ËÍÏûÏ¢dispatch.invoke(new StreamSource(new StringReader(payload)));
     	 */
     	Source source = dispatch.invoke(new StreamSource(new StringReader(payload)));
     	
-    	System.out.println("ä»¥Sourceæ–¹å¼æ‹¼æ¥çš„æ¶ˆæ¯ä¸º:"+payload);
+    	System.out.println("ÒÔSource·½Ê½Æ´½ÓµÄÏûÏ¢Îª:"+payload);
     	
     	
-    	System.out.println("********************è§£ææ¶ˆæ¯ä½“*********************");
-    	//1ã€åˆ›å»ºDOMResult
+    	System.out.println("********************½âÎöÏûÏ¢Ìå*********************");
+    	//1¡¢´´½¨DOMResult
     	DOMResult domResult = new DOMResult();  
-    	//2ã€å°†sourceè½¬åŒ–ä¸ºdomResult
+    	//2¡¢½«source×ª»¯ÎªdomResult
     	TransformerFactory.newInstance().newTransformer().transform(source, domResult);
-    	//3ã€è·å–èŠ‚ç‚¹ å¼ºåˆ¶è½¬åŒ–ä¸ºDocument è·å–æ•°æ®
+    	//3¡¢»ñÈ¡½Úµã Ç¿ÖÆ×ª»¯ÎªDocument »ñÈ¡Êı¾İ
     	Document document = (Document) domResult.getNode();
     	String name = document.getElementsByTagNameNS(NAMESPACE_URI, "Name").item(0).getTextContent();
     	String department = document.getElementsByTagNameNS(NAMESPACE_URI, "Department").item(0).getTextContent();
@@ -178,7 +178,7 @@ public class StudentClientDetails {
     	String subject3 = document.getElementsByTagNameNS(NAMESPACE_URI, "Subject3").item(0).getTextContent();
     	String total = document.getElementsByTagNameNS(NAMESPACE_URI, "Total").item(0).getTextContent();
     	
-    	System.out.println("\nè§£æåçš„æ•°æ®:\nName:"+name+"\nDepartment:"+department+"\nSubject1:"+subject1+"\nSubject2:"+subject2+"\nSubject3:"+subject3+"\nTotal:"+total);
+    	System.out.println("\n½âÎöºóµÄÊı¾İ:\nName:"+name+"\nDepartment:"+department+"\nSubject1:"+subject1+"\nSubject2:"+subject2+"\nSubject3:"+subject3+"\nTotal:"+total);
     }
     
 	

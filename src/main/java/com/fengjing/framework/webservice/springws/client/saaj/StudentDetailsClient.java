@@ -91,7 +91,7 @@ public class StudentDetailsClient {
         
         QName childName = new QName("Name");
         SOAPElement name = studentRequest.addChildElement(childName);
-        name.addTextNode("ä½¿ç”¨SpringWSå‘å¸ƒæ¥è‡ªå¥‘çº¦ä¼˜å…ˆçš„WebService");
+        name.addTextNode("Ê¹ÓÃSpringWS·¢²¼À´×ÔÆõÔ¼ÓÅÏÈµÄWebService");
         
         childName = new QName("Subject1");
         SOAPElement subject1 = studentRequest.addChildElement(childName);
@@ -138,7 +138,7 @@ public class StudentDetailsClient {
         SOAPBody soapBody =  message.getSOAPBody();
         SOAPElement studentResponse = (SOAPElement) soapBody.getChildElements(studentResponseName).next();
         
-        /********************ç¬¬ä¸€ç§æ–¹æ³•è§£æ***********************/
+        /********************µÚÒ»ÖÖ·½·¨½âÎö***********************/
         
         NodeList nodes = studentResponse.getChildNodes();
         
@@ -149,7 +149,7 @@ public class StudentDetailsClient {
             System.out.println(name+":"+value);
         }
         
-        /********************ç¬¬äºŒç§æ–¹æ³•è§£æ***********************/   
+        /********************µÚ¶şÖÖ·½·¨½âÎö***********************/   
         
         /*
         SOAPElement name = (SOAPElement) studentResponse.getChildElements(envelope.createName("Name", PREFIX, NAMESPACE_URI)).next();

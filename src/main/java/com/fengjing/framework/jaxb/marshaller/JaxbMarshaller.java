@@ -18,9 +18,9 @@ public class JaxbMarshaller {
 	@Test
 	public void student2xml() throws JAXBException{
 		JAXBContext context=JAXBContext.newInstance(Student.class);
-		Student student=new Student("admin", 18, "é™•è¥¿è¥¿å®‰", new ClassRoom("classroom", "ä¸‰å¹´äºŒç­"));
+		Student student=new Student("admin", 18, "ÉÂÎ÷Î÷°²", new ClassRoom("classroom", "ÈıÄê¶ş°à"));
 		Marshaller marshaller = context.createMarshaller();
-		//è¨­ç½®ä¸è¼¸å‡º<?xml version="1.0" encoding="UTF-8" standalone="yes"?>ä¿¡æ¯
+		//ÔOÖÃ²»İ”³ö<?xml version="1.0" encoding="UTF-8" standalone="yes"?>ĞÅÏ¢
 		//marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
 		marshaller.marshal(student, System.out);
 	}
@@ -28,13 +28,13 @@ public class JaxbMarshaller {
 	@Test
 	public void classroom2xml() throws JAXBException{
 		JAXBContext context=JAXBContext.newInstance(Student.class);
-		ClassRoom classRoom=new ClassRoom("classroom", "ä¸‰å¹´äºŒç­");
+		ClassRoom classRoom=new ClassRoom("classroom", "ÈıÄê¶ş°à");
 		Student student;
 		
 		List<Student> students=new ArrayList<Student>();
 		
 		for (int i = 1; i <= 10; i++) {
-			student=new Student("admin", 18, "é™•è¥¿è¥¿å®‰");
+			student=new Student("admin", 18, "ÉÂÎ÷Î÷°²");
 			students.add(student);
 		}
 		classRoom.setStudents(students);
