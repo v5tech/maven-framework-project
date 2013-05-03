@@ -37,6 +37,22 @@
 	<logger name="jdbc.sqlonly">
 		<level value="INFO" />
 	</logger>
+	<!--  
+	<logger name="org.apache.shiro">
+		<level value="TRACE" />
+	</logger>
+	
+	<logger name="org.apache.shiro.util.ThreadContext">
+		<level value="WARN" />
+	</logger>
+	
+	<logger name="org.apache.shiro.cache.ehcache.EhCache">
+		<level value="WARN" />
+	</logger>
+	-->
+	<logger name="com.fengjing.framework.shiro">
+		<level value="INFO" />
+	</logger>
 	
 	<root>
 		<priority value="warn" />
