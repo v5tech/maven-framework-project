@@ -1,7 +1,5 @@
 package com.fengjing.framework.shiro;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
@@ -14,12 +12,19 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springside.modules.utils.Exceptions;
+
+
+/**
+ * ShiroAuthController负责打开登录页面(GET请求)和登录出错页面(POST请求)
+ * 真正登录的POST请求由Filter完成
+ * @author scott
+ *
+ */
 
 @Controller
 @RequestMapping(value="/shiro")
@@ -29,53 +34,49 @@ public class ShiroAuthController {
 	
 	private static final String LOGIN_PAGE = "shiro/login";
 	private static final String unauthorizedUrl = "error/401";
-
+	
+	
+	/**
+	 * 负责打开登录页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/login")
 	public String login(HttpServletRequest request) {
 		return LOGIN_PAGE;
 	}
 	
+	/**
+	 * 负责打开未授权页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/unauthorized")
 	public String unauthorized(HttpServletRequest request) {
 		return unauthorizedUrl;
 	}
 	
-	
-	@RequestMapping(method = { RequestMethod.GET, RequestMethod.HEAD })
-	@ResponseBody
-	public String loginDialog(HttpServletRequest request) {
-		return "会话超时，请重新登录。";
-	}
-
-	@RequestMapping(value = "/timeout", method = { RequestMethod.GET })
-	public String timeout() {
-		return LOGIN_PAGE;
-	}
-	
-	
-	@RequestMapping(value = "/login/success",method = {RequestMethod.GET})
-	@ResponseBody
+	@RequestMapping(value = "/login/success")
 	public String loginin(HttpServletRequest request) {
 		Subject subject = SecurityUtils.getSubject();
 		Object user = subject.getPrincipal();
 		request.getSession().setAttribute(SecurityConstants.LOGIN_USER, user);
 		return "登录成功!";
 	}
-
+	
+	/**
+	 * 登录出错页面(POST请求)
+	 * @param username
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public String loginfail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String username,@ModelAttribute(value="map")Map<String, Object> map, HttpServletRequest request) {
+	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String username, Model model, HttpServletRequest request) {
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
 		String msg = parseException(request);
-		map.put("msg", msg);
-		map.put("username", username);
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, msg);
 		return LOGIN_PAGE;
-	}
-	
-	
-	@RequestMapping(method = { RequestMethod.POST, RequestMethod.HEAD })
-	@ResponseBody
-	public String failmsg(HttpServletRequest request) {
-		String msg = parseException(request);
-		return msg;
 	}
 	
 	private String parseException(HttpServletRequest request) {
