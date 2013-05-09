@@ -29,6 +29,10 @@
 		<beans:property name="driverClassName" value="${log4jdbc.driverClassName}"></beans:property>
 	</beans:bean>
 	
+	<!-- Spring Security初始化数据导入 -->
+	<jdbc:initialize-database data-source="securitydataSource">
+ 		<jdbc:script location="classpath:spring_security.sql" encoding="UTF-8"/>
+ 	</jdbc:initialize-database>
 	
  	<beans:bean id="securityjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
  		<beans:property name="dataSource" ref="securitydataSource"></beans:property>

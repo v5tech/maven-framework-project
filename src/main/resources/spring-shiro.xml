@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/jdbc 
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+	default-lazy-init="true">
+	<description>Shiro安全配置</description>
+	
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<!-- 扫描注入com.fengjing.framework.shiro包下仅包含@Controller注解的bean -->
+	<context:component-scan base-package="com.fengjing.framework.shiro">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="jdbcRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+	
+	<bean id="shiroDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${log4jdbc.driverClassName}"/>
+        <property name="url" value="${shiro.log4jdbc.jdbc.url}"/>
+       <property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+    </bean>
+	
+	<!--  
+	<bean id="bootstrapDataPopulator" class="com.fengjing.framework.shiro.BootstrapDataPopulator">
+        <property name="dataSource" ref="shiroDataSource"/>
+    </bean>
+	-->
+	
+	<!-- Apache Shiro初始化数据导入 -->
+	<jdbc:initialize-database data-source="shiroDataSource">
+ 		<jdbc:script location="classpath:shiro.sql" encoding="UTF-8"/>
+ 	</jdbc:initialize-database>
+	
+	<!-- 項目自定义的Realm -->
+	<bean id="jdbcRealm" class="com.fengjing.framework.shiro.SimpleJdbcRealm" depends-on="captchaService">
+		<property name="name" value="jdbcRealm"/>
+        <property name="dataSource" ref="shiroDataSource"/>
+        <property name="imageCaptchaService" ref="captchaService"></property>
+        
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <property name="hashAlgorithmName" value="SHA-256"/>
+                <property name="storedCredentialsHexEncoded" value="false"/>
+            </bean>
+        </property>
+        
+	</bean>
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/shiro/login.do" />
+		<property name="successUrl" value="/index.jsp" />
+		<property name="unauthorizedUrl" value="/shiro/unauthorized.do"/>
+		
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="captchaFormAuthenticationFilter"/>
+			</map>
+        </property>
+		
+		<property name="filterChainDefinitions">
+			<value>
+				/jcaptcha.jpg = anon
+				/bootstrap/** = anon
+				/shiro/timeout.do = anon
+				/shiro/login.do = authc
+				/logout = logout
+				/admin/** = roles[admin]
+				/** = user
+			</value>
+		</property>
+	</bean>
+
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:META-INF/ehcache-shiro.xml" />
+	</bean>
+	
+	<bean id="captchaFormAuthenticationFilter" class="com.fengjing.framework.shiro.CaptchaFormAuthenticationFilter"/>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	
+	<!-- 支持 Shiro对Controller的方法级AOP安全控制 begin-->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    	<property name="securityManager" ref="securityManager"/>
+	</bean>
+	<!-- 支持 Shiro对Controller的方法级AOP安全控制 end  -->  
+	
+</beans>

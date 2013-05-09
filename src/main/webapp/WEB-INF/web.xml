@@ -21,7 +21,6 @@
         </listener-class>
     </listener>
 	
-	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -36,6 +35,7 @@
 	</context-param>
 	
 	<!-- Spring Security -->
+	<!--  
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -43,6 +43,23 @@
  
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	-->
+	
+	<!-- Apache Shiro -->
+	
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
@@ -135,6 +152,16 @@
 	  <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	
+	<!-- Jcaptcha -->
+	<servlet>
+		<servlet-name>jcaptcha</servlet-name>
+		<servlet-class>com.fengjing.framework.jcaptcha.JcaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jcaptcha</servlet-name>
+		<url-pattern>/jcaptcha.jpg</url-pattern>
+	</servlet-mapping>	
 	
 	
 	<!-- Druid内置提供了一个StatViewServlet用于展示阿里Druid数据源的统计信息。 -->
@@ -246,6 +273,11 @@
 	</session-config>
 	
 	<!-- SpringMVC异常处理页面 -->
+	
+	<error-page>
+		<error-code>401</error-code>
+		<location>/WEB-INF/views/error/401.jsp</location>
+	</error-page>
 	
 	<error-page>
 		<error-code>404</error-code>

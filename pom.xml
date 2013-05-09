@@ -83,7 +83,6 @@
 		<log4j.version>1.2.17</log4j.version>
 		<p6spy.version>1.3</p6spy.version>
 		<log4jdbc.version>1.2</log4jdbc.version>
-		<slf4j.version>1.6.6</slf4j.version>
 		<aspectjweaver.version>1.7.0</aspectjweaver.version>
 		<velocity.version>1.4</velocity.version>
 		<jackson.version>1.9.7</jackson.version>
@@ -109,7 +108,9 @@
 		<cxf.version>2.7.3</cxf.version>
 		<spring-ws.version>2.1.2.RELEASE</spring-ws.version>
 		<jdom.version>2.0.1</jdom.version>
-
+		<jcaptcha.version>1.0-RC6</jcaptcha.version>
+		<commons-codec.version>1.7</commons-codec.version>
+		<slf4j.version>1.7.5</slf4j.version>
 	</properties>
 	
 	<dependencies>
@@ -119,6 +120,36 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+		
+		<!-- jcaptcha验证码 -->
+		<dependency>
+			<groupId>com.octo.captcha</groupId>
+			<artifactId>jcaptcha-all</artifactId>
+			<version>${jcaptcha.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache</artifactId>
+				</exclusion>	
+			</exclusions>
+		</dependency>	
+		
 		
 		<!-- 数据库日志记录 -->		
 		<dependency>
@@ -130,12 +161,6 @@
 			<groupId>log4jdbc</groupId>
 			<artifactId>log4jdbc</artifactId>
 			<version>${log4jdbc.version}</version>
-		</dependency>
-	
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 
 		<dependency>

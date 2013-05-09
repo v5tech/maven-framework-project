@@ -17,6 +17,7 @@
     http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	<context:annotation-config/>
 	
+	<import resource="spring-jcaptcha.xml"/>
 	<import resource="spring-data-jpa.xml"/>
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-ibatis.xml"/>
@@ -26,7 +27,8 @@
 	<import resource="spring-mybatis.xml"/>
 	<import resource="spring-struts.xml"/>
 	<import resource="spring-struts2-servlet.xml"/>
-	<import resource="spring-security.xml"/> 
+	<!-- <import resource="spring-security.xml"/> --> 
+	<import resource="spring-shiro.xml"/> 
 	<import resource="spring-jax-ws-servlet.xml"/> 
 	<import resource="spring-xfire-servlet.xml"/> 
 	<import resource="spring-cxf-servlet.xml"/> 
@@ -36,18 +38,9 @@
  		<jdbc:script location="classpath:jdbc_ibatis_mybatis.sql" encoding="UTF-8"/>
  	</jdbc:initialize-database>
 	
-	
-	<!-- Spring Security初始化数据导入 -->
-	<jdbc:initialize-database data-source="securitydataSource">
- 		<jdbc:script location="classpath:spring_security.sql" encoding="UTF-8"/>
- 	</jdbc:initialize-database>
- 	
-	
 	<!-- Hibernate4初始化数据导入 -->
 	<jdbc:initialize-database data-source="hibernate4DataSource">
  		<jdbc:script location="classpath:Hibernate4.sql" encoding="UTF-8"/>
  	</jdbc:initialize-database>
-	
-	
-	
+		
 </beans>
