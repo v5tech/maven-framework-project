@@ -23,8 +23,6 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 public class SimpleJdbcRealm extends JdbcRealm {
 
     private static final Logger log = LoggerFactory.getLogger(SimpleJdbcRealm.class);
-    
-    protected static final String authenticationQuery = "select password from users where username = ?";
 
 	protected ImageCaptchaService imageCaptchaService; 
     

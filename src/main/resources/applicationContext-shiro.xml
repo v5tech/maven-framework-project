@@ -74,7 +74,7 @@
 				/shiro/login.do = authc
 				/logout = logout
 				/admin/** = roles[Admin]
-				/druid/** = roles[Admin],perms[user:view]
+				/druid/** = perms[user:view]
 				/** = user
 			</value>
 		</property>
