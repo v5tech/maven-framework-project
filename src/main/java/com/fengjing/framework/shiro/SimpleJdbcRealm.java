@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.sql.DataSource;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
@@ -14,10 +12,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.JdbcUtils;
 import org.slf4j.Logger;
@@ -25,21 +20,11 @@ import org.slf4j.LoggerFactory;
 
 import com.octo.captcha.service.image.ImageCaptchaService;
 
-public class SimpleJdbcRealm extends AuthorizingRealm {
+public class SimpleJdbcRealm extends JdbcRealm {
 
     private static final Logger log = LoggerFactory.getLogger(SimpleJdbcRealm.class);
     
     protected static final String authenticationQuery = "select password from users where username = ?";
-    
-    private DataSource dataSource;
-    
-    public DataSource getDataSource() {
-		return dataSource;
-	}
-
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 
 	protected ImageCaptchaService imageCaptchaService; 
     
@@ -136,13 +121,4 @@ public class SimpleJdbcRealm extends AuthorizingRealm {
         return password;
     }
     
-	/**
-	 * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
-	 */
-	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-		return info;
-	}
-
 }

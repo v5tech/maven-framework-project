@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +63,21 @@ body {
       </a>
       <a href="#" class="brand"><strong>maven-framework-project</strong></a>
       <div class="nav-collapse">
+      	<p class="navbar-text pull-right">
+		   		<shiro:authenticated>
+		   			<shiro:principal/>
+		   			拥有的角色[<shiro:hasRole name="Admin">管理员</shiro:hasRole>
+		   			<shiro:hasRole name="User">普通用户</shiro:hasRole>]
+		   			拥有的权限[<shiro:hasPermission name="user:edit">编辑</shiro:hasPermission>
+		   			<shiro:hasPermission name="user:view">查看</shiro:hasPermission>]
+		   			<a href="${pageContext.request.contextPath }/logout">退出</a>
+		   		</shiro:authenticated>
+		   		
+		   		<shiro:notAuthenticated>
+		   			<a href="${pageContext.request.contextPath }/shiro/login.do">登录</a>
+		   		</shiro:notAuthenticated>
+		   		
+		   </p>
         <ul class="nav">
           <li class="active"><a href="#">首页</a></li>
           <li><a href="#about">关于</a></li>
@@ -101,8 +117,14 @@ body {
 			<td><c:out value="${contact.email }"></c:out></td>
 			<td><c:out value="${contact.qq }"></c:out></td>
 			<td>
-				<a href="${pageContext.request.contextPath }/modify/${contact.id }.do">修改</a>
-				<a href="#" onclick="del('${contact.id }','${pageContext.request.contextPath }/del/${contact.id }.do')">删除</a>
+				<shiro:hasPermission name="user:edit">
+					<a href="${pageContext.request.contextPath }/modify/${contact.id }.do">修改</a>
+					<a href="#" onclick="del('${contact.id }','${pageContext.request.contextPath }/del/${contact.id }.do')">删除</a>
+				</shiro:hasPermission>
+				<shiro:lacksPermission name="user:edit">
+					<a>修改</a>
+					<a>删除</a>
+				</shiro:lacksPermission>
 			</td>
 		</tr>
 		</c:forEach>

@@ -27,15 +27,9 @@
 	<bean id="shiroDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${log4jdbc.driverClassName}"/>
         <property name="url" value="${shiro.log4jdbc.jdbc.url}"/>
-       <property name="username" value="${username}"></property>
+        <property name="username" value="${username}"></property>
 		<property name="password" value="${password}"></property>
     </bean>
-	
-	<!--  
-	<bean id="bootstrapDataPopulator" class="com.fengjing.framework.shiro.BootstrapDataPopulator">
-        <property name="dataSource" ref="shiroDataSource"/>
-    </bean>
-	-->
 	
 	<!-- Apache Shiro初始化数据导入 -->
 	<jdbc:initialize-database data-source="shiroDataSource">
@@ -47,7 +41,7 @@
 		<property name="name" value="jdbcRealm"/>
         <property name="dataSource" ref="shiroDataSource"/>
         <property name="imageCaptchaService" ref="captchaService"></property>
-        
+        <property name="permissionsLookupEnabled" value="true"></property>
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
                 <property name="hashAlgorithmName" value="SHA-256"/>
@@ -79,7 +73,8 @@
 				/shiro/timeout.do = anon
 				/shiro/login.do = authc
 				/logout = logout
-				/admin/** = roles[admin]
+				/admin/** = roles[Admin]
+				/druid/** = roles[Admin],perms[user:view]
 				/** = user
 			</value>
 		</property>

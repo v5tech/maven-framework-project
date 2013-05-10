@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,6 +45,8 @@ public class ContactController {
 	 * @param result
 	 * @return
 	 */
+	@RequiresRoles("Admin")
+	@RequiresPermissions("user:edit")
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String addContact(@ModelAttribute(value="model") @Valid Contact contact,BindingResult result){
 		
@@ -72,6 +77,7 @@ public class ContactController {
 	 * @param result
 	 * @return
 	 */
+	@RequiresRoles(value = { "Admin", "User" }, logical = Logical.OR)
 	@RequestMapping(value="/ajson",method=RequestMethod.GET)
 	public @ResponseBody List<Contact> alltoJson(@ModelAttribute(value="contact") Contact contact,BindingResult result){
 		List<Contact> contacts = contactService.listAll();
@@ -85,6 +91,7 @@ public class ContactController {
 	 * @param id
 	 * @return
 	 */
+	@RequiresRoles("User")
 	@RequestMapping(value="/modify/{id}")
 	public ModelAndView modifyPage(@PathVariable(value="id")Integer id){
 		Contact contact = contactService.findById(id);
@@ -132,6 +139,8 @@ public class ContactController {
 	 * @return
 	 */
 	@RequestMapping(value="/del/{id}")
+	@RequiresRoles("Admin")
+	@RequiresPermissions("user:edit")
 	public String del(@PathVariable(value="id")int id){
 		contactService.delete(id);
 		return "redirect:/listAll/0/100.do";
@@ -144,6 +153,7 @@ public class ContactController {
 	 * @param id
 	 * @return
 	 */
+	@RequiresRoles(value = { "Admin", "User" }, logical = Logical.OR)
 	@RequestMapping(value="/listAll/{age}/{pageNumber}/{pageSize}")
 	public ModelAndView findByAgeLessThanOrderByIdDesc(@PathVariable(value="pageNumber") int pageNumber,@PathVariable(value="pageSize") int pageSize,@PathVariable(value="age") int age){
 		

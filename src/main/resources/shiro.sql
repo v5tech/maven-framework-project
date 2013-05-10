@@ -12,7 +12,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 
-insert  into `roles`(`role_name`) values ('role1'),('role2');
+insert  into `roles`(`role_name`) values ('Admin'),('User');
 
 UNLOCK TABLES;
 
@@ -26,7 +26,7 @@ CREATE TABLE `roles_permissions` (
 
 LOCK TABLES `roles_permissions` WRITE;
 
-insert  into `roles_permissions`(`role_name`,`permission`) values ('role1','permission1'),('role1','permission2'),('role2','permission1');
+insert  into `roles_permissions`(`role_name`,`permission`) values ('Admin','user:view'),('Admin','user:edit'),('User','user:view');
 
 UNLOCK TABLES;
 
@@ -40,7 +40,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 
-insert  into `user_roles`(`username`,`role_name`) values ('user1','role1'),('user1','role2'),('user2','role2');
+insert  into `user_roles`(`username`,`role_name`) values ('admin','Admin'),('admin','User'),('user','User');
 
 UNLOCK TABLES;
 
@@ -54,6 +54,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 
-insert  into `users`(`username`,`PASSWORD`) values ('user1','+XdzYjFKiLoNffcB7Wvr0KNXe+M77+crq8QMOd5lqx8='),('user2','KmOs0a5jkpeDq5F5tNEjVish+AkcBdLvTw+thmq1x8k=');
+insert  into `users`(`username`,`PASSWORD`) values ('admin','2CSU8F1pF7oC96qilonMtES7c/IDgIdssF0fN1N7eJI='),('user','4XLFZU28EteM4YUKT3lWum5aPSrEDwkl/G1pHrtU9r8=');
 
 UNLOCK TABLES;
