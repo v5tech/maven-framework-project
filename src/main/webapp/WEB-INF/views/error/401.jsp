@@ -16,11 +16,9 @@
   <body>
   	<div align="center">
     <h1>Apache Shiro Access Denied</h1>
-    <hr>
     <div class="error">
-      	访问被拒绝<br>
+      	<h1>访问被拒绝</h1>
     </div>
-    <hr>
     </div>
   </body>
 </html>

@@ -2,12 +2,11 @@ package com.fengjing.framework.shiro;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +40,7 @@ public class ShiroAuthController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/login",method = RequestMethod.GET)
 	public String login(HttpServletRequest request) {
 		return LOGIN_PAGE;
 	}
@@ -56,14 +55,6 @@ public class ShiroAuthController {
 		return unauthorizedUrl;
 	}
 	
-	@RequestMapping(value = "/login/success")
-	public String loginin(HttpServletRequest request) {
-		Subject subject = SecurityUtils.getSubject();
-		Object user = subject.getPrincipal();
-		request.getSession().setAttribute(SecurityConstants.LOGIN_USER, user);
-		return "µÇÂ¼³É¹¦!";
-	}
-	
 	/**
 	 * µÇÂ¼³ö´íÒ³Ãæ(POSTÇëÇó)
 	 * @param username
@@ -71,11 +62,11 @@ public class ShiroAuthController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String username, Model model, HttpServletRequest request) {
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
 		String msg = parseException(request);
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, msg);
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
 		return LOGIN_PAGE;
 	}
 	
@@ -90,10 +81,12 @@ public class ShiroAuthController {
 			LOG.error(Exceptions.getStackTraceAsString(e));
 		} 
 		
-		String msg = "ÆäËû´íÎó£¡";
+		String msg = "Î´Öª´íÎó£¡";
 		if (error != null) {
-			if (error.equals(UnknownAccountException.class))
-				msg = "Î´ÖªÕÊºÅ´íÎó£¡";
+			if (error.equals(AccountException.class))
+				msg = "ÕÊºÅ²»´æÔÚ£¡";
+			else if (error.equals(UnknownAccountException.class))
+				msg = "ÕÊºÅ²»´æÔÚ£¡";
 			else if (error.equals(IncorrectCredentialsException.class))
 				msg = "ÃÜÂë´íÎó£¡";
 			else if (error.equals(IncorrectCaptchaException.class))

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
@@ -12,7 +14,10 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.realm.jdbc.JdbcRealm;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.JdbcUtils;
 import org.slf4j.Logger;
@@ -20,12 +25,23 @@ import org.slf4j.LoggerFactory;
 
 import com.octo.captcha.service.image.ImageCaptchaService;
 
-public class SimpleJdbcRealm extends JdbcRealm {
+public class SimpleJdbcRealm extends AuthorizingRealm {
 
     private static final Logger log = LoggerFactory.getLogger(SimpleJdbcRealm.class);
     
+    protected static final String authenticationQuery = "select password from users where username = ?";
     
-    protected ImageCaptchaService imageCaptchaService; 
+    private DataSource dataSource;
+    
+    public DataSource getDataSource() {
+		return dataSource;
+	}
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+	protected ImageCaptchaService imageCaptchaService; 
     
     public ImageCaptchaService getImageCaptchaService() {
 		return imageCaptchaService;
@@ -34,7 +50,10 @@ public class SimpleJdbcRealm extends JdbcRealm {
 	public void setImageCaptchaService(ImageCaptchaService imageCaptchaService) {
 		this.imageCaptchaService = imageCaptchaService;
 	}
-
+	
+	/**
+	 * 认证回调函数, 登录时调用.
+	 */
 	@Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         
@@ -45,7 +64,6 @@ public class SimpleJdbcRealm extends JdbcRealm {
 	    		throw new IncorrectCaptchaException("验证码错误！");
 	    	}
     	} catch (Exception e) {
-	    	// session如果没有刷新，validateResponseForID会抛出com.octo.captcha.service.CaptchaServiceException的异常
 	    	throw new IncorrectCaptchaException("验证码错误！");
     	}
         
@@ -117,5 +135,14 @@ public class SimpleJdbcRealm extends JdbcRealm {
 
         return password;
     }
+    
+	/**
+	 * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
+	 */
+	@Override
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		return info;
+	}
 
 }

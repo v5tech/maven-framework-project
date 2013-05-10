@@ -4,11 +4,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 
-public class CaptchaFormAuthenticationFilter extends BaseFormAuthenticationFilter {
+public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 
-	private String captchaParam = SecurityConstants.CAPTCHA_KEY;
+	private final static String captchaParam = "captcha_key";
 
 	public String getCaptchaParam() {
 		return captchaParam;

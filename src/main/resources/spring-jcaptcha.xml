@@ -7,6 +7,12 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
+	
+	<!--
+	<bean id="captchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService"/>
+	-->
+	
+	
 	<bean id="captchaService" class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
 		<constructor-arg index="0" ref="imageEngine"/>
 		<constructor-arg type="int" index="1" value="180"/>
