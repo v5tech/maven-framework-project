@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<jmxConfigurator />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/maven-framework.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/maven-framework.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- project default level -->
+	
+	<logger name="com.fengjing.framework" level="INFO" />
+	
+	<logger name="org.springframework.data" level="INFO" />
+
+	<logger name="org.springframework.core" level="INFO" />
+
+	<logger name="org.springframework.beans" level="INFO" />
+
+	<logger name="org.springframework.context" level="INFO" />
+
+	<logger name="org.springframework.http" level="INFO" />
+
+	<logger name="org.springframework.web" level="INFO" />
+	
+	<logger name="jdbc.sqltiming" level="INFO"/>
+	
+	<logger name="jdbc.sqlonly" level="INFO" />
+	
+	<!--  
+	<logger name="org.apache.shiro" level="TRACE" />
+	
+	<logger name="org.apache.shiro.util.ThreadContext" level="WARN" />
+	
+	<logger name="org.apache.shiro.cache.ehcache.EhCache" level="WARN" />
+	-->
+
+	<root level="WARN">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>

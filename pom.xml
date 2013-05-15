@@ -80,7 +80,6 @@
 		<jaxws.spring.version>1.8</jaxws.spring.version>
 		<burlap.version>2.1.12</burlap.version>
 		<hessian.version>3.1.5</hessian.version>
-		<log4j.version>1.2.17</log4j.version>
 		<p6spy.version>1.3</p6spy.version>
 		<log4jdbc.version>1.2</log4jdbc.version>
 		<aspectjweaver.version>1.7.0</aspectjweaver.version>
@@ -111,21 +110,43 @@
 		<jcaptcha.version>1.0-RC6</jcaptcha.version>
 		<commons-codec.version>1.7</commons-codec.version>
 		<slf4j.version>1.7.5</slf4j.version>
+		<logback.version>1.0.12</logback.version>
 	</properties>
 	
 	<dependencies>
 		
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
+			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+     		<groupId>org.slf4j</groupId>
+     		<artifactId>jul-to-slf4j</artifactId>
+     		<version>${slf4j.version}</version>
+     		<scope>runtime</scope>
+   		</dependency>
 		
 		<dependency>
 			<groupId>commons-codec</groupId>
