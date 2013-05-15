@@ -111,6 +111,8 @@
 		<commons-codec.version>1.7</commons-codec.version>
 		<slf4j.version>1.7.5</slf4j.version>
 		<logback.version>1.0.12</logback.version>
+		<spring.data.mongodb.version>1.2.0.RELEASE</spring.data.mongodb.version>
+		<mongodb.driver.version>2.9.3</mongodb.driver.version>
 	</properties>
 	
 	<dependencies>
@@ -260,7 +262,7 @@
 		  	</exclusion>
 		  </exclusions>
 		</dependency>
-
+		
 		<!-- spring data jpa -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -273,7 +275,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		
+		<!-- Spring Data MongoDB -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring.data.mongodb.version}</version>
+		</dependency>
+	
+		<!--  MongoDB Java Driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${mongodb.driver.version}</version>
+		</dependency>
+		
+		
 		<!-- spring-webflow -->
 		<dependency>
 		  <groupId>org.springframework.webflow</groupId>
@@ -476,7 +493,14 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
+		
 		<!-- rss -->
 		<dependency>
 			<groupId>net.java.dev.rome</groupId>
