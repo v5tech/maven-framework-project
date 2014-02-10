@@ -114,3 +114,7 @@
 # 联系方式
 * QQ：<em>184675420</em>
 * Email：<em>sxyx2008@gmail.com</em>
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sxyx2008/maven-framework-project/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
