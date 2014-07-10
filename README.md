@@ -1,7 +1,6 @@
 # maven-framework-project
-==================================
 
-该项目不再更新维护，请移步到[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
+### 该项目不再更新维护，请移步到[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
 
 
 * 该项目基于maven3.0构建的，项目中融合了<em>Struts1</em>、<em>Struts2</em>、<em>Spring</em>、<em>SpringMVC</em>、<em>Hibernate</em>、<em>Ibatis</em>、<em>MyBatis</em>、<em>Spring Data JPA</em>、<em>Spring JDBC</em>、<em>Spring DWR</em>。页面展现这里使用Struts1、Struts2、SpringMVC（jsp视图、velocity视图、freemarker视图、pdf视图、excel视图、xml视图、json视图等）。是一个综合性的项目。
@@ -116,7 +115,7 @@
 最后希望有兴趣的朋友可以加入进来，大家一起完善他。把自己的技术分享出来。如有任何问题可以与我联系
 
 
-该项目不再更新维护，请移步到[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
+### 该项目不再更新维护，请移步到[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
 
 
 # 联系方式
