@@ -1,10 +1,6 @@
 # maven-framework-project
 ==================================
 
-
-# 声 明
-
-
 该项目不再更新维护，请移步到[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
 
 
