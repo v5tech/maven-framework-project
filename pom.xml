@@ -110,7 +110,7 @@
 		<jcaptcha.version>1.0-RC6</jcaptcha.version>
 		<commons-codec.version>1.7</commons-codec.version>
 		<slf4j.version>1.7.5</slf4j.version>
-		<logback.version>1.0.12</logback.version>
+		<logback.version>1.2.0</logback.version>
 		<spring.data.mongodb.version>1.2.0.RELEASE</spring.data.mongodb.version>
 		<mongodb.driver.version>2.9.3</mongodb.driver.version>
 	</properties>
