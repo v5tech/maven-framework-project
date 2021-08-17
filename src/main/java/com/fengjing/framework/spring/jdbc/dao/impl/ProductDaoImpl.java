@@ -15,8 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import com.fengjing.framework.spring.jdbc.dao.ProductDao;
 import com.fengjing.framework.spring.jdbc.model.Product;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Repository(value="jdbcProductDaoImpl")
+@Transactional
 public class ProductDaoImpl implements ProductDao {
 	public final static String OPTION_SAVE="save"; 	
 	public final static String OPTION_MODIFY="modify"; 	
