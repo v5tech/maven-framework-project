@@ -104,7 +104,7 @@
 		<joda-time.version>2.2</joda-time.version>
 		<stax.version>1.2.0</stax.version>
 		<xfire.version>1.2.6</xfire.version>
-		<cxf.version>2.7.3</cxf.version>
+		<cxf.version>2.7.4</cxf.version>
 		<spring-ws.version>2.1.2.RELEASE</spring-ws.version>
 		<jdom.version>2.0.1</jdom.version>
 		<jcaptcha.version>1.0-RC6</jcaptcha.version>
