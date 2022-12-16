@@ -63,7 +63,7 @@
 		
 		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
 		
-		<spring.version>3.2.1.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<hibernate.version>4.2.0.Final</hibernate.version>
 		<hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
 		<struts2.version>2.3.8</struts2.version>
